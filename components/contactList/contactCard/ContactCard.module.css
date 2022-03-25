@@ -1,0 +1,57 @@
+.ContactCardActive {
+  background-color: rgba(256, 256, 256, 0.05);
+  padding: 1rem;
+  width: 18rem;
+  height: 4rem;
+}
+.ContactCardNonActive {
+  padding: 1rem;
+  width: 18rem;
+  height: 4rem;
+}
+.InnerContactCard {
+}
+
+.contactMessageInfo {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+.contactContentInfo {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+.activeContactCard {
+  margin-left: -1rem;
+  margin-right: 0.6rem;
+  background-color: var(--FGPrimary);
+  height: 3rem;
+  width: 0.1rem;
+  border-radius: 2rem;
+}
+.avatarContainer {
+  height: 3.5rem;
+  width: 3.5rem;
+}
+.userNameLastMessage {
+  margin-left: 1rem;
+}
+.userNameLastMessage h3 {
+  font-weight: 500;
+  margin: 0;
+}
+.userNameLastMessage p {
+  font-size: 14px;
+  font-weight: 100;
+  margin: 0;
+}
+.msgDateTime h3 {
+  font-size: 14px;
+  font-weight: 100;
+}
+.ContactCard h3 {
+  margin: 0;
+}

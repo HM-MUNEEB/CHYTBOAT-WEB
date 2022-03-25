@@ -1,0 +1,56 @@
+.appConsoleNavbar {
+  background-color: var(--BGNavbar);
+  position: absolute;
+  top: 0;
+  width: 5rem;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+}
+.logoPlaceHolder {
+}
+.logoPlaceHolder_Image {
+}
+.navIconsStack {
+  display: flex;
+  flex-direction: column;
+  justify-content: ;
+}
+.activeNavItem {
+  background-color: black;
+  border-radius: 1rem;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  height: 4rem;
+  width: 4rem;
+  margin-bottom: 1rem;
+  cursor: cursor;
+}
+.nonActiveNavItems {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  height: 4rem;
+  width: 4rem;
+  margin-bottom: 1rem;
+  cursor: pointer;
+}
+.nonActiveNavItems:hover {
+  background-color: var(--BGMiddleColor);
+  border-radius: 1rem;
+}
+.navChatIcon {
+}
+.navArchiveIcon {
+}
+.navSearchIcon {
+}
+.navLastItems {
+}
+.navLastItems_Image {
+}
