@@ -10,6 +10,7 @@ export default function MainApp() {
   const [search, setSearch] = useState(false);
   const [contactListActive, setContactListActive] = useState(true);
   const [archiveActive, setArchiveActive] = useState(false);
+  const [chatActive, setChatActive] = useState(false);
   return (
     <div>
       <Head>
@@ -21,17 +22,23 @@ export default function MainApp() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <div className={styles.appConsoleContainer}>
-        {search ? <SearchModule setSearch={setSearch} /> : ""}
-        <Navbar
-          setSearch={setSearch}
-          searchStatus={search}
-          setContactList={setContactListActive}
-          contactListStatus={contactListActive}
-          setArchiveList={setArchiveActive}
-          archiveStatus={archiveActive}
-        />
-        {contactListActive ? <ContactList /> : ""}
-        <Chat chatActive={true} />
+        <div className={styles.appConsoleStack}>
+          {search ? <SearchModule setSearch={setSearch} /> : ""}
+          <Navbar
+            setSearch={setSearch}
+            searchStatus={search}
+            setContactList={setContactListActive}
+            contactListStatus={contactListActive}
+            setArchiveList={setArchiveActive}
+            archiveStatus={archiveActive}
+          />
+          {contactListActive ? (
+            <ContactList setChatActive={setChatActive} />
+          ) : (
+            ""
+          )}
+          <Chat chatActive={chatActive} />
+        </div>
       </div>
     </div>
   );

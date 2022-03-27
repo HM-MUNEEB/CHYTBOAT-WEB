@@ -5,14 +5,17 @@
   margin-bottom: 1rem;
 }
 .sentMessageContentContainer {
-  min-width: 10rem;
+  min-width: 1rem;
   max-width: 25rem;
   background-color: var(--FGPrimary);
-  padding: 0.5rem;
+  padding: 1rem;
   border-top-left-radius: 1rem;
   border-bottom-right-radius: 1rem;
   border-bottom-left-radius: 1rem;
 }
 .sentMessageImageContainer {
   margin-left: 1rem;
+}
+.sentMessageImageContainer p {
+  font-weight: 200;
 }

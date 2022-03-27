@@ -1,17 +1,17 @@
 .userChatContainer {
-  width: 100%;
+  width: calc(100%-25rem);
   height: 100vh;
 }
 .chatHeader {
   z-index: 1;
-  position: absolute;
+  position: relative;
   top: 0;
-  width: 100%;
+  width: calc(100% - 2.8%);
+  height: 5rem;
   padding-left: 1.5rem;
   margin-left: 2px;
   background-color: var(--BlockMainColor);
   border-bottom: 1px solid rgba(256, 256, 256, 0.2);
-  height: 5rem;
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -44,7 +44,7 @@
   overflow: scroll;
   padding-right: 2rem;
   padding-left: 2rem;
-  height: 75vh;
+  height: calc(100vh - 11rem);
   width: 56rem;
   position: absolute;
   bottom: 0;
@@ -64,7 +64,7 @@
   z-index: 1;
   position: absolute;
   bottom: 0;
-  width: 100%;
+  width: 58.7rem;
   padding-left: 1.5rem;
   margin-left: 2px;
   background-color: var(--BlockMainColor);
@@ -75,7 +75,7 @@
   align-items: center;
 }
 .actionsContainer {
-  width: 55rem;
+  width: 58rem;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
@@ -85,7 +85,7 @@
 }
 .inputMessageField input {
   height: 2.5rem;
-  width: 45rem;
+  width: 47rem;
   border-radius: 0.5rem;
   background-color: var(--BGPrimary);
   border: 1px solid rgba(256, 256, 256, 0.2);

@@ -9,12 +9,15 @@
   --IconsBGGradient: linear-gradient(270deg, #585757 0%, #6b6b6b 100%);
   --BGNavbar: #202020;
 }
-body {
-  font-family: "Gotham", sans-serif;
+* {
   padding: 0;
   margin: 0;
-  background-color: var(--BGPrimary);
+}
+body {
+  background-color: black;
+  font-family: "Gotham", sans-serif;
   color: white;
   height: 100%;
+  width: 100%;
   overflow: hidden;
 }

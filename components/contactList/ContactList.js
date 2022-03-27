@@ -4,7 +4,7 @@ import styles from "./ContactList.module.css";
 import Avatar from "./assets/avatar.png";
 import ContactCard from "./contactCard/ContactCard";
 
-export default function ContactList() {
+export default function ContactList(props) {
   const [searchContactList, setSearchContactList] = useState(false);
   return (
     <div className={styles.contactListContainer}>
@@ -67,97 +67,128 @@ export default function ContactList() {
         </div>
       </div>
       <div className={styles.contactCardsStack}>
-        <ContactCard
-          imageadd={Avatar}
-          userName="username"
-          lastMsg="Hello world!"
-          msgDate="11:46"
-        />
-        <ContactCard
-          imageadd={Avatar}
-          userName="username"
-          lastMsg="Hello world!"
-          msgDate="11:46"
-        />
-        <ContactCard
-          imageadd={Avatar}
-          userName="username"
-          lastMsg="Hello world!"
-          msgDate="11:46"
-          activeChat={true}
-        />
-        <ContactCard
-          imageadd={Avatar}
-          userName="username"
-          lastMsg="Hello world!"
-          msgDate="11:46"
-        />
-        <ContactCard
-          imageadd={Avatar}
-          userName="username"
-          lastMsg="Hello world!"
-          msgDate="11:46"
-        />
-        <ContactCard
-          imageadd={Avatar}
-          userName="username"
-          lastMsg="Hello world!"
-          msgDate="11:46"
-        />
-        <ContactCard
-          imageadd={Avatar}
-          userName="username"
-          lastMsg="Hello world!"
-          msgDate="11:46"
-        />
-        <ContactCard
-          imageadd={Avatar}
-          userName="username"
-          lastMsg="Hello world!"
-          msgDate="11:46"
-        />
-        <ContactCard
-          imageadd={Avatar}
-          userName="username"
-          lastMsg="Hello world!"
-          msgDate="11:46"
-        />
-        <ContactCard
-          imageadd={Avatar}
-          userName="username"
-          lastMsg="Hello world!"
-          msgDate="11:46"
-        />
-        <ContactCard
-          imageadd={Avatar}
-          userName="username"
-          lastMsg="Hello world!"
-          msgDate="11:46"
-        />
-        <ContactCard
-          imageadd={Avatar}
-          userName="username"
-          lastMsg="Hello world!"
-          msgDate="11:46"
-        />
-        <ContactCard
-          imageadd={Avatar}
-          userName="username"
-          lastMsg="Hello world!"
-          msgDate="11:46"
-        />
-        <ContactCard
-          imageadd={Avatar}
-          userName="username"
-          lastMsg="Hello world!"
-          msgDate="11:46"
-        />
-        <ContactCard
-          imageadd={Avatar}
-          userName="username"
-          lastMsg="Hello world!"
-          msgDate="11:46"
-        />
+        <div
+          className={styles.contactCardItem}
+          onClick={() => props.setChatActive(true)}
+        >
+          <ContactCard
+            imageadd={Avatar}
+            userName="username"
+            lastMsg="Hello world!"
+            msgDate="11:46"
+          />
+        </div>
+        <div
+          className={styles.contactCardItem}
+          onClick={() => props.setChatActive(true)}
+        >
+          <ContactCard
+            imageadd={Avatar}
+            userName="username"
+            lastMsg="Hello world!"
+            msgDate="11:46"
+          />
+        </div>
+        <div
+          className={styles.contactCardItem}
+          onClick={() => props.setChatActive(true)}
+        >
+          <ContactCard
+            imageadd={Avatar}
+            userName="username"
+            lastMsg="Hello world!"
+            msgDate="11:46"
+            activeChat={true}
+          />
+        </div>
+        <div
+          className={styles.contactCardItem}
+          onClick={() => props.setChatActive(true)}
+        >
+          <ContactCard
+            imageadd={Avatar}
+            userName="username"
+            lastMsg="Hello world!"
+            msgDate="11:46"
+          />
+        </div>
+        <div
+          className={styles.contactCardItem}
+          onClick={() => props.setChatActive(true)}
+        >
+          <ContactCard
+            imageadd={Avatar}
+            userName="username"
+            lastMsg="Hello world!"
+            msgDate="11:46"
+          />
+        </div>
+        <div
+          className={styles.contactCardItem}
+          onClick={() => props.setChatActive(true)}
+        >
+          <ContactCard
+            imageadd={Avatar}
+            userName="username"
+            lastMsg="Hello world!"
+            msgDate="11:46"
+          />
+        </div>
+        <div
+          className={styles.contactCardItem}
+          onClick={() => props.setChatActive(true)}
+        >
+          <ContactCard
+            imageadd={Avatar}
+            userName="username"
+            lastMsg="Hello world!"
+            msgDate="11:46"
+          />
+        </div>
+        <div
+          className={styles.contactCardItem}
+          onClick={() => props.setChatActive(true)}
+        >
+          <ContactCard
+            imageadd={Avatar}
+            userName="username"
+            lastMsg="Hello world!"
+            msgDate="11:46"
+          />
+        </div>
+        <div
+          className={styles.contactCardItem}
+          onClick={() => props.setChatActive(true)}
+        >
+          <ContactCard
+            imageadd={Avatar}
+            userName="username"
+            lastMsg="Hello world!"
+            msgDate="11:46"
+          />
+        </div>
+        <div
+          className={styles.contactCardItem}
+          onClick={() => props.setChatActive(true)}
+        >
+          <ContactCard
+            imageadd={Avatar}
+            userName="username"
+            lastMsg="Hello world!"
+            msgDate="11:46"
+          />
+        </div>
+        <div
+          className={styles.contactCardItem}
+          onClick={() => props.setChatActive(true)}
+        >
+          <ContactCard
+            imageadd={Avatar}
+            userName="username"
+            lastMsg="Hello world!"
+            msgDate="11:46"
+          />
+        </div>
       </div>
     </div>
   );

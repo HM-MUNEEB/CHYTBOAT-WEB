@@ -20,7 +20,21 @@ export default function UserChat() {
     }
   }
   function sendMessage() {
-    if (event.keyCode == 13) {
+    if (msg != " " && msg != "" && msg != null && msg != undefined) {
+      if (event.keyCode == 13) {
+        //Pushes the input Message "msg" to state array MsgContent
+        setMsgContent((old) => [
+          ...old,
+          { Avatar: Avatar, Content: msg, User: 1 },
+        ]);
+        setMsg("");
+        console.log("Message Sent!!!");
+        autoReply();
+      }
+    }
+  }
+  function sendMessageByClick() {
+    if (msg != " " && msg != "" && msg != null && msg != undefined) {
       console.log("Message Sent!!!");
       //Pushes the input Message "msg" to state array MsgContent
       setMsgContent((old) => [
@@ -30,13 +44,6 @@ export default function UserChat() {
       setMsg("");
       autoReply();
     }
-  }
-  function sendMessageByClick() {
-    console.log("Message Sent!!!");
-    //Pushes the input Message "msg" to state array MsgContent
-    setMsgContent((old) => [...old, { Avatar: Avatar, Content: msg, User: 1 }]);
-    setMsg("");
-    autoReply();
   }
   function autoReply() {
     setTimeout(() => {
@@ -100,6 +107,7 @@ export default function UserChat() {
           </div>
           <div className={styles.inputMessageField}>
             <input
+              autoFocus
               value={msg}
               onKeyDown={sendMessage}
               onChange={handleMsgChange}

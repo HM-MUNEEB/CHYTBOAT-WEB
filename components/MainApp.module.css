@@ -1,4 +1,13 @@
 .appConsoleContainer {
   height: 100%;
   width: 100%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  filter: drop-shadow(1rem 0rem 5rem var(--BlockMainColor));
+}
+.appConsoleStack {
+  height: 100%;
+  width: 1366px;
 }
