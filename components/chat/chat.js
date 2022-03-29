@@ -18,7 +18,10 @@ export default function Chat(props) {
           </div>
         </div>
       ) : (
-        <UserChat />
+        <UserChat
+          chatDetails={props.chatDetails}
+          setChatDetails={props.setChatDetails}
+        />
       )}
     </div>
   );

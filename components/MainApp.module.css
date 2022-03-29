@@ -10,4 +10,14 @@
 .appConsoleStack {
   height: 100%;
   width: 1366px;
+  display: flex;
+  flex-direction: row;
+}
+.appConsoleNavContactListStack {
+}
+.appConsoleFlexChatStack {
+  flex: 1;
+}
+.appConsoleFlexChatDetailsStack {
+  height: 100%;
 }

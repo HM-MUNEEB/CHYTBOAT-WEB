@@ -1,0 +1,44 @@
+.chatDetailsContainer {
+  position: relative;
+  float: right;
+}
+.chatDetails {
+  right: 0;
+  height: calc(100vh - 4rem);
+  width: 16rem;
+  z-index: 2;
+  padding: 2rem;
+  border-left: 1px solid rgba(256, 256, 256, 0.2);
+  background-color: var(--BlockMainColor);
+}
+.chatDetailsHeader {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+.chatDetailsHeaderStack {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+.chatDetailsHeaderStack h3 {
+  padding-left: 1rem;
+}
+.chatDetailsCloseBtn {
+  cursor: pointer;
+  height: 2rem;
+  width: 2rem;
+  border-radius: 0.4rem;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-content: center;
+  background-color: var(--BGMiddleColor);
+}
+.chatDetailsCloseIcon {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-content: center;
+}
