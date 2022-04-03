@@ -43,7 +43,8 @@
 /*Messages Stack*/
 .userChatMessagesContainer {
   z-index: 0;
-  overflow: scroll;
+  overflow-y: scroll;
+  overflow-x: hidden;
   padding-right: 4rem;
   padding-left: 4rem;
   height: calc(100% - 9rem);
@@ -53,9 +54,7 @@
   display: flex;
   flex-direction: column-reverse;
 }
-.userChatMessagesContainer::-webkit-scrollbar {
-  display: none;
-}
+
 .chatMessagesStack {
 }
 

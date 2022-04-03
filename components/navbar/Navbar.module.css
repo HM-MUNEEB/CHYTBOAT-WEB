@@ -16,7 +16,6 @@
 .navIconsStack {
   display: flex;
   flex-direction: column;
-  justify-content: ;
 }
 .activeNavItem {
   background-color: black;

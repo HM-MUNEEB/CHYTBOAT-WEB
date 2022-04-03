@@ -1,0 +1,573 @@
+.landingPageContainer {
+  background-color: var(--BGPrimary);
+  overflow-x: hidden;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.navbarWrapper {
+  background-color: var(--BGSecondry);
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.navbar {
+  width: 70rem;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  margin: 2rem;
+}
+.navbarItems {
+  display: flex;
+  flex-direction: row;
+}
+.navbarItems a {
+  margin-left: 5rem;
+  font-family: "Gotham", sans-serif;
+  font-size: 1.5rem;
+  text-decoration: none;
+  color: var(--FontColorMain);
+}
+.JoinBtn {
+  background-color: var(--BlockMainColor);
+  color: var(--FontColorMain);
+  border: 0.1rem solid var(--FontColorMain);
+  padding: 0.7rem 1rem;
+  border-radius: 0.5rem;
+  font-family: "Gotham", sans-serif;
+  font-size: 1.2rem;
+  font-weight: 600;
+  width: 12rem;
+  cursor: pointer;
+}
+.mainTagSectionWrapper {
+  background-color: var(--BGSecondry);
+  width: 100%;
+  height: 30rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.MainSection1 {
+  margin-top: -5rem;
+  max-width: 100rem;
+}
+.MainSection1 h1 {
+  text-align: center;
+  margin: 0rem 10rem;
+  line-height: 5.5rem;
+  font-family: "Boiling Demo", sans-serif;
+  font-size: 4.5rem;
+  color: var(--FontColorMain);
+}
+
+.HeadingUnderlined {
+  color: var(--FGPrimary);
+  background-image: url(./images/UNDERLINE_BRUSH_STROKE\ 1.png);
+  background-repeat: no-repeat;
+  padding-bottom: 1.5rem;
+  background-position: bottom;
+  background-size: contain;
+}
+.MainSection1 h6 {
+  font-family: "Gotham", sans-serif;
+  font-size: 1rem;
+  padding-top: 1.5rem;
+  padding: 1.5rem;
+  color: var(--FontColorMain);
+  text-align: center;
+}
+.SliderBtn {
+  margin-top: 1.5rem;
+  padding-bottom: 5rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+#ButtonBackground {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--BlockMainColor);
+  width: fit-content;
+  border-radius: 3rem;
+}
+.Slider {
+  padding: 1.5rem 1.7rem;
+  border-radius: 3rem;
+  background-color: var(--FontColorMain);
+}
+#SliderText {
+  padding-left: 4rem;
+  padding-right: 5rem;
+  border-radius: 25%;
+}
+#SliderText h6 {
+  padding: 0rem 1rem;
+}
+.demoWrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+}
+.MainSection2 {
+}
+.MainSection2Image {
+  background-position: center;
+  width: 100%;
+  margin-top: -12%;
+}
+.featuresWrapper {
+  margin-top: -7rem;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.MainSection3 {
+  width: 70rem;
+  margin-top: 3rem;
+}
+
+.SectionText {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+.SectionText h2 {
+  font-family: "Boiling Demo", sans-serif;
+  font-size: 3.5rem;
+  color: var(--FontColorMain);
+  margin-left: 0;
+}
+.FeaturesSub {
+  background-image: url(./images/sbu_features_brush.png);
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: right;
+  padding-bottom: 4rem;
+  margin-top: 1.8rem;
+  margin-right: 2rem;
+}
+.FeaturesUnderline {
+  background-image: url(./images/features_brush_stroke.png);
+  background-repeat: no-repeat;
+  background-position: bottom;
+  background-size: contain;
+  padding-bottom: 80px;
+}
+.SectionText p {
+  font-family: "Gotham-Book", sans-serif;
+  float: right;
+  font-size: 1.2rem;
+  text-align: center;
+  color: var(--FontColorMain);
+  margin-right: 0;
+}
+.featuresSubsectionHeader {
+  padding-top: 2.5rem;
+}
+.featuresStack {
+  margin-top: 5rem;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+}
+.item3Stack {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+}
+.featuresContainer {
+  display: grid;
+  align-items: center;
+  justify-content: center;
+  grid-template-columns: auto auto auto;
+  column-gap: 1rem;
+  width: 100%;
+}
+.featureCardContent {
+  margin-bottom: 1rem;
+  max-width: 18.5rem;
+  height: 15rem;
+  display: flex;
+  flex-direction: column;
+  padding: 2rem;
+  padding-top: 2rem;
+  border-radius: 1rem;
+  background-color: var(--BlockMainColor);
+}
+.featureCardContentHead {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: baseline;
+  width: 20rem;
+}
+.featureCardIconSection {
+  background-image: var(--IconsBGGradient);
+  border-radius: 0.8rem;
+  height: 4rem;
+  width: 4rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.featureCardContentHead h6 {
+  font-family: "Gotham-Medium", sans-serif;
+  font-size: 1.5rem;
+  color: var(--FontColorMain);
+  margin-left: 1rem;
+}
+.featureCardContent p {
+  color: var(--FontColorMain);
+  font-family: "Gotham-Book", sans-serif;
+  margin-top: 1.2rem;
+  font-size: 1.1rem;
+  font-weight: 400;
+  line-height: 1.5rem;
+}
+.foundersWrapper {
+  margin-top: 3rem;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.ourFounders {
+}
+.foundersContainer {
+  width: 70rem;
+}
+.ourFounders h2 {
+  font-family: "Boiling Demo", sans-serif;
+  color: var(--FontColorMain);
+  font-size: 3rem;
+}
+.FoundersUnderline {
+  background-image: url(./images/features_brush_stroke.png);
+  background-repeat: no-repeat;
+  background-position: bottom;
+  background-size: contain;
+  padding-bottom: 100px;
+}
+.foundersCards {
+  display: grid;
+  align-items: center;
+  justify-content: center;
+  grid-template-columns: auto auto auto;
+  column-gap: 1rem;
+  width: 100%;
+  margin-top: 5.5rem;
+}
+.foundersBox {
+  margin-top: 1rem;
+  width: 18.5rem;
+  display: flex;
+  flex-direction: column;
+  background-color: var(--BlockMainColor);
+  padding: 2rem;
+  border-radius: 1rem;
+}
+.FounDers {
+  width: 12rem;
+}
+.foundersBox h6 {
+  font-family: "Boiling Demo", sans-serif;
+  font-size: 1.5rem;
+  color: var(--FontColorMain);
+  margin-top: 1rem;
+  text-align: center;
+  font-weight: 400;
+}
+.foundersBox p {
+  text-align: center;
+  margin-top: 0.5rem;
+  font-family: "Gotham-Book", sans-serif;
+  font-weight: 400;
+  color: var(--FGPrimary);
+  font-size: 1rem;
+  line-height: 1.4rem;
+}
+.SocialLinks {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-evenly;
+  margin-top: 2rem;
+}
+.SocialLinks a {
+  background-image: var(--IconsBGGradient);
+  padding: 0.7rem;
+  border-radius: 0.7rem;
+  height: 1.5rem;
+  width: 1.5rem;
+}
+.item3 {
+  margin-top: 1rem;
+}
+.aboutSectionWrapper {
+  margin-top: 3rem;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.MainSection4 {
+  width: 70rem;
+}
+.AboutHeading {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+}
+.AboutHeading img {
+  margin-top: 3rem;
+  width: 100%;
+  max-width: 8rem;
+}
+.AboutHeading h2 {
+  font-family: "Boiling Demo", sans-serif;
+  font-size: 3rem;
+  color: var(--FontColorMain);
+  margin-left: 0;
+}
+.AboutUnderline {
+  background-image: url(./images/features_brush_stroke.png);
+  background-repeat: no-repeat;
+  background-position: bottom;
+  background-size: initial;
+  padding-bottom: 100px;
+}
+.AboutText p {
+  color: var(--FontColorMain);
+  line-height: 2rem;
+  font-family: "Gotham-Book", sans-serif;
+  font-weight: 600;
+  margin-top: 6rem;
+}
+.footerSection {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.AppFooter {
+  margin-top: 2rem;
+  padding: 3rem;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--BlockMainColor);
+}
+.AppFooter h1 {
+  font-family: "Boiling-Black", sans-serif;
+  font-size: 2rem;
+  color: var(--FontColorMain);
+  margin-bottom: 1rem;
+}
+.AppName {
+  font-family: "Boiling-Black", sans-serif;
+  color: var(--FGPrimary);
+}
+.FooterButton {
+  background-color: var(--BlockMainColor);
+  color: var(--FontColorMain);
+  font-family: "Gotham-Book", sans-serif;
+  font-size: 1.2rem;
+  padding: 0.5rem 1.5rem;
+  border-radius: 0.5rem;
+  border: 1px solid var(--FontColorMain);
+  margin-top: 1rem;
+}
+.TermsCondition {
+  margin-top: 2rem;
+  font-family: "Gotham-Book", sans-serif;
+  color: var(--FontColorMain);
+  line-height: 2rem;
+  font-weight: 600;
+}
+.TermsCondition a {
+  text-decoration: underline;
+  color: var(--FontColorMain);
+}
+.CopyRight {
+  font-family: "Gotham-Book", sans-serif;
+  color: var(--FontColorMain);
+  margin-top: 1rem;
+}
+@media screen and (max-width: 1150px) {
+  .navbar,
+  .MainSection4 {
+    width: 100%;
+  }
+  .navbarItems {
+    display: none;
+  }
+  .MainSection3,
+  .foundersContainer,
+  .aboutSectionWrapper {
+    width: 100%;
+  }
+  .SectionText,
+  .ourFounders,
+  .AboutHeading {
+    padding-left: 2rem;
+  }
+  .AboutText {
+    padding-right: 2rem;
+    padding-left: 2rem;
+  }
+  .MainSection3 {
+    margin-top: 0;
+  }
+  .featuresWrapper,
+  .foundersWrapper {
+    justify-content: center;
+    margin: 0rem;
+  }
+  .featuresSubsectionHeader {
+    display: none;
+  }
+  .featuresStack {
+    margin-top: 6rem;
+  }
+  .item3 {
+    grid-column: 1 / span 2;
+  }
+  .featuresContainer {
+    grid-template-columns: auto auto;
+    width: 100%;
+  }
+  .foundersCards {
+    grid-template-columns: auto auto;
+  }
+}
+@media screen and (max-width: 760px) {
+  .AboutHeading img {
+    display: none;
+  }
+
+  .MainSection2Image {
+    margin-top: -20%;
+  }
+  .mainTagSectionWrapper {
+    height: 50vh;
+  }
+  .MainSection1 h1,
+  .SectionText h2,
+  .ourFounders h2,
+  .AboutHeading h2 {
+    margin: 0;
+    font-size: 4rem;
+    line-height: 4rem;
+  }
+
+  .item3 {
+    grid-column: 1 / span 1;
+    margin: 0;
+  }
+  .featuresContainer,
+  .foundersCards {
+    grid-template-columns: auto;
+    align-items: center;
+    width: 100%;
+  }
+  .OurFounder {
+    padding: 0rem 1rem;
+    margin: 0;
+  }
+}
+@media screen and (max-width: 600px) {
+  .navbar {
+    padding: 0;
+  }
+  .MainSection1 h1,
+  .SectionText h2,
+  .ourFounders h2,
+  .AboutHeading h2 {
+    margin: 0;
+    font-size: 2.5rem;
+    line-height: 2.5rem;
+  }
+  .SliderBtn {
+    margin-bottom: 4rem;
+  }
+  .CardBox {
+    margin-top: 8rem;
+  }
+  .AboutUnderline {
+    background-size: contain;
+    padding-bottom: 81px;
+  }
+  .Slider {
+    padding: 0.9rem 1.1rem;
+  }
+  #SliderText {
+    padding-left: 2.5rem;
+    padding-right: 3rem;
+  }
+  #SliderText h6 {
+    padding: 0rem 0rem;
+    font-size: 0.8rem;
+  }
+  .AddUser {
+    margin-left: 0;
+  }
+}
+@media screen and (max-width: 410px) {
+  .JoinBtn {
+    margin-right: 0;
+  }
+  .MainSection3,
+  .foundersContainer,
+  .aboutSectionWrapper {
+    width: 100%;
+    padding-left: 0;
+  }
+  .AboutText {
+    padding-right: 0.5rem;
+    padding-left: 0.5rem;
+  }
+
+  .FeaturesUnderline {
+    padding-bottom: 80px;
+  }
+  .FoundersUnderline {
+    padding-bottom: 80px;
+  }
+  .AdduserHeading h6 {
+    font-size: 1.2rem;
+  }
+  .AddUser p {
+    font-size: 0.8rem;
+  }
+  .OurFounder h1 {
+    font-size: 2rem;
+  }
+  .FoundersBox {
+    max-width: 15rem;
+    padding: 0.5rem;
+  }
+  .SocialLinks a {
+    margin: 0 0.5rem;
+    padding: 0.5rem;
+  }
+}

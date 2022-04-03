@@ -1,9 +1,10 @@
 import Head from "next/head";
 import Image from "next/image";
+import LandingPage from "../components/landingPage/landingPage.js";
 
 export default function Home() {
   return (
-    <div>
+    <div className="webmobileproj">
       <Head>
         <title>Web/Mobile Project</title>
         <meta
@@ -12,7 +13,9 @@ export default function Home() {
         />
         <link rel="icon" href="/favicon.png" />
       </Head>
-      <div>hello world</div>
+      <div className="LandingPage">
+        <LandingPage />
+      </div>
     </div>
   );
 }
