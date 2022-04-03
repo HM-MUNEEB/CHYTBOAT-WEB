@@ -1,9 +1,10 @@
 import styles from "./userChat.module.css";
 import Image from "next/image";
+import { motion } from "framer-motion";
 import Avatar from "./assets/avatar.png";
 import SentMessage from "./sentMessage/sentMessage.js";
 import RecievedMessage from "./recievedMessage/recievedMessage.js";
-import { useDebugValue, useState } from "react";
+import { useState } from "react";
 
 export default function UserChat(props) {
   const [msg, setMsg] = useState("");
@@ -14,9 +15,25 @@ export default function UserChat(props) {
   }
   function renderMessage(msg) {
     if (msg.User == 1) {
-      return <SentMessage Avatar={msg.Avatar} Content={msg.Content} />;
+      return (
+        <motion.div
+          initial={{ y: 100 }}
+          animate={{ y: 0 }}
+          className={styles.sentMessagesStack}
+        >
+          <SentMessage Avatar={msg.Avatar} Content={msg.Content} />
+        </motion.div>
+      );
     } else if (msg.User == 2) {
-      return <RecievedMessage Avatar={msg.Avatar} Content={msg.Content} />;
+      return (
+        <motion.div
+          initial={{ y: 100 }}
+          animate={{ y: 0 }}
+          className={styles.recievedMessagesStack}
+        >
+          <RecievedMessage Avatar={msg.Avatar} Content={msg.Content} />
+        </motion.div>
+      );
     }
   }
   function sendMessage() {

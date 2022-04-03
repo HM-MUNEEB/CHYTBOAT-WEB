@@ -7,6 +7,7 @@ import SamranImage from "./images/Samraan.png";
 import UmerImage from "./images/Umer.png";
 import styles from "./landingPage.module.css";
 import Link from "next/link";
+import { motion } from "framer-motion";
 
 export default function LandingPage() {
   return (
@@ -40,13 +41,19 @@ export default function LandingPage() {
           </h6>
         </div>
       </div>
-      <div className={styles.demoWrapper}>
+      <motion.div
+        initial={{ opacity: 0 }}
+        whileInView={{ opacity: 1 }}
+        transition={{ duration: 2 }}
+        viewport={{ once: true }}
+        className={styles.demoWrapper}
+      >
         <div className={styles.MainSection2}>
           <div className={styles.MainSection2Image}>
             <Image src={MainImage} alt="Demo of main panel" />
           </div>
         </div>
-      </div>
+      </motion.div>
       <div className={styles.featuresWrapper}>
         <div className={styles.MainSection3} id={styles.Features}>
           <div className={styles.SectionText}>
@@ -64,7 +71,13 @@ export default function LandingPage() {
           </div>
           <div className={styles.featuresStack}>
             <div className={styles.featuresContainer}>
-              <div className={styles.featureCardContent}>
+              <motion.div
+                className={styles.featureCardContent}
+                initial={{ opacity: 0 }}
+                whileInView={{ opacity: 1 }}
+                transition={{ duration: 1 }}
+                viewport={{ once: true }}
+              >
                 <div className={styles.featureCardContentHead}>
                   <div className={styles.featureCardIconSection}>
                     <svg
@@ -89,8 +102,14 @@ export default function LandingPage() {
                   your person of interest and have a chat by just using the
                   username they have!
                 </p>
-              </div>
-              <div className={styles.featureCardContent}>
+              </motion.div>
+              <motion.div
+                initial={{ opacity: 0 }}
+                whileInView={{ opacity: 1 }}
+                transition={{ duration: 1 }}
+                viewport={{ once: true }}
+                className={styles.featureCardContent}
+              >
                 <div className={styles.featureCardContentHead}>
                   <div className={styles.featureCardIconSection}>
                     <svg
@@ -113,9 +132,15 @@ export default function LandingPage() {
                   would add a contact to your list automatically once you a send
                   message right away!
                 </p>
-              </div>
+              </motion.div>
               <div className={styles.item3Stack}>
-                <div className={styles.featureCardContent}>
+                <motion.div
+                  initial={{ opacity: 0 }}
+                  whileInView={{ opacity: 1 }}
+                  transition={{ duration: 1 }}
+                  viewport={{ once: true }}
+                  className={styles.featureCardContent}
+                >
                   <div className={styles.featureCardContentHead}>
                     <div className={styles.featureCardIconSection}>
                       <svg
@@ -138,7 +163,7 @@ export default function LandingPage() {
                     chat. Those images would then be recieved to your contact in
                     matter of seconds.
                   </p>
-                </div>
+                </motion.div>
               </div>
             </div>
           </div>
@@ -152,7 +177,13 @@ export default function LandingPage() {
             </h2>
           </div>
           <div className={styles.foundersCards}>
-            <div className={styles.foundersBox}>
+            <motion.div
+              initial={{ opacity: 0 }}
+              whileInView={{ opacity: 1 }}
+              transition={{ duration: 1 }}
+              viewport={{ once: true }}
+              className={styles.foundersBox}
+            >
               <Image
                 src={MuneebImage}
                 height={280}
@@ -228,8 +259,14 @@ export default function LandingPage() {
                   </svg>
                 </a>
               </div>
-            </div>
-            <div className={styles.foundersBox}>
+            </motion.div>
+            <motion.div
+              initial={{ opacity: 0 }}
+              whileInView={{ opacity: 1 }}
+              transition={{ duration: 1 }}
+              viewport={{ once: true }}
+              className={styles.foundersBox}
+            >
               <Image
                 src={SamranImage}
                 height={280}
@@ -306,8 +343,14 @@ export default function LandingPage() {
                   </svg>
                 </a>
               </div>
-            </div>
-            <div className={styles.item3Stack}>
+            </motion.div>
+            <motion.div
+              initial={{ opacity: 0 }}
+              whileInView={{ opacity: 1 }}
+              transition={{ duration: 1 }}
+              viewport={{ once: true }}
+              className={styles.item3Stack}
+            >
               <div className={styles.foundersBox}>
                 <Image
                   src={UmerImage}
@@ -386,7 +429,7 @@ export default function LandingPage() {
                   </a>
                 </div>
               </div>
-            </div>
+            </motion.div>
           </div>
         </div>
       </div>

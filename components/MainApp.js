@@ -1,5 +1,6 @@
 import Head from "next/head";
 import React, { useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
 import ContactList from "./contactList/ContactList.js";
 import styles from "./MainApp.module.css";
 import Navbar from "./navbar/Navbar.js";
@@ -23,7 +24,13 @@ export default function MainApp() {
         />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <div className={styles.appConsoleContainer}>
+      <motion.div
+        initial={{ opacity: 0 }}
+        whileInView={{ opacity: 1 }}
+        transition={{ duration: 1 }}
+        viewport={{ once: true }}
+        className={styles.appConsoleContainer}
+      >
         <div className={styles.appConsoleStack}>
           {search ? <SearchModule setSearch={setSearch} /> : ""}
           <div className={styles.appConsoleNavContactListStack}>
@@ -56,7 +63,7 @@ export default function MainApp() {
             ""
           )}
         </div>
-      </div>
+      </motion.div>
     </div>
   );
 }
