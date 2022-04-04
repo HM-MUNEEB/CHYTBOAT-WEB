@@ -1,15 +1,13 @@
 import styles from "./ChatDetails.module.css";
+import Image from "next/image";
+import chatDetailsAvatar from "./assets/chatDetailsAvatar.png";
+import { motion } from "framer-motion";
 
 export default function ChatDetails(props) {
   return (
     <div className={styles.ChatDetailsContainer}>
       <div className={styles.chatDetails}>
-        <div
-          className={styles.chatDetailsHeader}
-          onClick={() => {
-            props.setChatDetails(false);
-          }}
-        >
+        <div className={styles.chatDetailsHeader}>
           <div className={styles.chatDetailsHeaderStack}>
             <svg
               width="28"
@@ -29,7 +27,12 @@ export default function ChatDetails(props) {
             </svg>
             <h3>Chat Details</h3>
           </div>
-          <div className={styles.chatDetailsCloseBtn}>
+          <div
+            className={styles.chatDetailsCloseBtn}
+            onClick={() => {
+              props.setChatDetails(false);
+            }}
+          >
             <div className={styles.chatDetailsCloseIcon}>
               <svg
                 width="11"
@@ -46,6 +49,54 @@ export default function ChatDetails(props) {
                 />
               </svg>
             </div>
+          </div>
+        </div>
+        <div className={styles.chatDetailsContentContainer}>
+          <div className={styles.chatDetailsUserInfo}>
+            <motion.div
+              initial={{ opacity: 0 }}
+              whileInView={{ opacity: 1 }}
+              transition={{ duration: 0.5 }}
+              viewport={{ once: true }}
+            >
+              <Image src={chatDetailsAvatar} height={150} width={150} />
+            </motion.div>
+            <div className={styles.chatDetailsUserInfoUserNameEmail}>
+              <h2>Saani</h2>
+              <h4>username@domain.com</h4>
+            </div>
+          </div>
+          <div className={styles.ChatDetailsMediaContainer}>
+            <div className={styles.ChatDetailsMediaHeader}>
+              <h3>Media</h3>
+              <h4>9</h4>
+            </div>
+            <motion.div
+              initial={{ opacity: 0 }}
+              whileInView={{ opacity: 1 }}
+              transition={{ duration: 0.5 }}
+              viewport={{ once: true }}
+              className={styles.chatDetailsMediaStack}
+            >
+              <div className={styles.mediaRow}>
+                <div className={styles.mediaPlaceholder}></div>
+                <div className={styles.mediaPlaceholder}></div>
+                <div className={styles.mediaPlaceholder}></div>
+              </div>
+              <div className={styles.mediaRow}>
+                <div className={styles.mediaPlaceholder}></div>
+                <div className={styles.mediaPlaceholder}></div>
+                <div className={styles.mediaPlaceholder}></div>
+              </div>
+              <div className={styles.mediaRow}>
+                <div className={styles.mediaPlaceholder}></div>
+                <div className={styles.mediaPlaceholder}></div>
+                <div className={styles.mediaPlaceholder}></div>
+              </div>
+            </motion.div>
+          </div>
+          <div className={styles.chatDetailsDeleteChatContainer}>
+            <h4>Delete Chat</h4>
           </div>
         </div>
       </div>

@@ -10,6 +10,8 @@
   padding: 2rem;
   border-left: 1px solid rgba(256, 256, 256, 0.2);
   background-color: var(--BlockMainColor);
+  display: flex;
+  flex-direction: column;
 }
 .chatDetailsHeader {
   display: flex;
@@ -41,4 +43,71 @@
   flex-direction: column;
   justify-content: center;
   align-content: center;
+}
+.chatDetailsContentContainer {
+  height: 100%;
+  margin-top: 2rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+}
+.chatDetailsUserInfo {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.chatDetailsUserInfoUserNameEmail {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.chatDetailsUserInfoUserNameEmail h4 {
+  font-weight: 350;
+  opacity: 0.5;
+}
+.ChatDetailsMediaContainer {
+}
+.ChatDetailsMediaHeader {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin-left: 0.2rem;
+}
+.ChatDetailsMediaHeader h4 {
+  opacity: 0.5;
+  font-weight: 350;
+  margin-left: 1rem;
+}
+.chatDetailsMediaStack {
+  margin-top: 0.5rem;
+}
+.mediaRow {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+.mediaPlaceholder {
+  height: 5rem;
+  width: 5rem;
+  margin: 0.2rem;
+  border-radius: 1rem;
+  background-color: var(--BGMiddleColor);
+  opacity: 0.5;
+}
+.chatDetailsDeleteChatContainer {
+  width: 100%;
+  background-color: var(--BGMiddleColor);
+  height: 3rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border-radius: 0.4rem;
+}
+.chatDetailsDeleteChatContainer h4 {
+  color: white;
 }
