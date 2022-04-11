@@ -44,8 +44,8 @@ export default function ChatDetails(props) {
                 <path
                   d="M10 10L1 1M10 1L1 10"
                   stroke="white"
-                  stroke-width="2"
-                  stroke-linecap="round"
+                  strokeWidth="2"
+                  strokeLinecap="round"
                 />
               </svg>
             </div>
