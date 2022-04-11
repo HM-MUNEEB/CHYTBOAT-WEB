@@ -1,6 +1,5 @@
 import styles from "./Navbar.module.css";
 import Image from "next/image";
-import logo_Placeholder from "./Navbar_icons/logo_placeHolder.png";
 import { useState } from "react/cjs/react.development";
 
 export default function Navbar(props) {
