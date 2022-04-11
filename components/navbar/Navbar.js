@@ -8,15 +8,7 @@ export default function Navbar(props) {
   // Also can change States of above mentioned.
   return (
     <div className={styles.appConsoleNavbar}>
-      <div className={styles.logoPlaceHolder}>
-        <Image
-          className={styles.logoPlaceHolder_Image}
-          src={logo_Placeholder}
-          alt="Placeholder for future logo"
-          height={55}
-          width={55}
-        />
-      </div>
+      <div className={styles.logoPlaceHolder}>M</div>
       <div className={styles.navIconsStack}>
         <div
           className={
@@ -95,15 +87,7 @@ export default function Navbar(props) {
           </div>
         </div>
       </div>
-      <div className={styles.navLastItems}>
-        <Image
-          className={styles.navLastItems_Image}
-          src={logo_Placeholder}
-          alt="Placeholder for future logo"
-          height={55}
-          width={55}
-        />
-      </div>
+      <div className={styles.navLastItems}>H</div>
     </div>
   );
 }
