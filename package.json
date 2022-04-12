@@ -1,6 +1,7 @@
 {
   "name": "webmobileapp",
   "private": true,
+  "homepage": "https://munyyb.com",
   "scripts": {
     "dev": "next dev",
     "build": "next build && next export",
