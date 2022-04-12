@@ -68,7 +68,7 @@ export default function UserChat(props) {
       //Pushes the input Message "msg" to state array MsgContent
       setMsgContent((old) => [
         ...old,
-        { Avatar: Avatar, Content: "Hatt BSDK", User: 2 },
+        { Avatar: Avatar, Content: "Asalam Alikum Janab!!!", User: 2 },
       ]);
     }, 1000);
   }
