@@ -1,0 +1,155 @@
+.Main {
+  margin: 0 auto;
+  width: 100%;
+  margin-top: 4rem;
+  max-width: 21rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 2rem;
+}
+.authHeader {
+  display: flex;
+  flex-direction: row;
+  color: var(--FontColorMain);
+  font-size: 1.5rem;
+  font-weight: 500;
+}
+.authHeader::before,
+.authHeader::after {
+  content: "";
+  flex: 1 1;
+  border-bottom: 0.05rem solid var(--FontColorMain);
+  margin: auto;
+}
+.authHeader::before {
+  margin-right: 10px;
+}
+.authHeader::after {
+  margin-left: 10px;
+}
+.authLogo {
+  margin-bottom: 2rem;
+}
+.Wrapper {
+  border: 0.05rem solid rgba(256, 256, 256, 0.75);
+  background-image: linear-gradient(
+    270deg,
+    rgba(88, 87, 87, 0.1) 0%,
+    rgba(107, 107, 107, 0.1) 100%
+  );
+  padding: 2rem;
+  border-radius: 0.9rem;
+}
+.Block {
+  margin-top: 1rem;
+}
+.labelField {
+  font-size: 1rem;
+  color: var(--FontColorMain);
+  font-weight: 400;
+  font-size: 1rem;
+}
+.inputField {
+  border: 0.05rem solid rgba(256, 256, 256, 0.75);
+  outline: none;
+  background-color: var(--BlockMainColor);
+  width: 20rem;
+  font-size: 0.8rem;
+  margin-top: 0.5rem;
+  border-radius: 0.2rem;
+  padding: 0.8rem 0.5rem;
+  color: var(--FontColorMain);
+}
+.inputField:focus {
+  border: 0.05rem solid rgba(256, 256, 256, 1);
+}
+.Description {
+  font-size: 0.7rem;
+  color: var(--FontColorMain);
+  margin-top: 0.4rem;
+  font-weight: 300;
+}
+.registerDescription {
+  font-size: 0.7rem;
+  color: var(--FontColorMain);
+  margin-top: 1rem;
+  font-weight: 300;
+  text-align: center;
+}
+.Center {
+  text-align: center;
+  margin-top: calc(1.5rem - 0.4rem);
+}
+.btn {
+  background-image: var(--SliderIcon);
+  padding: 0.8rem;
+  margin-top: 1.5rem;
+  outline: none;
+  border: none;
+  border-radius: 0.3rem;
+  color: var(--FontColorMain);
+  font-weight: 600;
+  display: flex;
+  font-size: 1rem;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  width: 21rem;
+}
+.WrapperSwitch h6 {
+  color: var(--FontColorMain);
+  font-size: 1.2rem;
+  font-weight: 400;
+}
+.SwitchCase {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+}
+
+.Switch {
+  background-color: transparent;
+  font-size: 0.9rem;
+  border: 0.05rem solid rgba(256, 256, 256, 0.75);
+  border-radius: 0.3rem;
+  width: 10rem;
+  color: var(--FontColorMain);
+  padding: 0.8rem;
+  cursor: pointer;
+}
+.activeSwitch {
+  background-color: var(--BlockMainColor);
+  font-size: 0.9rem;
+  border: 0.05rem solid rgba(256, 256, 256, 0.75);
+  border-radius: 0.3rem;
+  width: 10rem;
+  color: var(--FontColorMain);
+  padding: 0.8rem;
+  cursor: pointer;
+}
+
+@media screen and (max-width: 350px) {
+  .inputField {
+    width: 10rem;
+    font-size: 0.7rem;
+    padding: 0.5rem 0.2rem;
+  }
+  .labelField {
+    font-size: 0.8rem;
+  }
+  .Main {
+    max-width: 12rem;
+  }
+  .btn {
+    width: 11rem;
+  }
+  .Switch {
+    font-size: 0.8rem;
+    width: 5rem;
+    padding: 0.5rem;
+  }
+}

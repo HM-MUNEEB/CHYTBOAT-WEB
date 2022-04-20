@@ -63,14 +63,34 @@ export default function UserChat(props) {
     }
   }
   function autoReply() {
-    setTimeout(() => {
-      console.log("Message Recieved!!!");
-      //Pushes the input Message "msg" to state array MsgContent
-      setMsgContent((old) => [
-        ...old,
-        { Avatar: Avatar, Content: "Asalam Alikum Janab!!!", User: 2 },
-      ]);
-    }, 1000);
+    if (msg == "hi") {
+      setTimeout(() => {
+        console.log("Message Recieved!!!");
+        //Pushes the input Message "msg" to state array MsgContent
+        setMsgContent((old) => [
+          ...old,
+          { Avatar: Avatar, Content: "hello", User: 2 },
+        ]);
+      }, 1000);
+    } else if (msg == "bye") {
+      setTimeout(() => {
+        console.log("Message Recieved!!!");
+        //Pushes the input Message "msg" to state array MsgContent
+        setMsgContent((old) => [
+          ...old,
+          { Avatar: Avatar, Content: "bye", User: 2 },
+        ]);
+      }, 1000);
+    } else {
+      setTimeout(() => {
+        console.log("Message Recieved!!!");
+        //Pushes the input Message "msg" to state array MsgContent
+        setMsgContent((old) => [
+          ...old,
+          { Avatar: Avatar, Content: "samjh nahi aya", User: 2 },
+        ]);
+      }, 1000);
+    }
   }
   return (
     <div className={styles.userChatContainer}>

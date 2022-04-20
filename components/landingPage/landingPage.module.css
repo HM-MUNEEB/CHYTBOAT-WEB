@@ -388,6 +388,7 @@
   color: var(--FGPrimary);
 }
 .FooterButton {
+  cursor: pointer;
   background-color: var(--BlockMainColor);
   color: var(--FontColorMain);
   font-family: "Gotham-Book", sans-serif;

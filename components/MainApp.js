@@ -22,7 +22,6 @@ export default function MainApp() {
           name="description"
           content="Message in the most most secure way possible with ent-to-end encription!"
         />
-        <link rel="icon" href="/favicon.ico" />
       </Head>
       <motion.div
         initial={{ opacity: 0 }}

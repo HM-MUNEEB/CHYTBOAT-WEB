@@ -1,6 +1,5 @@
 import Image from "next/image";
 import LogoPlaceHolder from "./images/LOGO_PLACE_HOLDER.svg";
-import Slider from "./images/slider.svg";
 import MainImage from "./images/MAIN_APP 1.png";
 import MuneebImage from "./images/Muneeb.png";
 import SamranImage from "./images/Samraan.png";
@@ -22,7 +21,7 @@ export default function LandingPage() {
             <a href="#Founders">Our Founders</a>
             <a href="#About">About</a>
           </div>
-          <Link href="../app-console">
+          <Link href="../auth">
             <button className={styles.JoinBtn}>Join Now</button>
           </Link>
         </div>
@@ -463,7 +462,9 @@ export default function LandingPage() {
           <h1>
             Join <span className={styles.AppName}>App Name</span>
           </h1>
-          <button className={styles.FooterButton}>Creat Account</button>
+          <Link href="../auth">
+            <button className={styles.FooterButton}>Creat Account</button>
+          </Link>
           <p className={styles.TermsCondition}>
             <a href="#">Terms & Conditions</a> | All rights Reserved
           </p>

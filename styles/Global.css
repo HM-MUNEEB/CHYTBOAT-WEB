@@ -8,13 +8,18 @@
   --BGMiddleColor: #464646;
   --IconsBGGradient: linear-gradient(270deg, #585757 0%, #6b6b6b 100%);
   --BGNavbar: #202020;
+  --SliderIcon: -webkit-linear-gradient(
+    137.37deg,
+    #ff9d43 3.83%,
+    #ff4e43 92.95%
+  );
 }
 * {
   padding: 0;
   margin: 0;
 }
 body {
-  background-color: black;
+  background-color: var(--BlockMainColor);
   font-family: "Gotham", sans-serif;
   color: white;
   height: 100%;
