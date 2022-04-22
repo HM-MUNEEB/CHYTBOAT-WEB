@@ -1,4 +1,21 @@
 :root {
+  --BGPrimary: #d1d1d1;
+  --BGSecondry: #bdbdbd;
+  --FontColorMain: #1e1e1e;
+  --BlockMainColor: #b9b9b9;
+  --FGPrimary: #ff9d43;
+  --BTNColor: #9a9a9a;
+  --BGMiddleColor: #bfbfbf;
+  --IconsBGGradient: linear-gradient(270deg, #9a9a9a 0%, #9e9e9e 100%);
+  --BGNavbar: #c5c5c5;
+  --SliderIcon: -webkit-linear-gradient(
+    137.37deg,
+    #ff9d43 3.83%,
+    #ff4e43 92.95%
+  );
+  --BorderColor: #4d4d4d;
+}
+[data-theme="dark"] {
   --BGPrimary: #292929;
   --BGSecondry: #252525;
   --FontColorMain: white;
@@ -13,13 +30,14 @@
     #ff9d43 3.83%,
     #ff4e43 92.95%
   );
+  --BorderColor: #4b4b4b;
 }
 * {
   padding: 0;
   margin: 0;
 }
 body {
-  background-color: var(--BlockMainColor);
+  background-color: var(--BGPrimary);
   font-family: "Gotham", sans-serif;
   color: white;
   height: 100%;

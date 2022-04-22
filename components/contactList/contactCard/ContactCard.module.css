@@ -41,18 +41,22 @@
   margin-left: 1rem;
 }
 .userNameLastMessage h3 {
+  color: var(--FontColorMain);
   font-weight: 500;
   margin: 0;
 }
 .userNameLastMessage p {
+  color: var(--FontColorMain);
   font-size: 14px;
   font-weight: 100;
   margin: 0;
 }
 .msgDateTime h3 {
+  color: var(--FontColorMain);
   font-size: 14px;
   font-weight: 100;
 }
 .ContactCard h3 {
+  color: var(--FontColorMain);
   margin: 0;
 }

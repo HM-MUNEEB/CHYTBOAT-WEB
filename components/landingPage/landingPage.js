@@ -7,6 +7,7 @@ import UmerImage from "./images/Umer.png";
 import styles from "./landingPage.module.css";
 import Link from "next/link";
 import { motion } from "framer-motion";
+import ThemeToggle from "../themeToggle/themeToggle";
 
 export default function LandingPage() {
   return (
@@ -21,9 +22,15 @@ export default function LandingPage() {
             <a href="#Founders">Our Founders</a>
             <a href="#About">About</a>
           </div>
-          <Link href="../auth">
-            <button className={styles.JoinBtn}>Join Now</button>
-          </Link>
+          <div className={styles.headRightSection}>
+            <div className={styles.themeToggle}>
+              <ThemeToggle size={50} />
+            </div>
+
+            <Link href="../auth">
+              <button className={styles.JoinBtn}>Join Now</button>
+            </Link>
+          </div>
         </div>
       </div>
       <div className={styles.mainTagSectionWrapper}>

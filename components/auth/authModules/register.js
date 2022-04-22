@@ -18,7 +18,7 @@ export default function Register(props) {
       </div>
       <form>
         <div className={styles.Block}>
-          <label className={styles.labelField} for="name">
+          <label className={styles.labelField} htmlFor="name">
             Name
           </label>
           <br />
@@ -31,7 +31,7 @@ export default function Register(props) {
           />
         </div>
         <div className={styles.Block}>
-          <label className={styles.labelField} for="email">
+          <label className={styles.labelField} htmlFor="email">
             Email Address
           </label>
           <br />
@@ -44,7 +44,7 @@ export default function Register(props) {
           />
         </div>
         <div className={styles.Block}>
-          <label className={styles.labelField} for="Username">
+          <label className={styles.labelField} htmlFor="Username">
             Username
           </label>
           <br />
@@ -60,7 +60,7 @@ export default function Register(props) {
           </p>
         </div>
         <div className={styles.Block}>
-          <label className={styles.labelField} for="password">
+          <label className={styles.labelField} htmlFor="password">
             Password
           </label>
           <br />

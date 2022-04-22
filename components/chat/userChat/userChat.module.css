@@ -13,7 +13,7 @@
   padding-left: 1.5rem;
   margin-left: 2px;
   background-color: var(--BlockMainColor);
-  border-bottom: 1px solid rgba(256, 256, 256, 0.2);
+  border-bottom: 1px solid var(--BorderColor);
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -29,15 +29,17 @@
   margin-left: 1rem;
 }
 .userContentContainer h3 {
+  color: var(--FontColorMain);
   margin: 0;
   font-weight: 500;
   font-size: 16px;
 }
 .userContentContainer p {
+  color: var(--FontColorMain);
   opacity: 0.5;
   margin: 0;
   padding-top: 0.1rem;
-  font-weight: 100;
+  font-weight: 350;
   font-size: 12px;
 }
 /*Messages Stack*/
@@ -68,7 +70,7 @@
   margin-left: 3px;
   width: calc(100% - 3rem - 3px);
   background-color: var(--BlockMainColor);
-  border-top: 1px solid rgba(256, 256, 256, 0.2);
+  border-top: 1px solid var(--BorderColor);
   height: 4rem;
   display: flex;
   flex-direction: row;
@@ -88,14 +90,20 @@
 .attachMediaBtn {
   margin-left: 2rem;
 }
+.attachMediaBtn svg {
+  color: var(--FontColorMain);
+}
+.emojiBtn svg {
+  color: var(--FontColorMain);
+}
 .inputMessageField {
 }
 .inputMessageField input {
   height: 2.5rem;
   border-radius: 0.5rem;
-  background-color: var(--BGPrimary);
-  border: 1px solid rgba(256, 256, 256, 0.2);
-  color: white;
+  background-color: var(--BTNColor);
+  border: 1px solid var(--BorderColor);
+  color: var(--FontColorMain);
   padding-left: 1rem;
 }
 .extendedInputField {

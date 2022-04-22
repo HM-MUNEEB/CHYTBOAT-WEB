@@ -24,6 +24,7 @@
   background-color: var(--BGMiddleColor);
 }
 .chatUserNotSelectedInnerContainer h3 {
+  color: var(--FontColorMain);
   text-align: center;
   font-weight: 200;
 }

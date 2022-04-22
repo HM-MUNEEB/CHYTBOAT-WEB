@@ -16,6 +16,6 @@
 .sentMessageImageContainer {
   margin-left: 1rem;
 }
-.sentMessageImageContainer p {
-  font-weight: 200;
+.sentMessageContentContainer p {
+  color: var(--FontColorMain);
 }

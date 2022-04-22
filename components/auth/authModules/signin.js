@@ -18,7 +18,7 @@ export default function Signin(props) {
       </div>
       <form>
         <div className={styles.Block}>
-          <label className={styles.labelField} for="name">
+          <label className={styles.labelField} htmlFor="name">
             Email/UserName
           </label>
           <br />
@@ -30,7 +30,7 @@ export default function Signin(props) {
           />
         </div>
         <div className={styles.Block}>
-          <label className={styles.labelField} for="password">
+          <label className={styles.labelField} htmlFor="password">
             Password
           </label>
           <br />

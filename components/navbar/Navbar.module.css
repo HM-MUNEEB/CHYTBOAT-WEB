@@ -41,14 +41,23 @@
   cursor: pointer;
 }
 .nonActiveNavItems:hover {
-  background-color: var(--BGMiddleColor);
+  background-color: var(--BTNColor);
   border-radius: 1rem;
 }
 .navChatIcon {
 }
+.navChatIcon svg {
+  color: var(--FontMaincolor);
+}
 .navArchiveIcon {
 }
+.navArchiveIcon svg {
+  color: var(--FontMaincolor);
+}
 .navSearchIcon {
+}
+.navSearchIcon svg {
+  color: var(--FontMaincolor);
 }
 .navLastItems {
 }

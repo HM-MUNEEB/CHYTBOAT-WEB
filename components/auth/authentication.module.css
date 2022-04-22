@@ -19,7 +19,7 @@
 .authHeader::after {
   content: "";
   flex: 1 1;
-  border-bottom: 0.05rem solid var(--FontColorMain);
+  border-bottom: 0.05rem solid var(--BorderColor);
   margin: auto;
 }
 .authHeader::before {
@@ -32,7 +32,7 @@
   margin-bottom: 2rem;
 }
 .Wrapper {
-  border: 0.05rem solid rgba(256, 256, 256, 0.75);
+  border: 0.05rem solid var(--BorderColor);
   background-image: linear-gradient(
     270deg,
     rgba(88, 87, 87, 0.1) 0%,
@@ -51,18 +51,18 @@
   font-size: 1rem;
 }
 .inputField {
-  border: 0.05rem solid rgba(256, 256, 256, 0.75);
+  border: 0.05rem solid var(--BorderColor);
   outline: none;
-  background-color: var(--BlockMainColor);
+  background-color: var(--BTNColor);
   width: 20rem;
-  font-size: 0.8rem;
+  font-size: 0.9rem;
   margin-top: 0.5rem;
   border-radius: 0.2rem;
   padding: 0.8rem 0.5rem;
   color: var(--FontColorMain);
 }
 .inputField:focus {
-  border: 0.05rem solid rgba(256, 256, 256, 1);
+  border: 0.05rem solid var(--BorderColor);
 }
 .Description {
   font-size: 0.7rem;
@@ -113,8 +113,8 @@
 
 .Switch {
   background-color: transparent;
-  font-size: 0.9rem;
-  border: 0.05rem solid rgba(256, 256, 256, 0.75);
+  font-size: 1rem;
+  border: 0.05rem solid var(--BorderColor);
   border-radius: 0.3rem;
   width: 10rem;
   color: var(--FontColorMain);
@@ -122,9 +122,9 @@
   cursor: pointer;
 }
 .activeSwitch {
-  background-color: var(--BlockMainColor);
-  font-size: 0.9rem;
-  border: 0.05rem solid rgba(256, 256, 256, 0.75);
+  background-color: var(--BTNColor);
+  font-size: 1rem;
+  border: 0.05rem solid var(--BorderColor);
   border-radius: 0.3rem;
   width: 10rem;
   color: var(--FontColorMain);

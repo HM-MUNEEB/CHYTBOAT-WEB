@@ -1,7 +1,7 @@
 .contactListContainer {
   background-color: var(--BlockMainColor);
-  border-left: 1px solid rgba(256, 256, 256, 0.2);
-  border-right: 1px solid rgba(256, 256, 256, 0.2);
+  border-left: 1px solid var(--BorderColor);
+  border-right: 1px solid var(--BorderColor);
   position: absolute;
   top: 0;
   margin-left: 5rem;
@@ -17,7 +17,7 @@
   top: 0;
   height: 8.5rem;
   width: 20rem;
-  border-bottom: 1px solid rgba(256, 256, 256, 0.2);
+  border-bottom: 1px solid var(--BorderColor);
 }
 .userInfoSection {
   margin-top: 0.8rem;
@@ -36,6 +36,7 @@
 }
 .userInfo h3 {
   margin-left: 0.5rem;
+  color: var(--FontColorMain);
 }
 .avatarPlaceHolder {
   background-color: var(--BGMiddleColor);
@@ -55,6 +56,9 @@
   border-radius: 2rem;
 }
 .optionsBtn {
+}
+.optionsBtn svg {
+  color: var(--FontColorMain);
 }
 /*The following css deals wtih messages tagline;*/
 
@@ -81,12 +85,16 @@
   height: 1.7rem;
   width: 15rem;
   border-radius: 0.4rem;
-  background-color: var(--BGPrimary);
-  border: 1px solid rgba(256, 256, 256, 0.2);
+  background-color: var(--BTNColor);
+  border: 1px solid var(--BorderColor);
   color: white;
   padding-left: 1rem;
 }
 .messagesHeadingLine h2 {
+  color: var(--FontColorMain);
+}
+.contactListSearchIcon svg {
+  color: var(--FontColorMain);
 }
 .UnreadMessagesIndicator {
   background-color: var(--FGPrimary);
