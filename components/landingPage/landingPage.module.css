@@ -76,9 +76,17 @@
   color: var(--FontColorMain);
 }
 
-.HeadingUnderlined {
+.HeadingUnderlinedLight {
   color: var(--FGPrimary);
-  background-image: url(./images/UNDERLINE_BRUSH_STROKE\ 1.png);
+  background-image: url(./images/UNDERLINE_BRUSH_STROKE.png);
+  background-repeat: no-repeat;
+  padding-bottom: 1.5rem;
+  background-position: bottom;
+  background-size: contain;
+}
+.HeadingUnderlinedDark {
+  color: var(--FGPrimary);
+  background-image: url(./images/UNDERLINE_BRUSH_STROKE_dark.png);
   background-repeat: no-repeat;
   padding-bottom: 1.5rem;
   background-position: bottom;
@@ -159,7 +167,7 @@
   color: var(--FontColorMain);
   margin-left: 0;
 }
-.FeaturesSub {
+.FeaturesSubLight {
   background-image: url(./images/sbu_features_brush.png);
   background-repeat: no-repeat;
   background-size: contain;
@@ -168,8 +176,24 @@
   margin-top: 1.8rem;
   margin-right: 2rem;
 }
-.FeaturesUnderline {
+.FeaturesSubDark {
+  background-image: url(./images/sbu_features_brush_dark.png);
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: right;
+  padding-bottom: 4rem;
+  margin-top: 1.8rem;
+  margin-right: 2rem;
+}
+.FeaturesUnderlineLight {
   background-image: url(./images/features_brush_stroke.png);
+  background-repeat: no-repeat;
+  background-position: bottom;
+  background-size: contain;
+  padding-bottom: 80px;
+}
+.FeaturesUnderlineDark {
+  background-image: url(./images/features_brush_stroke_dark.png);
   background-repeat: no-repeat;
   background-position: bottom;
   background-size: contain;
@@ -266,8 +290,15 @@
   color: var(--FontColorMain);
   font-size: 3rem;
 }
-.FoundersUnderline {
+.FoundersUnderlineLight {
   background-image: url(./images/features_brush_stroke.png);
+  background-repeat: no-repeat;
+  background-position: bottom;
+  background-size: contain;
+  padding-bottom: 100px;
+}
+.FoundersUnderlineDark {
+  background-image: url(./images/features_brush_stroke_dark.png);
   background-repeat: no-repeat;
   background-position: bottom;
   background-size: contain;
@@ -325,6 +356,9 @@
   height: 1.5rem;
   width: 1.5rem;
 }
+.SocialLinks a svg {
+  color: var(--FontColorMain);
+}
 .item3 {
   margin-top: 1rem;
 }
@@ -355,12 +389,19 @@
   color: var(--FontColorMain);
   margin-left: 0;
 }
-.AboutUnderline {
+.AboutUnderlineLight {
   background-image: url(./images/features_brush_stroke.png);
   background-repeat: no-repeat;
   background-position: bottom;
   background-size: initial;
-  padding-bottom: 100px;
+  padding-bottom: 80px;
+}
+.AboutUnderlineDark {
+  background-image: url(./images/features_brush_stroke_dark.png);
+  background-repeat: no-repeat;
+  background-position: bottom;
+  background-size: initial;
+  padding-bottom: 80px;
 }
 .AboutText p {
   color: var(--FontColorMain);

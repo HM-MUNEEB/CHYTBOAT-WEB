@@ -1,7 +1,8 @@
+.authentication {
+  background-color: var(--BGPrimary);
+}
 .Main {
   margin: 0 auto;
-  width: 100%;
-  margin-top: 4rem;
   max-width: 21rem;
   display: flex;
   flex-direction: column;
@@ -30,6 +31,7 @@
 }
 .authLogo {
   margin-bottom: 2rem;
+  margin-top: 2rem;
 }
 .Wrapper {
   border: 0.05rem solid var(--BorderColor);

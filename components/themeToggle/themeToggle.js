@@ -4,6 +4,11 @@ import { DarkModeSwitch } from "react-toggle-dark-mode";
 export default function ThemeToggle(props) {
   const [darkTheme, setDarkTheme] = useState(undefined);
 
+  useEffect(() => {
+    var check = document.documentElement.getAttribute("data-theme");
+    setDarkTheme(check != "light");
+  }, []);
+
   const handleToggle = (event) => {
     setDarkTheme(event);
   };
@@ -16,7 +21,7 @@ export default function ThemeToggle(props) {
         window.localStorage.setItem("theme", "dark");
       } else {
         // Set value of  darkmode to light
-        document.documentElement.removeAttribute("data-theme");
+        document.documentElement.setAttribute("data-theme", "light");
         window.localStorage.setItem("theme", "light");
       }
     }
