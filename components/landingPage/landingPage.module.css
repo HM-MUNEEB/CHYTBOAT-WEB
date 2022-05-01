@@ -362,6 +362,9 @@
 .item3 {
   margin-top: 1rem;
 }
+.featureCardIconSection svg {
+  color: var(--FontColorMain);
+}
 .aboutSectionWrapper {
   margin-top: 3rem;
   width: 100%;
