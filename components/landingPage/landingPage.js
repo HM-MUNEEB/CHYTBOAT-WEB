@@ -6,6 +6,9 @@ import MainImageLight from "./images/MAIN_APP_LIGHT_THEME.png";
 import MuneebImage from "./images/Muneeb.png";
 import SamranImage from "./images/Samraan.png";
 import UmerImage from "./images/Umer.png";
+import MuneebImageDark from "./images/Muneeb_dark.png";
+import SamranImageDark from "./images/Samraan_dark.png";
+import UmerImageDark from "./images/Umer_dark.png";
 import styles from "./landingPage.module.css";
 import Link from "next/link";
 import { motion } from "framer-motion";
@@ -238,7 +241,7 @@ export default function LandingPage() {
               className={styles.foundersBox}
             >
               <Image
-                src={MuneebImage}
+                src={darkThemeCheck == "light" ? MuneebImage : MuneebImageDark}
                 height={280}
                 width={200}
                 alt="Founders"
@@ -321,7 +324,7 @@ export default function LandingPage() {
               className={styles.foundersBox}
             >
               <Image
-                src={SamranImage}
+                src={darkThemeCheck == "light" ? SamranImage : SamranImageDark}
                 height={280}
                 width={200}
                 alt="Founders"
@@ -406,7 +409,7 @@ export default function LandingPage() {
             >
               <div className={styles.foundersBox}>
                 <Image
-                  src={UmerImage}
+                  src={darkThemeCheck == "light" ? UmerImage : UmerImageDark}
                   height={280}
                   width={200}
                   alt="Founders"
