@@ -7,10 +7,10 @@ export default function Register(props) {
   return (
     <div className={styles.RegisterAuthModule}>
       <Head>
-        <title>Sign In</title>
+        <title>ChytBoat: Register</title>
         <meta
           name="description"
-          content="Message in the most most secure way possible with ent-to-end encription!"
+          content="This project is a messaging system with end-to-end encyption!"
         />
       </Head>
       <div>

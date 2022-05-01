@@ -20,7 +20,7 @@ export default function MainApp() {
         <title>App-Console</title>
         <meta
           name="description"
-          content="Message in the most most secure way possible with ent-to-end encription!"
+          content="ChytBoat in the most most secure way, possible to chat, with ent-to-end encription!"
         />
       </Head>
       <motion.div

@@ -6,10 +6,10 @@ export default function Home() {
   return (
     <div className="webmobileproj">
       <Head>
-        <title>Web/Mobile Project</title>
+        <title>ChytBoat: The Most Secured Messaging App</title>
         <meta
           name="description"
-          content="This project is a messaging system with end-to-end encyption!"
+          content="ChyBoat is the most secured messaging app with end-to-end encyption!"
         />
         <link rel="icon" href="/favicon.png" />
       </Head>
