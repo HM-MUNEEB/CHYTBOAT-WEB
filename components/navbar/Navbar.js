@@ -1,6 +1,6 @@
 import styles from "./Navbar.module.css";
 import Image from "next/image";
-import logo_Placeholder from "./Navbar_icons/logo_placeHolder.png";
+import LogoPlaceHolder from "./Navbar_icons/CHYT_BOAT_LOGO.png";
 import { useState } from "react/cjs/react.development";
 
 export default function Navbar(props) {
@@ -11,8 +11,8 @@ export default function Navbar(props) {
       <div className={styles.logoPlaceHolder}>
         <Image
           className={styles.logoPlaceHolder_Image}
-          src={logo_Placeholder}
-          alt="Placeholder for future logo"
+          src={LogoPlaceHolder}
+          alt="Chyt Boat Logo"
           height={55}
           width={55}
         />
@@ -96,13 +96,7 @@ export default function Navbar(props) {
         </div>
       </div>
       <div className={styles.navLastItems}>
-        <Image
-          className={styles.navLastItems_Image}
-          src={logo_Placeholder}
-          alt="Placeholder for future logo"
-          height={55}
-          width={55}
-        />
+        <div> </div>
       </div>
     </div>
   );

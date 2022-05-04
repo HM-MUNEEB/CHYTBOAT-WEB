@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import Image from "next/image";
-import img from "./assets/logo.svg";
+import LogoPlaceHolder from "./assets/CHYT_BOAT_LOGO.png";
 import Signin from "./authModules/signin";
 import Register from "./authModules/register";
 import styles from "./authentication.module.css";
@@ -13,7 +13,12 @@ export default function Auth() {
     <div className={styles.authentication}>
       <div className={styles.Main}>
         <div className={styles.authLogo}>
-          <Image src={img} />
+          <Image
+            src={LogoPlaceHolder}
+            height={80}
+            width={80}
+            alt="Chyt Boat Logo"
+          />
         </div>
         <motion.div
           className={styles.Wrapper}

@@ -1,6 +1,6 @@
 import Image from "next/image";
 import { useState, useEffect } from "react";
-import LogoPlaceHolder from "./images/LOGO_PLACE_HOLDER.svg";
+import LogoPlaceHolder from "./images/CHYT_BOAT_LOGO.png";
 import MainImage from "./images/MAIN_APP.png";
 import MainImageLight from "./images/MAIN_APP_LIGHT_THEME.png";
 import MuneebImage from "./images/Muneeb.png";
@@ -30,7 +30,12 @@ export default function LandingPage() {
       <div className={styles.navbarWrapper}>
         <div className={styles.navbar}>
           <div className={styles.navbarLogo}>
-            <Image src={LogoPlaceHolder} alt="LOGO" />
+            <Image
+              src={LogoPlaceHolder}
+              height={80}
+              width={80}
+              alt="Chyt Boat logo"
+            />
           </div>
           <div className={styles.navbarItems}>
             <a href="#Features">Features</a>
