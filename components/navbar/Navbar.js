@@ -2,6 +2,7 @@ import styles from "./Navbar.module.css";
 import Image from "next/image";
 import LogoPlaceHolder from "./Navbar_icons/CHYT_BOAT_LOGO.png";
 import { useState } from "react/cjs/react.development";
+import Link from "next/link";
 
 export default function Navbar(props) {
   //Gets Chat Module, Search Module and archive module status
@@ -9,13 +10,15 @@ export default function Navbar(props) {
   return (
     <div className={styles.appConsoleNavbar}>
       <div className={styles.logoPlaceHolder}>
-        <Image
-          className={styles.logoPlaceHolder_Image}
-          src={LogoPlaceHolder}
-          alt="Chyt Boat Logo"
-          height={55}
-          width={55}
-        />
+        <Link href="../">
+          <Image
+            className={styles.logoPlaceHolder_Image}
+            src={LogoPlaceHolder}
+            alt="Chyt Boat Logo"
+            height={55}
+            width={55}
+          />
+        </Link>
       </div>
       <div className={styles.navIconsStack}>
         <div
