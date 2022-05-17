@@ -5,9 +5,7 @@ import ProtectedRoute from "../components/protectedRoute/protectedRoute";
 function MyApp({ Component, pageProps }) {
   return (
     <AuthContextProvider>
-      <ProtectedRoute>
-        <Component {...pageProps} />
-      </ProtectedRoute>
+      <Component {...pageProps} />
     </AuthContextProvider>
   );
 }

@@ -63,5 +63,9 @@
 }
 .navLastItems {
 }
+.logout {
+  color: var(--FontMaincolor);
+  cursor: pointer;
+}
 .navLastItems_Image {
 }

@@ -6,14 +6,15 @@ import {
   signOut,
 } from "firebase/auth";
 import { auth } from "../firebaseConfig/firebase";
+import { useRouter } from "next/router";
 
 const AuthContext = createContext({});
-
 export const useAuth = () => useContext(AuthContext);
 
 export const AuthContextProvider = ({ children }) => {
   const [user, setUser] = useState(null);
   const [loading, setLoading] = useState(true);
+  const router = useRouter();
 
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (user) => {
@@ -78,6 +79,7 @@ export const AuthContextProvider = ({ children }) => {
         // Sign-out successful.
         setUser(null);
         console.log(user);
+        router.push("/");
       })
       .catch((error) => {
         // An error happened.
