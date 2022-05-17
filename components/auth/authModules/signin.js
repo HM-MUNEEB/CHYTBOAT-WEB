@@ -5,17 +5,22 @@ import Link from "next/link";
 import { useState } from "react";
 import { useAuth } from "../../../authContext/authContext";
 import { LayoutGroupContext } from "framer-motion";
+import { useRouter } from "next/router";
 
 export default function Signin(props) {
   const { user, login } = useAuth();
   const [userEmail, setUserEmail] = useState("");
   const [userPassword, setUserPassword] = useState("");
+  const router = useRouter();
 
   const signInAuthResponse = (e) => {
     e.preventDefault();
     console.log(userPassword);
     console.log(userEmail);
     const loginReturn = login(userEmail, userPassword);
+    if (user) {
+      router.push("../app-console");
+    }
   };
 
   return (
@@ -57,16 +62,13 @@ export default function Signin(props) {
           />
         </div>
         <p className={styles.Description}>Forgot your Password?</p>
-
-        <Link href="../app-console">
-          <button
-            className={styles.btn}
-            type="submit"
-            onClick={signInAuthResponse}
-          >
-            Sign In
-          </button>
-        </Link>
+        <button
+          className={styles.btn}
+          type="submit"
+          onClick={signInAuthResponse}
+        >
+          Sign In
+        </button>
       </form>
     </div>
   );

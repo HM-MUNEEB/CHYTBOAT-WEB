@@ -22,6 +22,7 @@ export default function Register(props) {
       registrationUserData.email,
       registrationUserData.password
     );
+    props.signIn(true);
   };
   function handleRegistrationName(e) {
     setRegistrationUserData({ ...registrationUserData, name: e.target.value });
@@ -123,7 +124,6 @@ export default function Register(props) {
         >
           Register
         </button>
-        <Link href="../app-console">hi</Link>
       </form>
     </div>
   );
