@@ -23,7 +23,7 @@ export const AuthContextProvider = ({ children }) => {
           email: user.email,
           displayName: user.displayName,
         });
-        console.log(user);
+        //console.log(user);
       } else {
         setUser(null);
       }
@@ -40,15 +40,15 @@ export const AuthContextProvider = ({ children }) => {
         if (user) {
           logout();
           login(email, password);
-          console.log(user);
+          //console.log(user);
         } else {
           login(email, password);
-          console.log(user);
+          //console.log(user);
         }
         return true;
       })
       .catch((error) => {
-        console.log(error);
+        //console.log(error);
         return error;
       });
   };
@@ -62,7 +62,7 @@ export const AuthContextProvider = ({ children }) => {
           email: userCredential.email,
           displayName: userCredential.displayName,
         });
-        console.log("login: " + user);
+        //console.log("login: " + user);
         return true;
       })
       .catch((error) => {
@@ -76,7 +76,7 @@ export const AuthContextProvider = ({ children }) => {
       .then(() => {
         // Sign-out successful.
         setUser(null);
-        console.log(user);
+        //console.log(user);
         router.push("/");
       })
       .catch((error) => {
