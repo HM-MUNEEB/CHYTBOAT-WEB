@@ -5,10 +5,19 @@ import Signin from "./authModules/signin";
 import Register from "./authModules/register";
 import styles from "./authentication.module.css";
 import { motion } from "framer-motion";
+import { useAuth } from "../../authContext/authContext";
 
 export default function Auth() {
   const [signin, setSignin] = useState(true);
+  const { user, logout } = useAuth();
 
+  function userSignOut(e) {
+    e.preventDefault();
+    const logoutReturn = logout();
+    console.log("SIGN IN: " + logoutReturn);
+    console.log(user);
+    console.log("LOGGED OUT!");
+  }
   return (
     <div className={styles.authentication}>
       <div className={styles.Main}>
@@ -46,6 +55,7 @@ export default function Auth() {
           </div>
           {signin ? <Signin /> : <Register />}
         </motion.div>
+        <button onClick={userSignOut}> logout</button>
       </div>
     </div>
   );

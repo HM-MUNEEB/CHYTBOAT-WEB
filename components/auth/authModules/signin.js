@@ -1,9 +1,23 @@
-import React from "react";
+import React, { useEffect } from "react";
 import styles from "../authentication.module.css";
 import Head from "next/head";
 import Link from "next/link";
+import { useState } from "react";
+import { useAuth } from "../../../authContext/authContext";
+import { LayoutGroupContext } from "framer-motion";
 
 export default function Signin(props) {
+  const { user, login } = useAuth();
+  const [userEmail, setUserEmail] = useState("");
+  const [userPassword, setUserPassword] = useState("");
+
+  const signInAuthResponse = (e) => {
+    e.preventDefault();
+    console.log(userPassword);
+    console.log(userEmail);
+    const loginReturn = login(userEmail, userPassword);
+  };
+
   return (
     <div className={styles.SignInAuthModule}>
       <Head>
@@ -24,6 +38,7 @@ export default function Signin(props) {
           <br />
           <input
             className={styles.inputField}
+            onChange={(e) => setUserEmail(e.target.value)}
             type="text"
             name="name/email"
             autoComplete="off"
@@ -36,13 +51,19 @@ export default function Signin(props) {
           <br />
           <input
             className={styles.inputField}
+            onChange={(e) => setUserPassword(e.target.value)}
             type="password"
             name="password"
           />
         </div>
         <p className={styles.Description}>Forgot your Password?</p>
+
         <Link href="../app-console">
-          <button className={styles.btn} type="submit">
+          <button
+            className={styles.btn}
+            type="submit"
+            onClick={signInAuthResponse}
+          >
             Sign In
           </button>
         </Link>

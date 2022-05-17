@@ -2,8 +2,45 @@ import React from "react";
 import styles from "../authentication.module.css";
 import Head from "next/head";
 import Link from "next/link";
+import { useState } from "react";
+import { useAuth } from "../../../authContext/authContext";
+import { async } from "@firebase/util";
 
 export default function Register(props) {
+  const { user, signup } = useAuth();
+  const [registrationUserData, setRegistrationUserData] = useState({
+    name: "",
+    userName: "",
+    email: "",
+    password: "",
+  });
+
+  const handleRegistration = (e) => {
+    e.preventDefault();
+    console.log(registrationUserData);
+    const signupReturn = signup(
+      registrationUserData.email,
+      registrationUserData.password
+    );
+  };
+  function handleRegistrationName(e) {
+    setRegistrationUserData({ ...registrationUserData, name: e.target.value });
+  }
+  function handleRegistrationEmail(e) {
+    setRegistrationUserData({ ...registrationUserData, email: e.target.value });
+  }
+  function handleRegistrationUserName(e) {
+    setRegistrationUserData({
+      ...registrationUserData,
+      userName: e.target.value,
+    });
+  }
+  function handleRegistrationPassword(e) {
+    setRegistrationUserData({
+      ...registrationUserData,
+      password: e.target.value,
+    });
+  }
   return (
     <div className={styles.RegisterAuthModule}>
       <Head>
@@ -28,6 +65,7 @@ export default function Register(props) {
             name="name"
             placeholder="Enter your name"
             autoComplete="off"
+            onChange={handleRegistrationName}
           />
         </div>
         <div className={styles.Block}>
@@ -41,6 +79,7 @@ export default function Register(props) {
             name="email"
             placeholder="Enter your email address"
             autoComplete="off"
+            onChange={handleRegistrationEmail}
           />
         </div>
         <div className={styles.Block}>
@@ -54,6 +93,7 @@ export default function Register(props) {
             name="username"
             placeholder="only alphanumeric allowed [a-z, A-Z, 0-9]"
             autoComplete="off"
+            onChange={handleRegistrationUserName}
           />
           <p className={styles.Description}>
             Once set, username cannot be changed
@@ -69,17 +109,21 @@ export default function Register(props) {
             type="password"
             name="password"
             placeholder="Enter your password"
+            onChange={handleRegistrationPassword}
           />
         </div>
         <p className={styles.registerDescription}>
           By clicking register you are agreeing to all the user terms and
           service!
         </p>
-        <Link href="../app-console">
-          <button className={styles.btn} type="submit">
-            Register
-          </button>
-        </Link>
+        <button
+          className={styles.btn}
+          type="submit"
+          onClick={handleRegistration}
+        >
+          Register
+        </button>
+        <Link href="../app-console">hi</Link>
       </form>
     </div>
   );
