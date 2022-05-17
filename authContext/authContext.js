@@ -13,7 +13,6 @@ export const useAuth = () => useContext(AuthContext);
 
 export const AuthContextProvider = ({ children }) => {
   const [user, setUser] = useState(null);
-  const [loading, setLoading] = useState(true);
   const router = useRouter();
 
   useEffect(() => {
@@ -28,7 +27,6 @@ export const AuthContextProvider = ({ children }) => {
       } else {
         setUser(null);
       }
-      setLoading(false);
     });
 
     return unsubscribe();
@@ -44,10 +42,10 @@ export const AuthContextProvider = ({ children }) => {
           login(email, password);
           console.log(user);
         } else {
-          login();
+          login(email, password);
           console.log(user);
         }
-        return userCredential;
+        return true;
       })
       .catch((error) => {
         console.log(error);
@@ -65,7 +63,7 @@ export const AuthContextProvider = ({ children }) => {
           displayName: userCredential.displayName,
         });
         console.log("login: " + user);
-        return userCredential;
+        return true;
       })
       .catch((error) => {
         console.log(error);
@@ -90,7 +88,7 @@ export const AuthContextProvider = ({ children }) => {
 
   return (
     <AuthContext.Provider value={{ user, login, signup, logout }}>
-      {loading ? null : children}
+      {children}
     </AuthContext.Provider>
   );
 };

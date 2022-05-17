@@ -22,7 +22,9 @@ export default function Register(props) {
       registrationUserData.email,
       registrationUserData.password
     );
-    props.signIn(true);
+    if (signupReturn) {
+      props.signIn(true);
+    }
   };
   function handleRegistrationName(e) {
     setRegistrationUserData({ ...registrationUserData, name: e.target.value });

@@ -18,9 +18,7 @@ export default function Signin(props) {
     console.log(userPassword);
     console.log(userEmail);
     const loginReturn = login(userEmail, userPassword);
-    if (user) {
-      router.push("../app-console");
-    }
+    router.push("../app-console");
   };
 
   return (
