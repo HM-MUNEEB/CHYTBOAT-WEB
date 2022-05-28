@@ -78,8 +78,8 @@ export default StyleSheet.create({
     alignItems: "center",
   },
   contactAvatar: {
-    height: 60,
-    width: 60,
+    height: 55,
+    width: 55,
   },
   userNameText: {
     color: "white",

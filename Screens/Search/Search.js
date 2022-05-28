@@ -1,4 +1,11 @@
-import { View, Text, TextInput, Pressable, Image } from "react-native";
+import {
+  View,
+  Text,
+  TextInput,
+  Pressable,
+  Image,
+  ScrollView,
+} from "react-native";
 import styles from "./Search.style";
 import Icon from "react-native-vector-icons/Ionicons";
 import IconAnt from "react-native-vector-icons/AntDesign";
@@ -42,34 +49,38 @@ export default function Search() {
           </Pressable>
         </View>
       </View>
-      <View style={styles.superSection}>
-        <IconAnt name="contacts" size={30} color="white" />
-        <Text style={styles.addContactText}>Add Contact</Text>
-      </View>
-      <View style={styles.resultContactContainer}>
-        {inputText != ""
-          ? resultedContacts.map((contact) => {
-              return (
-                <View style={styles.resultContact}>
-                  <View style={styles.contactStack}>
-                    <Image
-                      style={styles.contactAvatar}
-                      source={require("./assests/avatar.png")}
-                    />
-                    <Text style={styles.userNameText}>{contact.userName}</Text>
+      <ScrollView>
+        <View style={styles.superSection}>
+          <IconAnt name="contacts" size={30} color="white" />
+          <Text style={styles.addContactText}>Add Contact</Text>
+        </View>
+        <View style={styles.resultContactContainer}>
+          {inputText != ""
+            ? resultedContacts.map((contact) => {
+                return (
+                  <View key={contact.userName} style={styles.resultContact}>
+                    <View style={styles.contactStack}>
+                      <Image
+                        style={styles.contactAvatar}
+                        source={require("./assets/avatar.png")}
+                      />
+                      <Text style={styles.userNameText}>
+                        {contact.userName}
+                      </Text>
+                    </View>
+                    <View style={styles.iconStack}>
+                      <Icon
+                        name="md-person-add-outline"
+                        size={32}
+                        color="#FF9D43"
+                      />
+                    </View>
                   </View>
-                  <View style={styles.iconStack}>
-                    <Icon
-                      name="md-person-add-outline"
-                      size={32}
-                      color="#FF9D43"
-                    />
-                  </View>
-                </View>
-              );
-            })
-          : null}
-      </View>
+                );
+              })
+            : null}
+        </View>
+      </ScrollView>
     </View>
   );
 }

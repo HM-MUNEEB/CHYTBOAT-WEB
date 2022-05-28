@@ -1,10 +1,6 @@
 import { StyleSheet } from "react-native";
 
 export default StyleSheet.create({
-  home: {},
-  homeContainer: {
-    marginBottom: 110,
-  },
   header: {
     paddingTop: "10%",
     paddingHorizontal: "5%",
@@ -26,7 +22,7 @@ export default StyleSheet.create({
     justifyContent: "center",
     alignItems: "center",
   },
-  searchIcon: {
+  settingIcon: {
     backgroundColor: "#4B4B4B",
     height: 40,
     width: 40,
@@ -39,28 +35,44 @@ export default StyleSheet.create({
   },
   userAvatar: {},
   superSection: {
-    marginVertical: 10,
-  },
-  superSectionHeader: {
     paddingHorizontal: "5%",
+    marginTop: 20,
+    display: "flex",
+    flexDirection: "row",
   },
-  favoritesText: {
+  addContactText: {
     color: "white",
-    fontSize: 18,
-    fontWeight: "bold",
-  },
-  favContainer: {
-    marginTop: 15,
-    paddingLeft: 15,
-  },
-  favItems: {
+    fontSize: 22,
     marginLeft: 10,
   },
-  contactListContainer: {
-    backgroundColor: "#1E1E1E",
-    height: "100%",
-    paddingHorizontal: "5%",
-    paddingTop: 20,
-    marginBottom: 70,
+  resultContactContainer: {
+    marginTop: 20,
   },
+  resultContact: {
+    width: "100%",
+    height: 100,
+    backgroundColor: "#1E1E1E",
+    marginBottom: 10,
+    display: "flex",
+    flexDirection: "row",
+    justifyContent: "space-between",
+    alignItems: "center",
+    paddingHorizontal: 20,
+  },
+  contactStack: {
+    display: "flex",
+    flexDirection: "row",
+    justifyContent: "center",
+    alignItems: "center",
+  },
+  contactAvatar: {
+    height: 55,
+    width: 55,
+  },
+  userNameText: {
+    color: "white",
+    fontSize: 18,
+    marginLeft: 15,
+  },
+  iconStack: {},
 });

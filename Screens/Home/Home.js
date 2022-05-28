@@ -32,24 +32,23 @@ export default function Home() {
   ];
   return (
     <View style={styles.home}>
+      <View style={styles.header}>
+        <View style={styles.appName}>
+          <Text style={styles.appNameText}>Chytboat</Text>
+        </View>
+        <View style={styles.headerContentContainer}>
+          <View style={styles.userAvatar}>
+            <Image source={require("./assets/avatar.png")} />
+          </View>
+          <View style={styles.searchIcon}>
+            <Icon name="settings-outline" size={25} color="white" />
+          </View>
+        </View>
+      </View>
       <ScrollView
-        stickyHeaderIndices={[0]}
         showsVerticalScrollIndicator={false}
         style={styles.homeContainer}
       >
-        <View style={styles.header}>
-          <View style={styles.appName}>
-            <Text style={styles.appNameText}>Chytboat</Text>
-          </View>
-          <View style={styles.headerContentContainer}>
-            <View style={styles.searchIcon}>
-              <Icon name="search" size={25} color="white" />
-            </View>
-            <View style={styles.userAvatar}>
-              <Image source={require("./assets/avatar.png")} />
-            </View>
-          </View>
-        </View>
         <View style={styles.superSection}>
           <View style={styles.superSectionHeader}>
             <Text style={styles.favoritesText}>Favorites</Text>
