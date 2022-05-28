@@ -13,6 +13,7 @@ const MyTheme = {
 export default function App() {
   return (
     <NavigationContainer theme={MyTheme}>
+      <StatusBar style="light" />
       <Navbar />
     </NavigationContainer>
   );
