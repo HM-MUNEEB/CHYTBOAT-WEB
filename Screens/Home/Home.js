@@ -13,7 +13,7 @@ import styles from "./Home.style";
 import Favorite from "../../Components/Favorites/Favorite";
 import Contact from "../../Components/Contact/Contact";
 
-export default function Home() {
+export default function Home({ navigation }) {
   const favItems = [
     "Muneeb",
     "Samran",
@@ -30,6 +30,10 @@ export default function Home() {
     { userName: "arsalanBhama", lastMsg: "oi oi oi!", date: "09:29" },
     { userName: "jahangi", lastMsg: "yhuck", date: "09:26" },
   ];
+  function handleContactPress() {
+    console.log("PRESSED");
+    navigation.navigate("Chat");
+  }
   return (
     <View style={styles.home}>
       <View style={styles.header}>
@@ -70,12 +74,16 @@ export default function Home() {
         <View style={styles.contactListContainer}>
           {contactList.map((item) => {
             return (
-              <Contact
+              <Pressable
                 key={item.userName + item.lastMsg}
-                userName={item.userName}
-                lastMsg={item.lastMsg}
-                date={item.date}
-              />
+                onPress={handleContactPress}
+              >
+                <Contact
+                  userName={item.userName}
+                  lastMsg={item.lastMsg}
+                  date={item.date}
+                />
+              </Pressable>
             );
           })}
         </View>
