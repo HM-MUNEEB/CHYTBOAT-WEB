@@ -52,6 +52,7 @@ export default StyleSheet.create({
   favContainer: {
     marginTop: 15,
     paddingLeft: 15,
+    paddingRight: 100,
   },
   favItems: {
     marginLeft: 10,

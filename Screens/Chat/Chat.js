@@ -85,8 +85,8 @@ export default function Chat({ navigation }) {
       setTimeout(() => {
         console.log("Message Recieved!!!");
         //Pushes the input Message "msg" to state array MsgContent
-        setMsgContent((old) => [
-          ...old,
+        setMsgContent((new1) => [
+          ...new1,
           {
             key: msg + Date.now() + "bye",
             Avatar: "Defualt",
@@ -104,7 +104,7 @@ export default function Chat({ navigation }) {
           {
             key: msg + Date.now() + "bye",
             Avatar: "Defualt",
-            Content: "samjh nahi aya",
+            Content: "jangi bsdk",
             User: 2,
           },
         ]);

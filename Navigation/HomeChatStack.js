@@ -1,6 +1,7 @@
 import { createStackNavigator } from "@react-navigation/stack";
 import Navbar from "./Navbar/Navbar";
 import Chat from "../Screens/Chat/Chat";
+import SetupProfile from "../Screens/SetupProfile/SetupProfile";
 
 const Stack = createStackNavigator();
 
@@ -18,6 +19,7 @@ export default function HomeChatStack() {
   };
   return (
     <Stack.Navigator
+      initialRouteName="SetupProfile"
       screenOptions={{
         headerShown: false,
         animationEnabled: true,
@@ -28,6 +30,7 @@ export default function HomeChatStack() {
         },
       }}
     >
+      <Stack.Screen name="SetupProfile" component={SetupProfile} />
       <Stack.Screen name="Navbar" component={Navbar} />
       <Stack.Screen name="Chat" component={Chat} />
     </Stack.Navigator>

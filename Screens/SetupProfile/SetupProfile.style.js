@@ -1,0 +1,91 @@
+import { StyleSheet } from "react-native";
+
+export default StyleSheet.create({
+  Layout: {},
+  header: {
+    backgroundColor: "#1E1E1E",
+    height: 130,
+    paddingTop: 20,
+    paddingHorizontal: "5%",
+  },
+  headerText: {
+    color: "white",
+    fontSize: 16,
+    fontWeight: "600",
+  },
+  headerContentContainer: {
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "space-between",
+    marginHorizontal: "3%",
+    marginTop: 46,
+    flexDirection: "row",
+  },
+  nextBtn: {
+    height: 35,
+    width: 60,
+    backgroundColor: "#FF9D43",
+    borderRadius: 8,
+    display: "flex",
+    flexDirection: "row",
+    justifyContent: "center",
+    alignItems: "center",
+  },
+  nextBtnText: {
+    fontWeight: "600",
+  },
+  avatarContainer: {
+    marginHorizontal: "30%",
+    marginTop: "10%",
+  },
+  Avatar: {
+    backgroundColor: "#454545",
+    borderRadius: 150,
+    height: 150,
+    width: 150,
+    display: "flex",
+    flexDirection: "row",
+    justifyContent: "center",
+    alignItems: "center",
+  },
+  uploadBtnContainer: {
+    position: "relative",
+    marginTop: -40,
+    marginLeft: 100,
+    backgroundColor: "#FF9D43",
+    height: 50,
+    width: 50,
+    borderRadius: 100,
+    display: "flex",
+    flexDirection: "row",
+    justifyContent: "center",
+    alignItems: "center",
+  },
+
+  Info: {
+    marginTop: 70,
+    display: "flex",
+    flexDirection: "row",
+    alignItems: "flex-start",
+    justifyContent: "center",
+  },
+  TextInfo: {
+    paddingLeft: 10,
+    display: "flex",
+    justifyContent: "center",
+    width: 250,
+    borderBottomWidth: 1,
+    paddingBottom: 10,
+    borderBottomColor: "#BDBDBD",
+  },
+  LowText: {
+    fontWeight: "400",
+    paddingVertical: "0.2%",
+    color: "rgba(255,255,255, 0.6)",
+  },
+  HighText: {
+    fontWeight: "800",
+    paddingVertical: "0.2%",
+    color: "rgba(255,255,255, 0.8)",
+  },
+});
