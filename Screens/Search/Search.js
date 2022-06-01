@@ -13,11 +13,7 @@ import { useState } from "react";
 
 export default function Search() {
   const [inputText, setInputText] = useState("");
-  const resultedContacts = [
-    { userName: "munyyb" },
-    { userName: "umer" },
-    { userName: "saani" },
-  ];
+  const resultedContacts = [{ userName: "munyyb" }, { userName: "umer" }];
 
   function handleTextChange(e) {
     setInputText(e);
