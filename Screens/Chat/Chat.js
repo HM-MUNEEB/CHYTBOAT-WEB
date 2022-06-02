@@ -20,7 +20,7 @@ export default function Chat({ navigation }) {
   //1 is current user
   const [MsgContent, setMsgContent] = useState([]);
   function handleGoBackBtn() {
-    console.log("PRESSED GOBACK!!!");
+    console.log("PRESSED GOBACK!!");
     navigation.goBack();
   }
   function handleInputMessage(e) {
