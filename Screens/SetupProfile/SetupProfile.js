@@ -1,4 +1,5 @@
 import { StatusBar } from "expo-status-bar";
+import { useEffect } from "react";
 import {
   StyleSheet,
   Text,
@@ -12,8 +13,14 @@ import IconE from "react-native-vector-icons/Entypo";
 import Account from "react-native-vector-icons/MaterialCommunityIcons";
 import Contacts from "react-native-vector-icons/MaterialIcons";
 import styles from "./SetupProfile.style";
+import { useAuth } from "../../authContext/authContext";
 
 export default function SetupProfile({ navigation }) {
+  const { user } = useAuth();
+  useEffect(() => {
+    console.log(user);
+  }, []);
+
   return (
     <View style={styles.Layout}>
       <View style={styles.header}>

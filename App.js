@@ -3,6 +3,7 @@ import { StatusBar } from "expo-status-bar";
 import { StyleSheet, Text, View } from "react-native";
 import { NavigationContainer, DefaultTheme } from "@react-navigation/native";
 import HomeChatStack from "./Navigation/HomeChatStack";
+import { AuthContextProvider } from "./authContext/authContext";
 const MyTheme = {
   ...DefaultTheme,
   colors: {
@@ -13,9 +14,11 @@ const MyTheme = {
 
 export default function App() {
   return (
-    <NavigationContainer theme={MyTheme}>
-      <StatusBar style="light" />
-      <HomeChatStack />
-    </NavigationContainer>
+    <AuthContextProvider>
+      <NavigationContainer theme={MyTheme}>
+        <StatusBar style="light" />
+        <HomeChatStack />
+      </NavigationContainer>
+    </AuthContextProvider>
   );
 }
