@@ -14,6 +14,6 @@ const ProtectedRoute = ({ children }) => {
     }
   }, [router, user]);
 
-  return <>{user ? children : null}</>;
+  return <>{children}</>;
 };
 export default ProtectedRoute;
