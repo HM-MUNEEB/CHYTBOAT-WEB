@@ -63,6 +63,7 @@ export const AuthContextProvider = ({ children }) => {
           displayName: userCredential.displayName,
         });
         //console.log("login: " + user);
+        router.push("/app-console");
         return true;
       })
       .catch((error) => {

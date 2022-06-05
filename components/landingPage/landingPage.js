@@ -13,9 +13,11 @@ import styles from "./landingPage.module.css";
 import Link from "next/link";
 import { motion } from "framer-motion";
 import ThemeToggle from "../themeToggle/themeToggle";
+import { useAuth } from "../../authContext/authContext";
 
 export default function LandingPage() {
   const [darkThemeCheck, setDarkThemeCheck] = useState("");
+  const { user } = useAuth();
   useEffect(() => {
     setDarkThemeCheck(document.documentElement.getAttribute("data-theme"));
     console.log(darkThemeCheck);
@@ -46,10 +48,15 @@ export default function LandingPage() {
             <div className={styles.themeToggle} onClick={themeToggleCheck}>
               <ThemeToggle size={50} />
             </div>
-
-            <Link href="../auth">
-              <button className={styles.JoinBtn}>Join Now</button>
-            </Link>
+            {user ? (
+              <Link href="../app-console">
+                <button className={styles.JoinBtn}>Go to Console</button>
+              </Link>
+            ) : (
+              <Link href="../auth">
+                <button className={styles.JoinBtn}>Join Now</button>
+              </Link>
+            )}
           </div>
         </div>
       </div>
@@ -529,11 +536,18 @@ export default function LandingPage() {
       <div className={styles.footerSection}>
         <div className={styles.AppFooter}>
           <h1>
-            Join <span className={styles.AppName}>App Name</span>
+            Join <span className={styles.AppName}>ChytBoat</span>
           </h1>
-          <Link href="../auth">
-            <button className={styles.FooterButton}>Creat Account</button>
-          </Link>
+          {user ? (
+            <Link href="../app-console">
+              <button className={styles.FooterButton}>Go to Console</button>
+            </Link>
+          ) : (
+            <Link href="../auth">
+              <button className={styles.FooterButton}>Creat Account</button>
+            </Link>
+          )}
+
           <p className={styles.TermsCondition}>
             <a href="#">Terms & Conditions</a> | All rights Reserved
           </p>
