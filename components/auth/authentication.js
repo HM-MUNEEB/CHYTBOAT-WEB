@@ -1,12 +1,10 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Image from "next/image";
 import LogoPlaceHolder from "./assets/CHYT_BOAT_LOGO.png";
 import Signin from "./authModules/signin";
 import Register from "./authModules/register";
 import styles from "./authentication.module.css";
 import { motion } from "framer-motion";
-import { useAuth } from "../../context/authContext/authContext";
-
 export default function Auth() {
   const [signin, setSignin] = useState(true);
   return (
