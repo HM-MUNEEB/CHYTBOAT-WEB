@@ -5,7 +5,7 @@ import Signin from "./authModules/signin";
 import Register from "./authModules/register";
 import styles from "./authentication.module.css";
 import { motion } from "framer-motion";
-import { useAuth } from "../../authContext/authContext";
+import { useAuth } from "../../context/authContext/authContext";
 
 export default function Auth() {
   const [signin, setSignin] = useState(true);

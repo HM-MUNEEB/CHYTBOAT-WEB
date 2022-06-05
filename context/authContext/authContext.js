@@ -5,7 +5,7 @@ import {
   signInWithEmailAndPassword,
   signOut,
 } from "firebase/auth";
-import { auth } from "../firebaseConfig/firebase";
+import { auth } from "../../firebaseConfig/firebase";
 import { useRouter } from "next/router";
 
 const AuthContext = createContext({});

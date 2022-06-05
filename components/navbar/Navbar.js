@@ -3,7 +3,7 @@ import Image from "next/image";
 import LogoPlaceHolder from "./Navbar_icons/CHYT_BOAT_LOGO.png";
 import { useState } from "react/cjs/react.development";
 import Link from "next/link";
-import { useAuth } from "../../authContext/authContext";
+import { useAuth } from "../../context/authContext/authContext";
 
 export default function Navbar(props) {
   //Gets Chat Module, Search Module and archive module status

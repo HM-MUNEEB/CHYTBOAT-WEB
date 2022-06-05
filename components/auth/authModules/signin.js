@@ -3,7 +3,7 @@ import styles from "../authentication.module.css";
 import Head from "next/head";
 import Link from "next/link";
 import { useState } from "react";
-import { useAuth } from "../../../authContext/authContext";
+import { useAuth } from "../../../context/authContext/authContext";
 import { LayoutGroupContext } from "framer-motion";
 import { useRouter } from "next/router";
 

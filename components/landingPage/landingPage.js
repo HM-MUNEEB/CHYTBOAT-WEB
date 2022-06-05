@@ -13,7 +13,7 @@ import styles from "./landingPage.module.css";
 import Link from "next/link";
 import { motion } from "framer-motion";
 import ThemeToggle from "../themeToggle/themeToggle";
-import { useAuth } from "../../authContext/authContext";
+import { useAuth } from "../../context/authContext/authContext";
 
 export default function LandingPage() {
   const [darkThemeCheck, setDarkThemeCheck] = useState("");

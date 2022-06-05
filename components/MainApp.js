@@ -7,8 +7,11 @@ import Navbar from "./navbar/Navbar.js";
 import SearchModule from "./searchModule/SearchModule.js";
 import Chat from "./chat/chat.js";
 import ChatDetails from "./chatDetails/ChatDetails.js";
+import { useLoading } from "../context/loadingContext/loadingContext.js";
+import Loading from "./loading/loading.js";
 
 export default function MainApp() {
+  const { loading, setLoading } = useLoading();
   const [search, setSearch] = useState(false);
   const [contactListActive, setContactListActive] = useState(true);
   const [archiveActive, setArchiveActive] = useState(false);
@@ -23,6 +26,7 @@ export default function MainApp() {
           content="ChytBoat in the most most secure way, possible to chat with ent-to-end encription!"
         />
       </Head>
+      <div>{loading ? <Loading /> : ""}</div>
       <motion.div
         initial={{ opacity: 0 }}
         whileInView={{ opacity: 1 }}
