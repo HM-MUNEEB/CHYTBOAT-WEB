@@ -18,10 +18,7 @@ export default function Register(props) {
   const handleRegistration = (e) => {
     e.preventDefault();
     //console.log(registrationUserData);
-    const signupReturn = signup(
-      registrationUserData.email,
-      registrationUserData.password
-    );
+    const signupReturn = signup(registrationUserData);
     if (signupReturn) {
       props.signIn(true);
     }

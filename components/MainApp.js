@@ -1,5 +1,5 @@
 import Head from "next/head";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import ContactList from "./contactList/ContactList.js";
 import styles from "./MainApp.module.css";
@@ -9,6 +9,7 @@ import Chat from "./chat/chat.js";
 import ChatDetails from "./chatDetails/ChatDetails.js";
 import { useLoading } from "../context/loadingContext/loadingContext.js";
 import Loading from "./loading/loading.js";
+import { useAuth } from "../context/authContext/authContext.js";
 
 export default function MainApp() {
   const { loading, setLoading } = useLoading();
@@ -17,6 +18,11 @@ export default function MainApp() {
   const [archiveActive, setArchiveActive] = useState(false);
   const [chatActive, setChatActive] = useState(false);
   const [chatDetails, setChatDetails] = useState(false);
+  const { user } = useAuth();
+
+  useEffect(() => {
+    console.log("Main app user: ", user);
+  }, []);
   return (
     <div>
       <Head>
