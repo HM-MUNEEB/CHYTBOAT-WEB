@@ -7,6 +7,7 @@ import {
 } from "firebase/auth";
 import { collection, doc, addDoc, setDoc, Timestamp } from "firebase/firestore";
 import { auth, db } from "../../firebaseConfig/firebase";
+import { updateProfile } from "firebase/auth";
 import { useRouter } from "next/router";
 import { async } from "@firebase/util";
 
@@ -21,6 +22,7 @@ export const AuthContextProvider = ({ children }) => {
     if (user) {
       router.push("/app-console");
     }
+    console.log("ROOT USER: " + user);
   }, [user]);
 
   useEffect(() => {
@@ -48,7 +50,7 @@ export const AuthContextProvider = ({ children }) => {
         userName: data.userName,
         email: data.email,
         avatar: "defualt",
-        userCreated: Timestamp.fromDate(new Date("December 10, 1815")),
+        userCreated: Timestamp.fromDate(new Date()),
         friends: [],
       });
       console.log("Document written with ID: ", docRef.id);
@@ -65,6 +67,17 @@ export const AuthContextProvider = ({ children }) => {
 
         const docRef = userInitialization(data);
         console.log(docRef);
+
+        updateProfile(auth.currentUser, {
+          displayName: data.userName,
+          email: data.email,
+        })
+          .then(() => {
+            console.log("USER NAME & EMAIL SET");
+          })
+          .catch((error) => {
+            console.log(error);
+          });
 
         if (user && docRef) {
           logout();
@@ -91,10 +104,6 @@ export const AuthContextProvider = ({ children }) => {
           email: userCredential.email,
           displayName: userCredential.displayName,
         });
-        //console.log("login: " + user);
-        // if (user) {
-        //   router.push("/app-console");
-        // }
         return true;
       })
       .catch((error) => {

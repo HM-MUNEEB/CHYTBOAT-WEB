@@ -22,7 +22,7 @@ export default function MainApp() {
 
   useEffect(() => {
     console.log("Main app user: ", user);
-  }, []);
+  }, [user]);
   return (
     <div>
       <Head>

@@ -15,10 +15,8 @@ export default function Signin(props) {
 
   const signInAuthResponse = (e) => {
     e.preventDefault();
-    // console.log(userPassword);
-    // console.log(userEmail);
-    const loginReturn = login(userEmail, userPassword);
-    // router.push("../app-console");
+    login(userEmail, userPassword);
+    console.log("Login: " + user);
   };
 
   return (
