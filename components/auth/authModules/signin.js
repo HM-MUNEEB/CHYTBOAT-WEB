@@ -24,12 +24,6 @@ export default function Signin(props) {
       console.log(btnClickProcessing);
     }
   }, [userEmail, userPassword]);
-  useEffect(() => {
-    if (userEmail != "" || userPassword != "") {
-      setBtnClickProcessing(false);
-      console.log(btnClickProcessing);
-    }
-  }, []);
 
   const signInAuthResponse = (e) => {
     e.preventDefault();

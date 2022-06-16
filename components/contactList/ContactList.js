@@ -16,7 +16,7 @@ export default function ContactList(props) {
               <div className={styles.activeProfile}></div>
               <Image src={Avatar} />
             </div>
-            <h3>Munyyb</h3>
+            <h3>{props.userName}</h3>
           </div>
           <div className={styles.themeToggle}>
             <ThemeToggle size={40} />

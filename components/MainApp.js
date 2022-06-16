@@ -10,19 +10,43 @@ import ChatDetails from "./chatDetails/ChatDetails.js";
 import { useLoading } from "../context/loadingContext/loadingContext.js";
 import Loading from "./loading/loading.js";
 import { useAuth } from "../context/authContext/authContext.js";
+import { doc, getDoc } from "firebase/firestore";
+import { db } from "../firebaseConfig/firebase.js";
 
 export default function MainApp() {
+  const { user } = useAuth();
   const { loading, setLoading } = useLoading();
   const [search, setSearch] = useState(false);
   const [contactListActive, setContactListActive] = useState(true);
   const [archiveActive, setArchiveActive] = useState(false);
   const [chatActive, setChatActive] = useState(false);
   const [chatDetails, setChatDetails] = useState(false);
-  const { user } = useAuth();
+  const [userInfo, setUserInfo] = useState({
+    userName: "",
+  });
 
   useEffect(() => {
     console.log("Main app user: ", user);
+    if (user) {
+      getUserInfo();
+    }
   }, [user]);
+  useEffect(() => {
+    setLoading(true);
+  }, []);
+  async function getUserInfo() {
+    const docRef = doc(db, "users_info", user.displayName);
+    const docSnap = await getDoc(docRef);
+
+    if (docSnap.exists()) {
+      console.log("Document data:", docSnap.data());
+      setUserInfo(docSnap.data());
+      setLoading(false);
+    } else {
+      // doc.data() will be undefined in this case
+      console.log("No such document!");
+    }
+  }
   return (
     <div>
       <Head>
@@ -52,7 +76,10 @@ export default function MainApp() {
               archiveStatus={archiveActive}
             />
             {contactListActive ? (
-              <ContactList setChatActive={setChatActive} />
+              <ContactList
+                userName={userInfo.userName}
+                setChatActive={setChatActive}
+              />
             ) : (
               ""
             )}
