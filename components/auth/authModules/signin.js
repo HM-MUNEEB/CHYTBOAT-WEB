@@ -6,12 +6,30 @@ import { useState } from "react";
 import { useAuth } from "../../../context/authContext/authContext";
 import { LayoutGroupContext } from "framer-motion";
 import { useRouter } from "next/router";
+import { useLoading } from "../../../context/loadingContext/loadingContext";
 
 export default function Signin(props) {
   const { user, login } = useAuth();
+  const { btnClickProcessing, setBtnClickProcessing } = useLoading();
   const [userEmail, setUserEmail] = useState("");
   const [userPassword, setUserPassword] = useState("");
   const router = useRouter();
+
+  useEffect(() => {
+    if (userEmail === "" || userPassword === "") {
+      setBtnClickProcessing(true);
+      console.log(btnClickProcessing);
+    } else {
+      setBtnClickProcessing(false);
+      console.log(btnClickProcessing);
+    }
+  }, [userEmail, userPassword]);
+  useEffect(() => {
+    if (userEmail != "" || userPassword != "") {
+      setBtnClickProcessing(false);
+      console.log(btnClickProcessing);
+    }
+  }, []);
 
   const signInAuthResponse = (e) => {
     e.preventDefault();
@@ -62,6 +80,7 @@ export default function Signin(props) {
           className={styles.btn}
           type="submit"
           onClick={signInAuthResponse}
+          disabled={btnClickProcessing}
         >
           Sign In
         </button>

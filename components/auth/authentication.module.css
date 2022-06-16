@@ -100,6 +100,13 @@
   cursor: pointer;
   width: 21rem;
 }
+.btn:disabled,
+.btn[disabled] {
+  opacity: 0.5;
+  background-image: none;
+  background-color: rgba(0, 0, 0);
+  color: white;
+}
 .WrapperSwitch h6 {
   color: var(--FontColorMain);
   font-size: 1.2rem;

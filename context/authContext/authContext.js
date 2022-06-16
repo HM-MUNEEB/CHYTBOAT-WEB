@@ -10,6 +10,7 @@ import { auth, db } from "../../firebaseConfig/firebase";
 import { updateProfile } from "firebase/auth";
 import { useRouter } from "next/router";
 import { async } from "@firebase/util";
+import { useLoading } from "../loadingContext/loadingContext";
 
 const AuthContext = createContext({});
 export const useAuth = () => useContext(AuthContext);
@@ -17,9 +18,10 @@ export const useAuth = () => useContext(AuthContext);
 export const AuthContextProvider = ({ children }) => {
   const [user, setUser] = useState(null);
   const router = useRouter();
+  const { btnClickProcessing, setBtnClickProcessing } = useLoading();
 
   useEffect(() => {
-    if (user) {
+    if (user && !btnClickProcessing) {
       router.push("/app-console");
     }
     console.log("ROOT USER: " + user);
@@ -60,6 +62,7 @@ export const AuthContextProvider = ({ children }) => {
     return docRef;
   }
   const signup = (data) => {
+    setBtnClickProcessing(true);
     createUserWithEmailAndPassword(auth, data.email, data.password)
       .then((userCredential) => {
         // Signed in
@@ -82,6 +85,7 @@ export const AuthContextProvider = ({ children }) => {
         if (user && docRef) {
           logout();
           login(data.email, data.password);
+          setBtnClickProcessing(false);
           //console.log(user);
         } else if (docRef) {
           login(data.email, data.password);
@@ -96,6 +100,7 @@ export const AuthContextProvider = ({ children }) => {
   };
 
   const login = (email, password) => {
+    setBtnClickProcessing(true);
     signInWithEmailAndPassword(auth, email, password)
       .then((userCredential) => {
         // Signed in
@@ -104,6 +109,7 @@ export const AuthContextProvider = ({ children }) => {
           email: userCredential.email,
           displayName: userCredential.displayName,
         });
+        setBtnClickProcessing(false);
         return true;
       })
       .catch((error) => {

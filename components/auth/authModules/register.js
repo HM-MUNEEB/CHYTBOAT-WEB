@@ -5,9 +5,11 @@ import Link from "next/link";
 import { useState } from "react";
 import { useAuth } from "../../../context/authContext/authContext";
 import { async } from "@firebase/util";
+import { useLoading } from "../../../context/loadingContext/loadingContext";
 
 export default function Register(props) {
   const { user, signup } = useAuth();
+  const { btnClickProcessing } = useLoading();
   const [registrationUserData, setRegistrationUserData] = useState({
     name: "",
     userName: "",
@@ -120,6 +122,7 @@ export default function Register(props) {
           className={styles.btn}
           type="submit"
           onClick={handleRegistration}
+          disabled={btnClickProcessing}
         >
           Register
         </button>
