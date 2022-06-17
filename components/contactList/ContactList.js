@@ -7,6 +7,7 @@ import ThemeToggle from "../themeToggle/themeToggle";
 
 export default function ContactList(props) {
   const [searchContactList, setSearchContactList] = useState(false);
+  const [contactList, setContactList] = useState(null);
   return (
     <div className={styles.contactListContainer}>
       <div className={styles.contactListContainerUpparArea}>
@@ -58,128 +59,139 @@ export default function ContactList(props) {
         </div>
       </div>
       <div className={styles.contactCardsStack}>
-        <div
-          className={styles.contactCardItem}
-          onClick={() => props.setChatActive(true)}
-        >
-          <ContactCard
-            imageadd={Avatar}
-            userName="username"
-            lastMsg="Hello world!"
-            msgDate="11:46"
-          />
-        </div>
-        <div
-          className={styles.contactCardItem}
-          onClick={() => props.setChatActive(true)}
-        >
-          <ContactCard
-            imageadd={Avatar}
-            userName="username"
-            lastMsg="Hello world!"
-            msgDate="11:46"
-          />
-        </div>
-        <div
-          className={styles.contactCardItem}
-          onClick={() => props.setChatActive(true)}
-        >
-          <ContactCard
-            imageadd={Avatar}
-            userName="username"
-            lastMsg="Hello world!"
-            msgDate="11:46"
-            activeChat={true}
-          />
-        </div>
-        <div
-          className={styles.contactCardItem}
-          onClick={() => props.setChatActive(true)}
-        >
-          <ContactCard
-            imageadd={Avatar}
-            userName="username"
-            lastMsg="Hello world!"
-            msgDate="11:46"
-          />
-        </div>
-        <div
-          className={styles.contactCardItem}
-          onClick={() => props.setChatActive(true)}
-        >
-          <ContactCard
-            imageadd={Avatar}
-            userName="username"
-            lastMsg="Hello world!"
-            msgDate="11:46"
-          />
-        </div>
-        <div
-          className={styles.contactCardItem}
-          onClick={() => props.setChatActive(true)}
-        >
-          <ContactCard
-            imageadd={Avatar}
-            userName="username"
-            lastMsg="Hello world!"
-            msgDate="11:46"
-          />
-        </div>
-        <div
-          className={styles.contactCardItem}
-          onClick={() => props.setChatActive(true)}
-        >
-          <ContactCard
-            imageadd={Avatar}
-            userName="username"
-            lastMsg="Hello world!"
-            msgDate="11:46"
-          />
-        </div>
-        <div
-          className={styles.contactCardItem}
-          onClick={() => props.setChatActive(true)}
-        >
-          <ContactCard
-            imageadd={Avatar}
-            userName="username"
-            lastMsg="Hello world!"
-            msgDate="11:46"
-          />
-        </div>
-        <div
-          className={styles.contactCardItem}
-          onClick={() => props.setChatActive(true)}
-        >
-          <ContactCard
-            imageadd={Avatar}
-            userName="username"
-            lastMsg="Hello world!"
-            msgDate="11:46"
-          />
-        </div>
-        <div
-          className={styles.contactCardItem}
-          onClick={() => props.setChatActive(true)}
-        >
-          <ContactCard
-            imageadd={Avatar}
-            userName="username"
-            lastMsg="Hello world!"
-            msgDate="11:46"
-          />
-        </div>
-        <div
-          className={styles.contactCardItem}
-          onClick={() => props.setChatActive(true)}
-        >
-          <ContactCard
-            imageadd={Avatar}
-            userName="username"
-            lastMsg="Hello world!"
-            msgDate="11:46"
-          />
-        </div>
+        {!contactList ? (
+          <div className={styles.noContactStack}>
+            <h5 className={styles.noContactList}>
+              You do not have any contacts, add contact from search bar and
+              start chatting !!!
+            </h5>
+          </div>
+        ) : (
+          <div className={styles.contactCards}>
+            <div
+              className={styles.contactCardItem}
+              onClick={() => props.setChatActive(true)}
+            >
+              <ContactCard
+                imageadd={Avatar}
+                userName="username"
+                lastMsg="Hello world!"
+                msgDate="11:46"
+              />
+            </div>
+            <div
+              className={styles.contactCardItem}
+              onClick={() => props.setChatActive(true)}
+            >
+              <ContactCard
+                imageadd={Avatar}
+                userName="username"
+                lastMsg="Hello world!"
+                msgDate="11:46"
+              />
+            </div>
+            <div
+              className={styles.contactCardItem}
+              onClick={() => props.setChatActive(true)}
+            >
+              <ContactCard
+                imageadd={Avatar}
+                userName="username"
+                lastMsg="Hello world!"
+                msgDate="11:46"
+                activeChat={true}
+              />
+            </div>
+            <div
+              className={styles.contactCardItem}
+              onClick={() => props.setChatActive(true)}
+            >
+              <ContactCard
+                imageadd={Avatar}
+                userName="username"
+                lastMsg="Hello world!"
+                msgDate="11:46"
+              />
+            </div>
+            <div
+              className={styles.contactCardItem}
+              onClick={() => props.setChatActive(true)}
+            >
+              <ContactCard
+                imageadd={Avatar}
+                userName="username"
+                lastMsg="Hello world!"
+                msgDate="11:46"
+              />
+            </div>
+            <div
+              className={styles.contactCardItem}
+              onClick={() => props.setChatActive(true)}
+            >
+              <ContactCard
+                imageadd={Avatar}
+                userName="username"
+                lastMsg="Hello world!"
+                msgDate="11:46"
+              />
+            </div>
+            <div
+              className={styles.contactCardItem}
+              onClick={() => props.setChatActive(true)}
+            >
+              <ContactCard
+                imageadd={Avatar}
+                userName="username"
+                lastMsg="Hello world!"
+                msgDate="11:46"
+              />
+            </div>
+            <div
+              className={styles.contactCardItem}
+              onClick={() => props.setChatActive(true)}
+            >
+              <ContactCard
+                imageadd={Avatar}
+                userName="username"
+                lastMsg="Hello world!"
+                msgDate="11:46"
+              />
+            </div>
+            <div
+              className={styles.contactCardItem}
+              onClick={() => props.setChatActive(true)}
+            >
+              <ContactCard
+                imageadd={Avatar}
+                userName="username"
+                lastMsg="Hello world!"
+                msgDate="11:46"
+              />
+            </div>
+            <div
+              className={styles.contactCardItem}
+              onClick={() => props.setChatActive(true)}
+            >
+              <ContactCard
+                imageadd={Avatar}
+                userName="username"
+                lastMsg="Hello world!"
+                msgDate="11:46"
+              />
+            </div>
+            <div
+              className={styles.contactCardItem}
+              onClick={() => props.setChatActive(true)}
+            >
+              <ContactCard
+                imageadd={Avatar}
+                userName="username"
+                lastMsg="Hello world!"
+                msgDate="11:46"
+              />
+            </div>
+          </div>
+        )}
       </div>
     </div>
   );
