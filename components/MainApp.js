@@ -10,8 +10,7 @@ import ChatDetails from "./chatDetails/ChatDetails.js";
 import { useLoading } from "../context/loadingContext/loadingContext.js";
 import Loading from "./loading/loading.js";
 import { useAuth } from "../context/authContext/authContext.js";
-import { doc, getDoc } from "firebase/firestore";
-import { db } from "../Config/firebase.js";
+import { GetCurrentUserInfo } from "../FirebaseModules/GetCurrentUserInfo";
 
 export default function MainApp() {
   const { user } = useAuth();
@@ -28,25 +27,12 @@ export default function MainApp() {
   useEffect(() => {
     console.log("Main app user: ", user);
     if (user) {
-      getUserInfo();
+      GetCurrentUserInfo(user, setUserInfo, setLoading);
     }
   }, [user]);
   useEffect(() => {
     setLoading(true);
   }, []);
-  async function getUserInfo() {
-    const docRef = doc(db, "users_info", user.displayName);
-    const docSnap = await getDoc(docRef);
-
-    if (docSnap.exists()) {
-      console.log("Document data:", docSnap.data());
-      setUserInfo(docSnap.data());
-      setLoading(false);
-    } else {
-      // doc.data() will be undefined in this case
-      console.log("No such document!");
-    }
-  }
   return (
     <div>
       <Head>

@@ -7,7 +7,7 @@ import {
 } from "firebase/auth";
 import { auth } from "../../Config/firebase";
 import { useRouter } from "next/router";
-import { userInitialization } from "../../FirebaseModules/FirebaseAuth";
+import { userInitialization } from "../../FirebaseModules/UserInitialization";
 import { useLoading } from "../loadingContext/loadingContext";
 
 const AuthContext = createContext({
