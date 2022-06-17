@@ -11,7 +11,7 @@ import { useLoading } from "../context/loadingContext/loadingContext.js";
 import Loading from "./loading/loading.js";
 import { useAuth } from "../context/authContext/authContext.js";
 import { doc, getDoc } from "firebase/firestore";
-import { db } from "../firebaseConfig/firebase.js";
+import { db } from "../Config/firebase.js";
 
 export default function MainApp() {
   const { user } = useAuth();

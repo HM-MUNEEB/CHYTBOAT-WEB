@@ -5,14 +5,18 @@ import {
   signInWithEmailAndPassword,
   signOut,
 } from "firebase/auth";
-import { collection, doc, addDoc, setDoc, Timestamp } from "firebase/firestore";
-import { auth, db } from "../../firebaseConfig/firebase";
-import { updateProfile } from "firebase/auth";
+import { auth } from "../../Config/firebase";
 import { useRouter } from "next/router";
-import { async } from "@firebase/util";
+import { userInitialization } from "../../FirebaseModules/FirebaseAuth";
 import { useLoading } from "../loadingContext/loadingContext";
 
-const AuthContext = createContext({});
+const AuthContext = createContext({
+  login: () => {},
+  signup: () => {},
+  logout: () => {},
+  user: null,
+  setUser: () => {},
+});
 export const useAuth = () => useContext(AuthContext);
 
 export const AuthContextProvider = ({ children }) => {
@@ -44,23 +48,6 @@ export const AuthContextProvider = ({ children }) => {
     return unsubscribe();
   }, []);
 
-  async function userInitialization(data) {
-    let docRef;
-    try {
-      docRef = await setDoc(doc(db, "users_info/" + data.userName), {
-        name: data.name,
-        userName: data.userName,
-        email: data.email,
-        avatar: "defualt",
-        userCreated: Timestamp.fromDate(new Date()),
-        friends: [],
-      });
-      console.log("Document written with ID: ", docRef.id);
-    } catch (e) {
-      console.error("Error adding document: ", e);
-    }
-    return docRef;
-  }
   const signup = (data) => {
     setBtnClickProcessing(true);
     createUserWithEmailAndPassword(auth, data.email, data.password)
@@ -134,7 +121,7 @@ export const AuthContextProvider = ({ children }) => {
   };
 
   return (
-    <AuthContext.Provider value={{ user, login, signup, logout }}>
+    <AuthContext.Provider value={{ user, login, signup, logout, setUser }}>
       {children}
     </AuthContext.Provider>
   );
