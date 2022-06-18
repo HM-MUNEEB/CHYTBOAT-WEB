@@ -1,7 +1,7 @@
 .searchModuleContainer {
   position: absolute;
   height: 100%;
-  width: 1365px;
+  width: 1360px;
   background-color: rgba(0, 0, 0, 0.2);
   backdrop-filter: blur(5px);
   z-index: 3;
@@ -11,21 +11,32 @@
 }
 .searchModuleInnerContainer {
   margin-top: 5rem;
-  padding-top: 5rem;
-  height: 20rem;
-  width: 50rem;
+  height: 25rem;
+  width: 45rem;
   background-color: rgba(0, 0, 0, 0.3);
   display: flex;
-  flex-direction: row;
-  justify-content: center;
+  flex-direction: column;
+  align-items: center;
   border-radius: 0.5rem;
+}
+.searchHeader {
+  width: 100%;
+  border-bottom: 1px solid var(--BorderColor);
+  margin-bottom: 2rem;
+}
+.searchHeaderStack {
+  padding: 1rem;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
 }
 .searchModuleStack {
   display: flex;
   flex-direction: row;
 }
 .searchModuleStack input {
-  height: 2rem;
+  height: 2.5rem;
   width: 30rem;
   border-radius: 0.5rem;
   background-color: var(--BGPrimary);
@@ -37,8 +48,71 @@
   color: var(--FontColorMain);
 }
 .closeSearch {
-  margin-left: 2rem;
 }
 .closeSearch a {
   cursor: pointer;
+}
+.closeSearch a svg {
+  color: white;
+}
+.searchBtn {
+  background-color: var(--FGPrimary);
+  width: 5rem;
+  border-radius: 0.5rem;
+  border: none;
+  margin-left: 1rem;
+  cursor: pointer;
+}
+.searchResultsContainer {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-top: 2rem;
+}
+.noResultFound {
+  font-weight: 400;
+  color: rgba(255, 50, 0, 1);
+  width: 20rem;
+  text-align: center;
+}
+.searchResultStack {
+  padding: 1rem;
+  width: 30rem;
+  border-radius: 0.5rem;
+  background-color: var(--BGNavbar);
+}
+.searchedUser {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+}
+.avatarImage {
+  margin-right: 1rem;
+}
+.contentStack {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+.userContent {
+  display: flex;
+  flex-direction: column;
+}
+.userContent h5 {
+  font-weight: 150;
+  color: var(--FontColorMain);
+}
+.userContent h4 {
+  font-weight: 500;
+  color: var(--FontColorMain);
+}
+.addUserIcon {
+  cursor: pointer;
+}
+.addUserIcon svg {
+  color: var(--FGPrimary);
 }
