@@ -1,6 +1,7 @@
-import { initializeApp } from "firebase/app";
+import { initializeApp, getApps } from "firebase/app";
 import { getAuth } from "firebase/auth";
 import { getFirestore } from "firebase/firestore";
+import { getDatabase } from "firebase/database";
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
 
@@ -9,6 +10,8 @@ import { getFirestore } from "firebase/firestore";
 const firebaseConfig = {
   apiKey: "AIzaSyCpv1o3NjVf0eylynlnQL_XOTH1DCGZJGU",
   authDomain: "chytboat.firebaseapp.com",
+  databaseURL:
+    "https://chytboat-default-rtdb.asia-southeast1.firebasedatabase.app",
   projectId: "chytboat",
   storageBucket: "chytboat.appspot.com",
   messagingSenderId: "134925447764",
@@ -17,6 +20,10 @@ const firebaseConfig = {
 };
 
 // Initialize Firebase
-const app = initializeApp(firebaseConfig);
+var app;
+if (!getApps().length) {
+  app = initializeApp(firebaseConfig);
+}
 export const db = getFirestore(app);
+export const dbRT = getDatabase();
 export const auth = getAuth();

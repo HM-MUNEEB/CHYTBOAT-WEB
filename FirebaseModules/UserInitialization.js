@@ -1,5 +1,6 @@
 import { doc, setDoc, Timestamp } from "firebase/firestore";
-import { db } from "../Config/firebase";
+import { db, dbRT } from "../Config/firebase";
+import { set, ref } from "firebase/database";
 
 export async function userInitialization(data) {
   let docRef;
@@ -12,9 +13,24 @@ export async function userInitialization(data) {
       userCreated: Timestamp.fromDate(new Date()),
       friends: [],
     });
+    initialUserData(data);
     console.log("Document written with ID: ", docRef.id);
   } catch (e) {
     console.error("Error adding document: ", e);
   }
   return docRef;
+}
+
+function initialUserData(data) {
+  try {
+    set(ref(dbRT, "users/" + data.userName), {
+      data: {
+        name: data.name,
+        userName: data.userName,
+        userCreated: Timestamp.fromDate(new Date()),
+      },
+    });
+  } catch (e) {
+    console.log("Error Adding to realtime DB:  ", e);
+  }
 }
