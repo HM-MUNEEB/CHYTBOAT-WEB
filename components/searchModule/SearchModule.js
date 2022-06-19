@@ -25,7 +25,6 @@ export default function SearchModule(props) {
     }
   }
   function handleUserAddition() {
-    setLoading(true);
     AddContact(user.displayName, searchResult.userName, setLoading);
   }
 

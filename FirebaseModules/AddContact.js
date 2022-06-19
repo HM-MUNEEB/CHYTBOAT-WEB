@@ -1,5 +1,5 @@
 import { db, dbRT } from "../Config/firebase";
-import { ref, set, update } from "firebase/database";
+import { ref, set, update, push } from "firebase/database";
 import { uid } from "uid";
 
 export function AddContact(currentUserName, targetUserName, setLoading) {
@@ -7,10 +7,11 @@ export function AddContact(currentUserName, targetUserName, setLoading) {
   var taskCompleted = 0;
   const UUID = uid(32);
   try {
-    set(ref(dbRT, "users/" + currentUserName + "/data/friends/"), {
-      [`${targetUserName}`]: {
-        UUID,
-      },
+    const userRef = ref(dbRT, "users/" + targetUserName + "/data/friends");
+    const locUserRef = push(userRef);
+    set(locUserRef, {
+      name: currentUserName,
+      UUID,
     });
     taskCompleted++;
     if (taskCompleted == 2) {
@@ -20,10 +21,11 @@ export function AddContact(currentUserName, targetUserName, setLoading) {
     console.log("Error Adding to realtime DB:  ", e);
   }
   try {
-    set(ref(dbRT, "users/" + targetUserName + "/data/friends/"), {
-      [`${currentUserName}`]: {
-        UUID,
-      },
+    const userRef1 = ref(dbRT, "users/" + currentUserName + "/data/friends");
+    const locUserRef1 = push(userRef1);
+    set(locUserRef1, {
+      name: targetUserName,
+      UUID,
     });
     taskCompleted++;
     if (taskCompleted == 2) {
