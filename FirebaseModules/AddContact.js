@@ -1,19 +1,35 @@
-import { doc, setDoc, Timestamp } from "firebase/firestore";
-import { db } from "../Config/firebase";
+import { db, dbRT } from "../Config/firebase";
+import { ref, set, update } from "firebase/database";
+import { uid } from "uid";
 
-export async function AddCotent(data) {
-  let docRef;
+export function AddContact(currentUserName, targetUserName, setLoading) {
+  //add reference to the current user
+  var taskCompleted = 0;
+  const UUID = uid(32);
   try {
-    docRef = await setDoc(doc(db, "users_info/" + data.userName), {
-      name: data.name,
-      userName: data.userName,
-      email: data.email,
-      avatar: "defualt",
-      userCreated: Timestamp.fromDate(new Date()),
+    set(ref(dbRT, "users/" + currentUserName + "/data/friends/"), {
+      [`${targetUserName}`]: {
+        UUID,
+      },
     });
-    console.log("Document written with ID: ", docRef.id);
+    taskCompleted++;
+    if (taskCompleted == 2) {
+      setLoading(false);
+    }
   } catch (e) {
-    console.error("Error adding document: ", e);
+    console.log("Error Adding to realtime DB:  ", e);
   }
-  return docRef;
+  try {
+    set(ref(dbRT, "users/" + targetUserName + "/data/friends/"), {
+      [`${currentUserName}`]: {
+        UUID,
+      },
+    });
+    taskCompleted++;
+    if (taskCompleted == 2) {
+      setLoading(false);
+    }
+  } catch (e) {
+    console.log("Error Adding to realtime DB:  ", e);
+  }
 }

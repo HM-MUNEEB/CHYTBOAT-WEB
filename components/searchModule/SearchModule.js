@@ -1,11 +1,14 @@
 import { useState } from "react";
 import styles from "./searchModule.module.css";
 import { SearchContact } from "../../FirebaseModules/SearchContact";
+import { AddContact } from "../../FirebaseModules/AddContact";
 import { useLoading } from "../../context/loadingContext/loadingContext";
+import { useAuth } from "../../context/authContext/authContext";
 import Avatar from "./assets/avatar.png";
 import Image from "next/Image";
 
 export default function SearchModule(props) {
+  const { user } = useAuth();
   const { setLoading } = useLoading();
   const [searchInputField, setSearchInputField] = useState();
   const [searchResult, setSearchResult] = useState(null);
@@ -20,6 +23,10 @@ export default function SearchModule(props) {
     if (event.keyCode == 13) {
       handleSearch(e);
     }
+  }
+  function handleUserAddition() {
+    setLoading(true);
+    AddContact(user.displayName, searchResult.userName, setLoading);
   }
 
   return (
@@ -78,7 +85,10 @@ export default function SearchModule(props) {
                       <h5>@{searchResult.userName}</h5>
                     </div>
                   </div>
-                  <div className={styles.addUserIcon}>
+                  <div
+                    className={styles.addUserIcon}
+                    onClick={handleUserAddition}
+                  >
                     <svg
                       width="40"
                       height="40"
