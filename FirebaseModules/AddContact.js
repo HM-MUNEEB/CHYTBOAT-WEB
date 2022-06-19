@@ -34,4 +34,15 @@ export function AddContact(currentUserName, targetUserName, setLoading) {
   } catch (e) {
     console.log("Error Adding to realtime DB:  ", e);
   }
+  chatStack(UUID);
+}
+
+function chatStack(UUID) {
+  try {
+    set(ref(dbRT, "chatStack/"), {
+      UUID,
+    });
+  } catch (e) {
+    console.log("Error Adding ChatStack to realtime DB:  ", e);
+  }
 }
