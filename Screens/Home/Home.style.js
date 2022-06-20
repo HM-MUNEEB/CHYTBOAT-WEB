@@ -41,21 +41,23 @@ export default StyleSheet.create({
   superSection: {
     marginVertical: 10,
   },
-  superSectionHeader: {
-    paddingHorizontal: "5%",
+  welcomeMsgContainer: {
+    marginHorizontal: "2%",
+    marginVertical: 20,
   },
-  favoritesText: {
+  welcomeMsg: {
     color: "white",
-    fontSize: 18,
+    fontSize: 22,
     fontWeight: "bold",
   },
-  favContainer: {
-    marginTop: 15,
-    paddingLeft: 15,
-    paddingRight: 100,
+  userGreeting: {
+    color: "white",
+    fontSize: 20,
+    fontStyle: "italic",
   },
-  favItems: {
-    marginLeft: 10,
+
+  superSectionHeader: {
+    paddingHorizontal: "5%",
   },
   contactListContainer: {
     backgroundColor: "#1E1E1E",

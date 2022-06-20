@@ -57,7 +57,12 @@ export default function SetupProfile({ navigation }) {
           </View>
           <View style={styles.TextInfo}>
             <Text style={styles.LowText}>Username</Text>
-            <Text style={styles.HighText}>@{user.displayName}</Text>
+            {user ? (
+              <Text style={styles.HighText}>@{user.displayName}</Text>
+            ) : (
+              <Text></Text>
+            )}
+
             <Text style={styles.LowText}>
               This username can not be changed!
             </Text>
@@ -74,7 +79,11 @@ export default function SetupProfile({ navigation }) {
           </View>
           <View style={styles.TextInfo}>
             <Text style={styles.LowText}>Email</Text>
-            <Text style={styles.HighText}>{user.email}</Text>
+            {user ? (
+              <Text style={styles.HighText}>{user.email}</Text>
+            ) : (
+              <Text></Text>
+            )}
           </View>
         </View>
       </View>

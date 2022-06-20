@@ -8,10 +8,37 @@ import {
   Pressable,
   TouchableOpacity,
 } from "react-native";
-import React from "react";
+import React, { useState, useEffect } from "react";
 import styles from "./register.style";
+import { useAuth } from "../../../context/authContext/authContext";
 
 const Register = ({ navigation }) => {
+  const { user, signup } = useAuth();
+  const [registrationUserData, setRegistrationUserData] = useState({
+    name: "",
+    userName: "",
+    email: "",
+    password: "",
+  });
+  function handleRegistrationName(e) {
+    setRegistrationUserData({ ...registrationUserData, name: e });
+  }
+  function handleRegistrationEmail(e) {
+    setRegistrationUserData({ ...registrationUserData, email: e });
+  }
+  function handleRegistrationUserName(e) {
+    setRegistrationUserData({
+      ...registrationUserData,
+      userName: e,
+    });
+  }
+  function handleRegistrationPassword(e) {
+    setRegistrationUserData({
+      ...registrationUserData,
+      password: e,
+    });
+  }
+
   return (
     <View style={styles.container}>
       <View style={styles.logoContainer}>

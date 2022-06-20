@@ -7,21 +7,15 @@ import {
   Image,
   StyleSheet,
 } from "react-native";
+import react, { useState, useEffect } from "react";
 import Icon from "react-native-vector-icons/Ionicons";
+import IconE from "react-native-vector-icons/AntDesign";
 import { StatusBar } from "expo-status-bar";
 import styles from "./Home.style";
-import Favorite from "../../Components/Favorites/Favorite";
 import Contact from "../../Components/Contact/Contact";
-
+import { useAuth } from "../../context/authContext/authContext";
 export default function Home({ navigation }) {
-  const favItems = [
-    "Muneeb",
-    "Samran",
-    "Umer",
-    "Jahangir",
-    "Arsalan",
-    "Raja Mareez",
-  ];
+  const { user, logout } = useAuth();
   const contactList = [
     { userName: "munyyb", lastMsg: "hi there vero?", date: "11:53" },
     { userName: "umer", lastMsg: "ok. See you soon!", date: "11:45" },
@@ -30,10 +24,21 @@ export default function Home({ navigation }) {
     { userName: "arsalanBhama", lastMsg: "oi oi oi!", date: "09:29" },
     { userName: "jahangi", lastMsg: "yhuck", date: "09:26" },
   ];
+  useEffect(() => {
+    if (!user) {
+      navigation.navigate("Login");
+    }
+    console.log("ROOT USER: " + user);
+  }, [user]);
+
   function handleContactPress() {
     console.log("PRESSED");
     navigation.navigate("Chat");
   }
+  function handleLogout() {
+    logout();
+  }
+
   return (
     <View style={styles.home}>
       <View style={styles.header}>
@@ -44,9 +49,11 @@ export default function Home({ navigation }) {
           <View style={styles.userAvatar}>
             <Image source={require("./assets/avatar.png")} />
           </View>
-          <View style={styles.searchIcon}>
-            <Icon name="settings-outline" size={25} color="white" />
-          </View>
+          <Pressable onPress={handleLogout}>
+            <View style={styles.searchIcon}>
+              <IconE name="logout" size={25} color="white" />
+            </View>
+          </Pressable>
         </View>
       </View>
       <ScrollView
@@ -55,21 +62,15 @@ export default function Home({ navigation }) {
       >
         <View style={styles.superSection}>
           <View style={styles.superSectionHeader}>
-            <Text style={styles.favoritesText}>Favorites</Text>
+            <View style={styles.welcomeMsgContainer}>
+              <Text style={styles.welcomeMsg}>Welcome To ChytBoat,</Text>
+              {user ? (
+                <Text style={styles.userGreeting}>{user.displayName}</Text>
+              ) : (
+                <Text></Text>
+              )}
+            </View>
           </View>
-          <ScrollView
-            showsHorizontalScrollIndicator={false}
-            horizontal={true}
-            style={styles.favContainer}
-          >
-            {favItems.map((item) => {
-              return (
-                <View style={styles.favItems} key={item}>
-                  <Favorite name={item} />
-                </View>
-              );
-            })}
-          </ScrollView>
         </View>
         <View style={styles.contactListContainer}>
           {contactList.map((item) => {

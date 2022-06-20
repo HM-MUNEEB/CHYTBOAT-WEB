@@ -84,10 +84,11 @@ export const AuthContextProvider = ({ children }) => {
       .then((userCredential) => {
         // Signed in
         setUser({
-          uid: userCredential.uid,
-          email: userCredential.email,
-          displayName: userCredential.displayName,
+          uid: userCredential._tokenResponse.uid,
+          email: userCredential._tokenResponse.email,
+          displayName: userCredential._tokenResponse.displayName,
         });
+        console.log(userCredential);
         setBtnClickProcessing(false);
         return true;
       })

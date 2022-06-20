@@ -12,7 +12,7 @@ import React, { useState, useEffect } from "react";
 import styles from "./login.style";
 import { useAuth } from "../../../context/authContext/authContext";
 
-const Login = ({ navigation }) => {
+const LoginModule = ({ navigation }) => {
   const { login, user } = useAuth();
   const [email, setEmail] = useState();
   const [password, setPassword] = useState();
@@ -21,11 +21,13 @@ const Login = ({ navigation }) => {
       if (user.displayName) {
         navigation.navigate("SetupProfile");
       }
+    } else {
+      // navigation.navigate("Login");
     }
     console.log("ROOT USER: " + user);
   }, [user]);
 
-  function handleLogin(email, password) {
+  function handleLogin() {
     login(email, password);
   }
 
@@ -77,10 +79,7 @@ const Login = ({ navigation }) => {
               onChangeText={(e) => setPassword(e)}
             />
           </View>
-          <Pressable
-            style={styles.pressStyleSign}
-            onPress={handleLogin(email, password)}
-          >
+          <Pressable style={styles.pressStyleSign} onPress={handleLogin}>
             <Text style={styles.pressStyleText}>Sign In</Text>
           </Pressable>
         </View>
@@ -105,4 +104,4 @@ const Login = ({ navigation }) => {
   );
 };
 
-export default Login;
+export default LoginModule;

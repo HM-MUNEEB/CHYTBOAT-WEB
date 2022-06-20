@@ -1,5 +1,5 @@
 import { createStackNavigator } from "@react-navigation/stack";
-import Login from "../Screens/AuthScreen/Login/login";
+import LoginModule from "../Screens/AuthScreen/Login/login";
 import Register from "../Screens/AuthScreen/Register/register";
 
 const Stack = createStackNavigator();
@@ -29,7 +29,7 @@ export default function LoginRegisterStack() {
         },
       }}
     >
-      <Stack.Screen name="Login" component={Login} />
+      <Stack.Screen name="Login" component={LoginModule} />
       <Stack.Screen name="Register" component={Register} />
     </Stack.Navigator>
   );
