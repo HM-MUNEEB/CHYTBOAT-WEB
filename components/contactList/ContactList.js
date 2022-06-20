@@ -1,13 +1,25 @@
 import Image from "next/image";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import styles from "./ContactList.module.css";
 import Avatar from "./assets/avatar.png";
 import ContactCard from "./contactCard/ContactCard";
 import ThemeToggle from "../themeToggle/themeToggle";
+import { ReadContactList } from "../../FirebaseModules/ReadContactList";
+import { useAuth } from "../../context/authContext/authContext";
 
 export default function ContactList(props) {
   const [searchContactList, setSearchContactList] = useState(false);
   const [contactList, setContactList] = useState(null);
+  const { user } = useAuth();
+  setTimeout(() => {
+    try {
+      var data = ReadContactList(user.displayName);
+      console.log("Contact List: " + data);
+    } catch (e) {
+      console.log(e);
+    }
+  }, 1000);
+
   return (
     <div className={styles.contactListContainer}>
       <div className={styles.contactListContainerUpparArea}>

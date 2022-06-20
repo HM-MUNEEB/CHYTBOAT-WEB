@@ -1,5 +1,6 @@
-import { db, dbRT } from "../Config/firebase";
+import { dbRT } from "../Config/firebase";
 import { ref, set, update, push } from "firebase/database";
+import { Timestamp } from "firebase/firestore";
 import { uid } from "uid";
 
 export function AddContact(currentUserName, targetUserName, setLoading) {
@@ -39,8 +40,8 @@ export function AddContact(currentUserName, targetUserName, setLoading) {
 
 function chatStack(UUID) {
   try {
-    set(ref(dbRT, "chatStack/"), {
-      UUID,
+    set(ref(dbRT, "chatStack/" + UUID), {
+      channelCreatedOn: Timestamp.fromDate(new Date()),
     });
   } catch (e) {
     console.log("Error Adding ChatStack to realtime DB:  ", e);
