@@ -14,31 +14,31 @@ import { useAuth } from "../../../context/authContext/authContext";
 
 const Register = ({ navigation }) => {
   const { user, signup } = useAuth();
-  const [registrationUserData, setRegistrationUserData] = useState({
-    name: "",
-    userName: "",
-    email: "",
-    password: "",
-  });
-  function handleRegistrationName(e) {
-    setRegistrationUserData({ ...registrationUserData, name: e });
-  }
-  function handleRegistrationEmail(e) {
-    setRegistrationUserData({ ...registrationUserData, email: e });
-  }
-  function handleRegistrationUserName(e) {
-    setRegistrationUserData({
-      ...registrationUserData,
-      userName: e,
-    });
-  }
-  function handleRegistrationPassword(e) {
-    setRegistrationUserData({
-      ...registrationUserData,
-      password: e,
-    });
-  }
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [name, setName] = useState("");
+  const [userName, setUserName] = useState("");
+  useEffect(() => {
+    if (user) {
+      if (user.displayName) {
+        navigation.navigate("SetupProfile");
+      }
+    } else {
+      // navigation.navigate("Login");
+    }
+    console.log("ROOT USER: " + user);
+  }, [user]);
 
+  function handleRegistration() {
+    const data = {
+      email,
+      password,
+      name,
+      userName,
+    };
+    console.log(data);
+    signup(data);
+  }
   return (
     <View style={styles.container}>
       <View style={styles.logoContainer}>
@@ -72,6 +72,7 @@ const Register = ({ navigation }) => {
               style={styles.textI}
               placeholder="Enter your name"
               placeholderTextColor={"rgba(255,255,255,0.4)"}
+              onChangeText={(e) => setName(e)}
             />
           </View>
           <View>
@@ -80,6 +81,7 @@ const Register = ({ navigation }) => {
               style={styles.textI}
               placeholder="Enter username or e-mail"
               placeholderTextColor={"rgba(255,255,255,0.4)"}
+              onChangeText={(e) => setEmail(e)}
             />
           </View>
           <View>
@@ -88,6 +90,7 @@ const Register = ({ navigation }) => {
               style={styles.textI}
               placeholder="Only alphanumeric allowed"
               placeholderTextColor={"rgba(255,255,255,0.4)"}
+              onChangeText={(e) => setUserName(e)}
             />
           </View>
           <View style={styles.inputFieldLastChild}>
@@ -96,13 +99,11 @@ const Register = ({ navigation }) => {
               style={styles.textI}
               placeholder="Enter your Password"
               placeholderTextColor={"rgba(255,255,255,0.4)"}
+              onChangeText={(e) => setPassword(e)}
             />
           </View>
 
-          <Pressable
-            style={styles.pressStyleReg}
-            onPress={() => navigation.navigate("SetupProfile")}
-          >
+          <Pressable style={styles.pressStyleReg} onPress={handleRegistration}>
             <Text style={styles.pressStyleText}>Register</Text>
           </Pressable>
         </View>
