@@ -27,7 +27,10 @@ export const AuthContextProvider = ({ children }) => {
 
   useEffect(() => {
     if (user && !btnClickProcessing) {
-      router.push("/app-console");
+      if (user.displayName) {
+        console.log("Before: " + user);
+        router.push("/app-console");
+      }
     }
     console.log("ROOT USER: " + user);
   }, [user]);

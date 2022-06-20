@@ -10,7 +10,7 @@ import ChatDetails from "./chatDetails/ChatDetails.js";
 import { useLoading } from "../context/loadingContext/loadingContext.js";
 import Loading from "./loading/loading.js";
 import { useAuth } from "../context/authContext/authContext.js";
-import { GetCurrentUserInfo } from "../FirebaseModules/GetCurrentUserInfo";
+import { useUserData } from "../context/userData/userDataContext.js";
 
 export default function MainApp() {
   const { user } = useAuth();
@@ -20,14 +20,19 @@ export default function MainApp() {
   const [archiveActive, setArchiveActive] = useState(false);
   const [chatActive, setChatActive] = useState(false);
   const [chatDetails, setChatDetails] = useState(false);
-  const [userInfo, setUserInfo] = useState({
-    userName: "",
-  });
+  const {
+    userData,
+    userInfo,
+    executeContactList,
+    executeGetCurrentUserInfo,
+  } = useUserData();
 
   useEffect(() => {
     console.log("Main app user: ", user);
     if (user) {
-      GetCurrentUserInfo(user, setUserInfo, setLoading);
+      executeGetCurrentUserInfo(user, setLoading);
+      executeContactList(user, setLoading);
+      console.log("contact list: " + userData);
     }
   }, [user]);
   useEffect(() => {
