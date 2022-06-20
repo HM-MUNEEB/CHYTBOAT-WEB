@@ -2,6 +2,7 @@ import { createContext, useContext, useState, useEffect } from "react";
 import { useAuth } from "../authContext/authContext";
 import { ReadContactList } from "../../FirebaseModules/ReadContactList";
 import { GetCurrentUserInfo } from "../../FirebaseModules/GetCurrentUserInfo";
+
 const UserDataContext = createContext({});
 export const useUserData = () => useContext(UserDataContext);
 
@@ -12,13 +13,15 @@ export const UserDataContextProvider = ({ children }) => {
   });
   function executeContactList(user, setLoading) {
     try {
-      ReadContactList(user.displayName);
+      console.log("Contact List User Name : " + user.displayName);
+      setUserData(ReadContactList(user.displayName));
+      console.log("Contact List: " + userData);
     } catch (e) {
       console.log(e);
     }
   }
   function executeGetCurrentUserInfo(user, setLoading) {
-    GetCurrentUserInfo(user, setUserInfo, setLoading);
+    setUserInfo(GetCurrentUserInfo(user, setLoading));
   }
 
   return (
@@ -26,7 +29,6 @@ export const UserDataContextProvider = ({ children }) => {
       value={{
         userData,
         userInfo,
-        setUserData,
         executeContactList,
         executeGetCurrentUserInfo,
       }}
