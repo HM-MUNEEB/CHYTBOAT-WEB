@@ -13,14 +13,10 @@ import IconE from "react-native-vector-icons/Entypo";
 import Account from "react-native-vector-icons/MaterialCommunityIcons";
 import Contacts from "react-native-vector-icons/MaterialIcons";
 import styles from "./SetupProfile.style";
-import { useAuth } from "../../authContext/authContext";
+import { useAuth } from "../../context/authContext/authContext";
 
 export default function SetupProfile({ navigation }) {
   const { user } = useAuth();
-  useEffect(() => {
-    console.log(user);
-  }, []);
-
   return (
     <View style={styles.Layout}>
       <View style={styles.header}>
@@ -61,7 +57,7 @@ export default function SetupProfile({ navigation }) {
           </View>
           <View style={styles.TextInfo}>
             <Text style={styles.LowText}>Username</Text>
-            <Text style={styles.HighText}>@munyyb</Text>
+            <Text style={styles.HighText}>@{user.displayName}</Text>
             <Text style={styles.LowText}>
               This username can not be changed!
             </Text>
@@ -77,10 +73,8 @@ export default function SetupProfile({ navigation }) {
             />
           </View>
           <View style={styles.TextInfo}>
-            <Text style={styles.LowText}>Phone</Text>
-            <Text style={styles.HighText}>+923401839004</Text>
             <Text style={styles.LowText}>Email</Text>
-            <Text style={styles.HighText}>hm.muneeb.u.r@gmail.com</Text>
+            <Text style={styles.HighText}>{user.email}</Text>
           </View>
         </View>
       </View>

@@ -4,14 +4,24 @@ import {
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
   signOut,
+  updateProfile,
 } from "firebase/auth";
-import { auth } from "../firebaseConfig/firebase";
+import { auth } from "../../Config/firebase";
+import { userInitialization } from "../../FirebaseModules/UserInitialization";
+import { useLoading } from "../loadingContext/loadingContext";
 
-const AuthContext = createContext({});
+const AuthContext = createContext({
+  login: () => {},
+  signup: () => {},
+  logout: () => {},
+  user: null,
+  setUser: () => {},
+});
 export const useAuth = () => useContext(AuthContext);
 
 export const AuthContextProvider = ({ children }) => {
   const [user, setUser] = useState(null);
+  const { btnClickProcessing, setBtnClickProcessing } = useLoading();
 
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (user) => {
@@ -30,28 +40,46 @@ export const AuthContextProvider = ({ children }) => {
     return unsubscribe();
   }, []);
 
-  const signup = (email, password) => {
-    createUserWithEmailAndPassword(auth, email, password)
+  const signup = (data) => {
+    setBtnClickProcessing(true);
+    createUserWithEmailAndPassword(auth, data.email, data.password)
       .then((userCredential) => {
         // Signed in
         console.log("Signup UID: " + userCredential.uid);
-        if (user) {
+
+        const docRef = userInitialization(data);
+        console.log(docRef);
+
+        updateProfile(auth.currentUser, {
+          displayName: data.userName,
+          email: data.email,
+        })
+          .then(() => {
+            console.log("USER NAME & EMAIL SET");
+          })
+          .catch((error) => {
+            console.log(error);
+          });
+
+        if (user && docRef) {
           logout();
-          login(email, password);
+          login(data.email, data.password);
+          setBtnClickProcessing(false);
           //console.log(user);
-        } else {
-          login(email, password);
+        } else if (docRef) {
+          login(data.email, data.password);
           //console.log(user);
         }
         return true;
       })
       .catch((error) => {
-        //console.log(error);
-        return error;
+        console.log(error);
+        return false;
       });
   };
 
   const login = (email, password) => {
+    setBtnClickProcessing(true);
     signInWithEmailAndPassword(auth, email, password)
       .then((userCredential) => {
         // Signed in
@@ -60,7 +88,7 @@ export const AuthContextProvider = ({ children }) => {
           email: userCredential.email,
           displayName: userCredential.displayName,
         });
-        //console.log("login: " + user);
+        setBtnClickProcessing(false);
         return true;
       })
       .catch((error) => {
@@ -85,7 +113,7 @@ export const AuthContextProvider = ({ children }) => {
   };
 
   return (
-    <AuthContext.Provider value={{ user, login, signup, logout }}>
+    <AuthContext.Provider value={{ user, login, signup, logout, setUser }}>
       {children}
     </AuthContext.Provider>
   );

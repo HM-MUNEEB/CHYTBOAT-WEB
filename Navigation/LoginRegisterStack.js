@@ -1,12 +1,10 @@
 import { createStackNavigator } from "@react-navigation/stack";
-import Navbar from "./Navbar/Navbar";
-import Chat from "../Screens/Chat/Chat";
-import SetupProfile from "../Screens/SetupProfile/SetupProfile";
-import LoginRegisterStack from "./LoginRegisterStack";
+import Login from "../Screens/AuthScreen/Login/login";
+import Register from "../Screens/AuthScreen/Register/register";
 
 const Stack = createStackNavigator();
 
-export default function HomeChatStack() {
+export default function LoginRegisterStack() {
   const config = {
     animation: "spring",
     config: {
@@ -20,7 +18,7 @@ export default function HomeChatStack() {
   };
   return (
     <Stack.Navigator
-      initialRouteName="LoginRegister"
+      initialRouteName="Login"
       screenOptions={{
         headerShown: false,
         animationEnabled: true,
@@ -31,10 +29,8 @@ export default function HomeChatStack() {
         },
       }}
     >
-      <Stack.Screen name="LoginRegister" component={LoginRegisterStack} />
-      <Stack.Screen name="SetupProfile" component={SetupProfile} />
-      <Stack.Screen name="Navbar" component={Navbar} />
-      <Stack.Screen name="Chat" component={Chat} />
+      <Stack.Screen name="Login" component={Login} />
+      <Stack.Screen name="Register" component={Register} />
     </Stack.Navigator>
   );
 }
