@@ -1,7 +1,6 @@
 import MainApp from "../components/MainApp.js";
 import { LoadingContextProvider } from "../context/loadingContext/loadingContext.js";
 import { useAuth } from "../context/authContext/authContext.js";
-import { UserDataContextProvider } from "../context/userData/userDataContext.js";
 import { useEffect } from "react";
 import { useRouter } from "next/router";
 
@@ -15,9 +14,7 @@ export default function AppConsole() {
   }, []);
   return (
     <LoadingContextProvider>
-      <UserDataContextProvider>
-        <MainApp />
-      </UserDataContextProvider>
+      <MainApp />
     </LoadingContextProvider>
   );
 }

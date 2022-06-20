@@ -10,7 +10,8 @@ import ChatDetails from "./chatDetails/ChatDetails.js";
 import { useLoading } from "../context/loadingContext/loadingContext.js";
 import Loading from "./loading/loading.js";
 import { useAuth } from "../context/authContext/authContext.js";
-import { useUserData } from "../context/userData/userDataContext.js";
+import { GetCurrentUserInfo } from "../FirebaseModules/GetCurrentUserInfo.js";
+import { ReadContactList } from "../FirebaseModules/ReadContactList.js";
 
 export default function MainApp() {
   const { user } = useAuth();
@@ -20,18 +21,16 @@ export default function MainApp() {
   const [archiveActive, setArchiveActive] = useState(false);
   const [chatActive, setChatActive] = useState(false);
   const [chatDetails, setChatDetails] = useState(false);
-  const {
-    userData,
-    userInfo,
-    executeContactList,
-    executeGetCurrentUserInfo,
-  } = useUserData();
+  const [userData, setUserData] = useState("");
+  const [userInfo, setUserInfo] = useState({
+    userName: "",
+  });
 
   useEffect(() => {
     console.log("Main app user: ", user);
     if (user) {
-      executeGetCurrentUserInfo(user, setLoading);
-      executeContactList(user, setLoading);
+      GetCurrentUserInfo(user.displayName, setLoading, setUserInfo);
+      ReadContactList(user.displayName, setLoading, setUserData);
       console.log("contact list: " + userData);
     }
   }, [user]);
@@ -70,6 +69,7 @@ export default function MainApp() {
               <ContactList
                 userName={userInfo.userName}
                 setChatActive={setChatActive}
+                userData={userData}
               />
             ) : (
               ""
