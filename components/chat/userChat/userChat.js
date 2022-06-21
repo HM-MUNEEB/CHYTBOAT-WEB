@@ -18,7 +18,7 @@ export default function UserChat(props) {
   const [messages1, setMessages1] = useState([]);
   const [executed, setExecuted] = useState(false);
 
-  const CHATUID = "efe2aa9c24e28fe3db8350fda5be4999";
+  const CHATUID = props.chatUser.UUID;
 
   useEffect(() => {
     ReadMessages(CHATUID, setMessages);
@@ -101,7 +101,7 @@ export default function UserChat(props) {
         <div className={styles.userChatInfo}>
           <Image src={Avatar} width={50} height={50} />
           <div className={styles.userContentContainer}>
-            {user ? <h3>{user.displayName}</h3> : ""}
+            {props.chatUser ? <h3>{props.chatUser.name}</h3> : ""}
           </div>
         </div>
       </div>

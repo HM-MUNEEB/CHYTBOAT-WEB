@@ -19,7 +19,7 @@ export default function MainApp() {
   const [search, setSearch] = useState(false);
   const [contactListActive, setContactListActive] = useState(true);
   const [archiveActive, setArchiveActive] = useState(false);
-  const [chatActive, setChatActive] = useState(true);
+  const [chatActive, setChatActive] = useState(false);
   const [chatDetails, setChatDetails] = useState(false);
   const [userData, setUserData] = useState("");
   const [userInfo, setUserInfo] = useState({
@@ -28,7 +28,7 @@ export default function MainApp() {
   const [contactList1, setContactList1] = useState([]);
   const [showContactList, setShowContactList] = useState([]);
   const [executed, setExecuted] = useState(false);
-
+  const [chatUser, setChatUser] = useState(null);
   useEffect(() => {
     console.log("Main app user: ", user);
     if (user) {
@@ -90,6 +90,8 @@ export default function MainApp() {
             />
             {contactListActive ? (
               <ContactList
+                setChatUser={setChatUser}
+                chatUser={chatUser}
                 handleSetContactList={handleSetContactList}
                 executed={executed}
                 userName={userInfo.userName}
@@ -102,6 +104,7 @@ export default function MainApp() {
           </div>
           <div className={styles.appConsoleFlexChatStack}>
             <Chat
+              chatUser={chatUser}
               chatActive={chatActive}
               chatDetails={chatDetails}
               setChatDetails={setChatDetails}
