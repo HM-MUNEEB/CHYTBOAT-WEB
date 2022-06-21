@@ -5,11 +5,15 @@ import Avatar from "./assets/avatar.png";
 import ContactCard from "./contactCard/ContactCard";
 import ThemeToggle from "../themeToggle/themeToggle";
 import { BiRefresh } from "react-icons/bi";
+import { uid } from "uid";
 
 export default function ContactList(props) {
   const [searchContactList, setSearchContactList] = useState(false);
   const [contactList, setContactList] = useState(null);
   console.log(props.showContactList);
+  function handleKey() {
+    return uid(16);
+  }
   return (
     <div className={styles.contactListContainer}>
       <div className={styles.contactListContainerUpparArea}>
@@ -72,6 +76,7 @@ export default function ContactList(props) {
           props.showContactList.map((item) => {
             return (
               <div
+                key={handleKey()}
                 className={styles.contactCardItem}
                 onClick={() => {
                   props.setChatActive(true);
