@@ -104,7 +104,7 @@ export default function Chat({ navigation }) {
           {
             key: msg + Date.now() + "bye",
             Avatar: "Defualt",
-            Content: "jangi bsdk",
+            Content: "Bye Bro",
             User: 2,
           },
         ]);

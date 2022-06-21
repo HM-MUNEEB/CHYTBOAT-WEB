@@ -14,21 +14,29 @@ import { StatusBar } from "expo-status-bar";
 import styles from "./Home.style";
 import Contact from "../../Components/Contact/Contact";
 import { useAuth } from "../../context/authContext/authContext";
+import { ReadContactList } from "../../FirebaseModules/ReadContactList";
+import { useLoading } from "../../context/loadingContext/loadingContext";
 export default function Home({ navigation }) {
   const { user, logout } = useAuth();
-  const contactList = [
-    { userName: "munyyb", lastMsg: "hi there vero?", date: "11:53" },
-    { userName: "umer", lastMsg: "ok. See you soon!", date: "11:45" },
-    { userName: "saani", lastMsg: "Oo jul oye!", date: "10:30" },
-    { userName: "rajaMareez", lastMsg: "Yar...!", date: "09:30" },
-    { userName: "arsalanBhama", lastMsg: "oi oi oi!", date: "09:29" },
-    { userName: "jahangi", lastMsg: "yhuck", date: "09:26" },
-  ];
+  const { setLoading } = useLoading();
+  const [userData, setUserData] = useState("");
+  const [contactList1, setContactList1] = useState([]);
+  var executed = false;
   useEffect(() => {
     if (!user) {
       navigation.navigate("Login");
     }
     console.log("ROOT USER: " + user);
+  }, [user]);
+  useEffect(() => {
+    if (user) {
+      ReadContactList(user.displayName, setLoading, setUserData);
+    }
+    if (userData && !executed) {
+      setContactList1(Object.entries(userData).map((e) => ({ [e[0]]: e[1] })));
+      console.log(contactList1);
+      executed = true;
+    }
   }, [user]);
 
   function handleContactPress() {
@@ -38,6 +46,19 @@ export default function Home({ navigation }) {
   function handleLogout() {
     logout();
   }
+  function handleStateShow() {
+    contactList1.map((item) => {
+      const obj = contactList1[0];
+      console.log(obj);
+      item = Object.values(item)[0];
+      console.log(item);
+      return (
+        <Pressable key={item.name} onPress={handleContactPress}>
+          <Contact userName={item.name} />
+        </Pressable>
+      );
+    });
+  }
 
   return (
     <View style={styles.home}>
@@ -46,9 +67,11 @@ export default function Home({ navigation }) {
           <Text style={styles.appNameText}>Chytboat</Text>
         </View>
         <View style={styles.headerContentContainer}>
-          <View style={styles.userAvatar}>
-            <Image source={require("./assets/avatar.png")} />
-          </View>
+          <Pressable onPress={handleStateShow}>
+            <View style={styles.userAvatar}>
+              <Image source={require("./assets/avatar.png")} />
+            </View>
+          </Pressable>
           <Pressable onPress={handleLogout}>
             <View style={styles.searchIcon}>
               <IconE name="logout" size={25} color="white" />
@@ -73,20 +96,20 @@ export default function Home({ navigation }) {
           </View>
         </View>
         <View style={styles.contactListContainer}>
-          {contactList.map((item) => {
-            return (
-              <Pressable
-                key={item.userName + item.lastMsg}
-                onPress={handleContactPress}
-              >
-                <Contact
-                  userName={item.userName}
-                  lastMsg={item.lastMsg}
-                  date={item.date}
-                />
-              </Pressable>
-            );
-          })}
+          {executed ? handleStateShow : <View></View>}
+          {handleStateShow}
+          <Pressable onPress={handleContactPress}>
+            <Contact userName="Munyyb" />
+          </Pressable>
+          <Pressable onPress={handleContactPress}>
+            <Contact userName="Umer" />
+          </Pressable>
+          <Pressable onPress={handleContactPress}>
+            <Contact userName="Saani" />
+          </Pressable>
+          <Pressable onPress={handleContactPress}>
+            <Contact userName="Moeen" />
+          </Pressable>
         </View>
       </ScrollView>
     </View>

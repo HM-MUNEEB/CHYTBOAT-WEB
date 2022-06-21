@@ -14,12 +14,12 @@ export default function Contact(props) {
           </View>
           <View style={styles.contentContainer}>
             <Text style={styles.contactUserNameText}>{props.userName}</Text>
-            <Text style={styles.contactLastMsgText}>{props.lastMsg}</Text>
+            {/* <Text style={styles.contactLastMsgText}>{props.lastMsg}</Text> */}
           </View>
         </View>
-        <View style={styles.lastMsgDateContainer}>
+        {/* <View style={styles.lastMsgDateContainer}>
           <Text style={styles.lastMsgDateText}>{props.date}</Text>
-        </View>
+        </View> */}
       </View>
       <View style={styles.contactSeperator}></View>
     </View>

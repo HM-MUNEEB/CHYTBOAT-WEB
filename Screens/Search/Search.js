@@ -10,13 +10,28 @@ import styles from "./Search.style";
 import Icon from "react-native-vector-icons/Ionicons";
 import IconAnt from "react-native-vector-icons/AntDesign";
 import { useState } from "react";
+import { useAuth } from "../../context/authContext/authContext";
+import { useLoading } from "../../context/loadingContext/loadingContext";
+import { SearchContact } from "../../FirebaseModules/SearchContact";
+import { AddContact } from "../../FirebaseModules/AddContact";
 
 export default function Search() {
-  const [inputText, setInputText] = useState("");
-  const resultedContacts = [{ userName: "munyyb" }, { userName: "umer" }];
+  const { user } = useAuth();
+  const { setLoading } = useLoading();
+  const [searchInputField, setSearchInputField] = useState("");
+  const [searchResult, setSearchResult] = useState(null);
 
   function handleTextChange(e) {
-    setInputText(e);
+    setSearchInputField(e);
+  }
+  async function handleSearchPress() {
+    setSearchResult(null);
+    setLoading(true);
+    setSearchResult(await SearchContact(searchInputField, setLoading));
+    console.log(searchResult);
+  }
+  function handleUserAddition() {
+    AddContact(user.displayName, searchResult.userName, setLoading);
   }
 
   return (
@@ -40,7 +55,7 @@ export default function Search() {
               onChangeText={handleTextChange}
             />
           </View>
-          <Pressable style={styles.searchBtn}>
+          <Pressable style={styles.searchBtn} onPress={handleSearchPress}>
             <Text style={styles.searchBtnText}>Search</Text>
           </Pressable>
         </View>
@@ -51,30 +66,22 @@ export default function Search() {
           <Text style={styles.addContactText}>Add Contact</Text>
         </View>
         <View style={styles.resultContactContainer}>
-          {inputText != ""
-            ? resultedContacts.map((contact) => {
-                return (
-                  <View key={contact.userName} style={styles.resultContact}>
-                    <View style={styles.contactStack}>
-                      <Image
-                        style={styles.contactAvatar}
-                        source={require("./assets/avatar.png")}
-                      />
-                      <Text style={styles.userNameText}>
-                        {contact.userName}
-                      </Text>
-                    </View>
-                    <View style={styles.iconStack}>
-                      <Icon
-                        name="md-person-add-outline"
-                        size={32}
-                        color="#FF9D43"
-                      />
-                    </View>
-                  </View>
-                );
-              })
-            : null}
+          {searchResult ? (
+            <View style={styles.resultContact}>
+              <View style={styles.contactStack}>
+                <Image
+                  style={styles.contactAvatar}
+                  source={require("./assets/avatar.png")}
+                />
+                <Text style={styles.userNameText}>
+                  @{searchResult.userName}
+                </Text>
+              </View>
+              <Pressable style={styles.iconStack} onPress={handleUserAddition}>
+                <Icon name="md-person-add-outline" size={32} color="#FF9D43" />
+              </Pressable>
+            </View>
+          ) : null}
         </View>
       </ScrollView>
     </View>
