@@ -26,7 +26,7 @@ export default function Chat({ navigation }) {
   const [messages1, setMessages1] = useState([]);
   const [executed, setExecuted] = useState(false);
 
-  const CHATUID = "efe2aa9c24e28fe3db8350fda5be4999";
+  const CHATUID = "98ee24af197091de5d1d287c1ea1ba54";
 
   function handleGoBackBtn() {
     console.log("PRESSED GOBACK!!");
