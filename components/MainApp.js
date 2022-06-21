@@ -19,7 +19,7 @@ export default function MainApp() {
   const [search, setSearch] = useState(false);
   const [contactListActive, setContactListActive] = useState(true);
   const [archiveActive, setArchiveActive] = useState(false);
-  const [chatActive, setChatActive] = useState(false);
+  const [chatActive, setChatActive] = useState(true);
   const [chatDetails, setChatDetails] = useState(false);
   const [userData, setUserData] = useState("");
   const [userInfo, setUserInfo] = useState({

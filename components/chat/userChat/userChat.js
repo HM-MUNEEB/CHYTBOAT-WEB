@@ -1,96 +1,96 @@
+import { useState, useEffect } from "react";
 import styles from "./userChat.module.css";
 import Image from "next/image";
 import { motion } from "framer-motion";
 import Avatar from "./assets/avatar.png";
 import SentMessage from "./sentMessage/sentMessage.js";
 import RecievedMessage from "./recievedMessage/recievedMessage.js";
-import { useState } from "react";
+import { ReadMessages, SendMessages } from "../../../FirebaseModules/Messages";
+import { useAuth } from "../../../context/authContext/authContext";
+import { uid } from "uid";
 
 export default function UserChat(props) {
+  const { user } = useAuth();
   const [msg, setMsg] = useState("");
   //1 is current user
   const [MsgContent, setMsgContent] = useState([]);
+  const [messages, setMessages] = useState(null);
+  const [messages1, setMessages1] = useState([]);
+  const [executed, setExecuted] = useState(false);
+
+  const CHATUID = "efe2aa9c24e28fe3db8350fda5be4999";
+
+  useEffect(() => {
+    ReadMessages(CHATUID, setMessages);
+  }, []);
+  useEffect(() => {
+    if (messages) {
+      setMessages1(Object.entries(messages).map((e) => ({ [e[0]]: e[1] })));
+    }
+  }, [messages]);
+  useEffect(() => {
+    console.log(messages1);
+    const check = handleMessagesContent();
+    if (check) {
+      setExecuted(true);
+    }
+  }, [messages1]);
+  function sendMessage() {
+    if (msg != " " && msg != "" && msg != null && msg != undefined) {
+      if (event.keyCode == 13) {
+        SendMessages(CHATUID, msg, user.displayName);
+        console.log("Message Sent!!!");
+        setMsg("");
+      }
+    }
+  }
+  function handleMessagesContent() {
+    setMsgContent([]);
+    messages1.map((item) => {
+      const obj = item;
+      var data = Object.values(obj)[0];
+      console.log(data);
+      setMsgContent((old) => [...old, data]);
+    });
+    console.log(MsgContent);
+    return true;
+  }
+  function sendMessageByClick() {
+    if (msg != " " && msg != "" && msg != null && msg != undefined) {
+      sendMessage();
+    }
+  }
   function handleMsgChange(e) {
     setMsg(e.target.value);
   }
-  function renderMessage(msg) {
-    if (msg.User == 1) {
+
+  function renderMessage(m) {
+    const Sender = String(m.Sender);
+    const Res = user.displayName;
+    if (Sender == Res) {
       return (
         <motion.div
           initial={{ y: 100 }}
           animate={{ y: 0 }}
           className={styles.sentMessagesStack}
         >
-          <SentMessage Avatar={msg.Avatar} Content={msg.Content} />
+          <SentMessage Avatar={Avatar} Content={m.Message} />
         </motion.div>
       );
-    } else if (msg.User == 2) {
+    } else {
       return (
         <motion.div
           initial={{ y: 100 }}
           animate={{ y: 0 }}
           className={styles.recievedMessagesStack}
         >
-          <RecievedMessage Avatar={msg.Avatar} Content={msg.Content} />
+          <RecievedMessage Avatar={Avatar} Content={m.Message} />
         </motion.div>
       );
     }
   }
-  function sendMessage() {
-    if (msg != " " && msg != "" && msg != null && msg != undefined) {
-      if (event.keyCode == 13) {
-        //Pushes the input Message "msg" to state array MsgContent
-        setMsgContent((old) => [
-          ...old,
-          { Avatar: Avatar, Content: msg, User: 1 },
-        ]);
-        setMsg("");
-        console.log("Message Sent!!!");
-        autoReply();
-      }
-    }
-  }
-  function sendMessageByClick() {
-    if (msg != " " && msg != "" && msg != null && msg != undefined) {
-      console.log("Message Sent!!!");
-      //Pushes the input Message "msg" to state array MsgContent
-      setMsgContent((old) => [
-        ...old,
-        { Avatar: Avatar, Content: msg, User: 1 },
-      ]);
-      setMsg("");
-      autoReply();
-    }
-  }
-  function autoReply() {
-    if (msg == "hi") {
-      setTimeout(() => {
-        console.log("Message Recieved!!!");
-        //Pushes the input Message "msg" to state array MsgContent
-        setMsgContent((old) => [
-          ...old,
-          { Avatar: Avatar, Content: "hello", User: 2 },
-        ]);
-      }, 1000);
-    } else if (msg == "bye") {
-      setTimeout(() => {
-        console.log("Message Recieved!!!");
-        //Pushes the input Message "msg" to state array MsgContent
-        setMsgContent((old) => [
-          ...old,
-          { Avatar: Avatar, Content: "bye", User: 2 },
-        ]);
-      }, 1000);
-    } else {
-      setTimeout(() => {
-        console.log("Message Recieved!!!");
-        //Pushes the input Message "msg" to state array MsgContent
-        setMsgContent((old) => [
-          ...old,
-          { Avatar: Avatar, Content: "samjh nahi aya", User: 2 },
-        ]);
-      }, 1000);
-    }
+  function handleMsgKey() {
+    return uid(16);
   }
   return (
     <div className={styles.userChatContainer}>
@@ -101,15 +101,14 @@ export default function UserChat(props) {
         <div className={styles.userChatInfo}>
           <Image src={Avatar} width={50} height={50} />
           <div className={styles.userContentContainer}>
-            <h3>UserName</h3>
-            <p>last Seen: 15 mins ago</p>
+            {user ? <h3>{user.displayName}</h3> : ""}
           </div>
         </div>
       </div>
       <div className={styles.userChatMessagesContainer}>
         <div className={styles.chatMessagesStack}>
-          {MsgContent.map((msg) => (
-            <div key={msg.Content}>{renderMessage(msg)}</div>
+          {MsgContent.map((item) => (
+            <div key={handleMsgKey()}>{renderMessage(item)}</div>
           ))}
         </div>
       </div>
