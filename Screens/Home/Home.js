@@ -21,7 +21,8 @@ export default function Home({ navigation }) {
   const { setLoading } = useLoading();
   const [userData, setUserData] = useState("");
   const [contactList1, setContactList1] = useState([]);
-  var executed = false;
+  const [showContactList, setShowContactList] = useState([]);
+  const [executed, setExecuted] = useState(false);
   useEffect(() => {
     if (!user) {
       navigation.navigate("Login");
@@ -32,32 +33,33 @@ export default function Home({ navigation }) {
     if (user) {
       ReadContactList(user.displayName, setLoading, setUserData);
     }
-    if (userData && !executed) {
-      setContactList1(Object.entries(userData).map((e) => ({ [e[0]]: e[1] })));
-      console.log(contactList1);
-      executed = true;
-    }
   }, [user]);
+  useEffect(() => {
+    handleSetContactList();
+  }, [userData]);
 
-  function handleContactPress() {
+  function handleContactPress(UUID, name) {
     console.log("PRESSED");
     navigation.navigate("Chat");
   }
   function handleLogout() {
     logout();
   }
-  function handleStateShow() {
-    contactList1.map((item) => {
-      const obj = contactList1[0];
+  function handleSetContactList() {
+    console.log("Contact List : " + contactList1);
+    if (userData && !executed) {
+      setContactList1(Object.entries(userData).map((e) => ({ [e[0]]: e[1] })));
+      setExecuted(true);
+    }
+    var data;
+    for (let i = 0; i < contactList1.length; i++) {
+      const obj = contactList1[i];
       console.log(obj);
-      item = Object.values(item)[0];
-      console.log(item);
-      return (
-        <Pressable key={item.name} onPress={handleContactPress}>
-          <Contact userName={item.name} />
-        </Pressable>
-      );
-    });
+      var data = Object.values(obj)[0];
+      console.log(data);
+      setShowContactList((old) => [...old, data]);
+    }
+    console.log(showContactList);
   }
 
   return (
@@ -67,7 +69,7 @@ export default function Home({ navigation }) {
           <Text style={styles.appNameText}>Chytboat</Text>
         </View>
         <View style={styles.headerContentContainer}>
-          <Pressable onPress={handleStateShow}>
+          <Pressable onPress={handleSetContactList}>
             <View style={styles.userAvatar}>
               <Image source={require("./assets/avatar.png")} />
             </View>
@@ -96,9 +98,18 @@ export default function Home({ navigation }) {
           </View>
         </View>
         <View style={styles.contactListContainer}>
-          {executed ? handleStateShow : <View></View>}
-          {handleStateShow}
-          <Pressable onPress={handleContactPress}>
+          {executed ? (
+            showContactList.map((item) => {
+              return (
+                <Pressable key={item.UUID} onPress={handleContactPress}>
+                  <Contact userName={item.name} />
+                </Pressable>
+              );
+            })
+          ) : (
+            <View></View>
+          )}
+          {/* <Pressable onPress={handleContactPress}>
             <Contact userName="Munyyb" />
           </Pressable>
           <Pressable onPress={handleContactPress}>
@@ -109,7 +120,7 @@ export default function Home({ navigation }) {
           </Pressable>
           <Pressable onPress={handleContactPress}>
             <Contact userName="Moeen" />
-          </Pressable>
+          </Pressable> */}
         </View>
       </ScrollView>
     </View>
