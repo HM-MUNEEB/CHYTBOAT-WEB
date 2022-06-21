@@ -7,18 +7,27 @@ import {
   ScrollView,
 } from "react-native";
 import styles from "./Chat.style";
-import { useState, useRef } from "react";
+import { useState, useRef, useEffect } from "react";
 import Icon from "react-native-vector-icons/Ionicons";
 import IconE from "react-native-vector-icons/Entypo";
 import IconM from "react-native-vector-icons/MaterialCommunityIcons";
 import IconF from "react-native-vector-icons/Feather";
+import { useAuth } from "../../context/authContext/authContext";
+import { ReadMessages, SendMessages } from "../../FirebaseModules/Messages";
+import { uid } from "uid";
 
 export default function Chat({ navigation }) {
   const scrollViewRef = useRef();
   const [msg, setMsg] = useState("");
-  const [key, setKey] = useState("");
+  const { user } = useAuth();
   //1 is current user
   const [MsgContent, setMsgContent] = useState([]);
+  const [messages, setMessages] = useState(null);
+  const [messages1, setMessages1] = useState([]);
+  const [executed, setExecuted] = useState(false);
+
+  const CHATUID = "efe2aa9c24e28fe3db8350fda5be4999";
+
   function handleGoBackBtn() {
     console.log("PRESSED GOBACK!!");
     navigation.goBack();
@@ -27,90 +36,112 @@ export default function Chat({ navigation }) {
     setMsg(e);
     console.log(msg);
   }
+  useEffect(() => {
+    ReadMessages(CHATUID, setMessages);
+  }, []);
+  useEffect(() => {
+    if (messages) {
+      setMessages1(Object.entries(messages).map((e) => ({ [e[0]]: e[1] })));
+    }
+  }, [messages]);
+  useEffect(() => {
+    console.log(messages1);
+    const check = handleMessagesContent();
+    if (check) {
+      setExecuted(true);
+    }
+  }, [messages1]);
   function sendMessage() {
     if (msg != " " && msg != "" && msg != null && msg != undefined) {
-      //Pushes the input Message "msg" to state array MsgContent
-      setMsgContent((old) => [
-        ...old,
-        {
-          key: msg + Date.now() + "hi",
-          Avatar: "Defualt",
-          Content: msg,
-          User: 1,
-        },
-      ]);
-      setMsg("");
+      SendMessages(CHATUID, msg, user.displayName);
       console.log("Message Sent!!!");
-      console.log(MsgContent);
-      autoReply();
+      setMsg("");
     }
   }
-  function renderMessage(msg) {
-    if (msg.User == 1) {
+  function handleMessagesContent() {
+    setMsgContent([]);
+    messages1.map((item) => {
+      const obj = item;
+      var data = Object.values(obj)[0];
+      console.log(data);
+      setMsgContent((old) => [...old, data]);
+    });
+    console.log(MsgContent);
+    return true;
+  }
+  function renderMessage(m) {
+    console.log("USER: " + user.displayName);
+    console.log("USER 2: " + m.Sender);
+    const Sender = String(msg.Sender);
+    const Res = user.displayName;
+    if (Sender == Res) {
       return (
         <View style={styles.sentMessageContainer}>
           <View style={styles.sentMessageContentContainer}>
-            <Text style={styles.sentMessageText}>{msg.Content}</Text>
+            <Text style={styles.sentMessageText}>{m.Message}</Text>
           </View>
           <Image source={require("./assets/avatar.png")} />
         </View>
       );
-    } else if (msg.User == 2) {
+    } else if (msg.Sender != user.displayName) {
       return (
         <View style={styles.recievedMessageContainer}>
           <Image source={require("./assets/avatar.png")} />
           <View style={styles.messageContentContainer}>
-            <Text style={styles.recievedMessageText}>{msg.Content}</Text>
+            <Text style={styles.recievedMessageText}>{m.Message}</Text>
           </View>
         </View>
       );
     }
   }
-  function autoReply() {
-    if (msg == "hi") {
-      setTimeout(() => {
-        console.log("Message Recieved!!!");
-        //Pushes the input Message "msg" to state array MsgContent
-        setMsgContent((old) => [
-          ...old,
-          {
-            key: msg + Date.now() + "bye",
-            Avatar: "Defualt",
-            Content: "hello",
-            User: 2,
-          },
-        ]);
-      }, 1000);
-    } else if (msg == "bye") {
-      setTimeout(() => {
-        console.log("Message Recieved!!!");
-        //Pushes the input Message "msg" to state array MsgContent
-        setMsgContent((new1) => [
-          ...new1,
-          {
-            key: msg + Date.now() + "bye",
-            Avatar: "Defualt",
-            Content: "bye",
-            User: 2,
-          },
-        ]);
-      }, 1000);
-    } else {
-      setTimeout(() => {
-        console.log("Message Recieved!!!");
-        //Pushes the input Message "msg" to state array MsgContent
-        setMsgContent((old) => [
-          ...old,
-          {
-            key: msg + Date.now() + "bye",
-            Avatar: "Defualt",
-            Content: "Bye Bro",
-            User: 2,
-          },
-        ]);
-      }, 1000);
-    }
+  function handleMsgKey() {
+    return uid(16);
   }
+  // function autoReply() {
+  //   if (msg == "hi") {
+  //     setTimeout(() => {
+  //       console.log("Message Recieved!!!");
+  //       //Pushes the input Message "msg" to state array MsgContent
+  //       setMsgContent((old) => [
+  //         ...old,
+  //         {
+  //           key: msg + Date.now() + "bye",
+  //           Avatar: "Defualt",
+  //           Content: "hello",
+  //           User: 2,
+  //         },
+  //       ]);
+  //     }, 1000);
+  //   } else if (msg == "bye") {
+  //     setTimeout(() => {
+  //       console.log("Message Recieved!!!");
+  //       //Pushes the input Message "msg" to state array MsgContent
+  //       setMsgContent((new1) => [
+  //         ...new1,
+  //         {
+  //           key: msg + Date.now() + "bye",
+  //           Avatar: "Defualt",
+  //           Content: "bye",
+  //           User: 2,
+  //         },
+  //       ]);
+  //     }, 1000);
+  //   } else {
+  //     setTimeout(() => {
+  //       console.log("Message Recieved!!!");
+  //       //Pushes the input Message "msg" to state array MsgContent
+  //       setMsgContent((old) => [
+  //         ...old,
+  //         {
+  //           key: msg + Date.now() + "bye",
+  //           Avatar: "Defualt",
+  //           Content: "Bye Bro",
+  //           User: 2,
+  //         },
+  //       ]);
+  //     }, 1000);
+  //   }
+  // }
   return (
     <View style={styles.chat}>
       <View style={styles.chatHeader}>
@@ -128,8 +159,7 @@ export default function Chat({ navigation }) {
                 source={require("./assets/avatar.png")}
               />
               <View style={styles.userContent}>
-                <Text style={styles.userNameText}>Munyyb</Text>
-                <Text style={styles.lastActiveText}>5 mins ago</Text>
+                <Text style={styles.userNameText}>{user.displayName}</Text>
               </View>
             </View>
           </View>
@@ -144,9 +174,13 @@ export default function Chat({ navigation }) {
           scrollViewRef.current.scrollToEnd({ animated: true })
         }
       >
-        {MsgContent.map((msg) => (
-          <View key={msg.key + Date.now()}>{renderMessage(msg)}</View>
-        ))}
+        {executed ? (
+          MsgContent.map((item) => (
+            <View key={handleMsgKey()}>{renderMessage(item)}</View>
+          ))
+        ) : (
+          <View></View>
+        )}
       </ScrollView>
 
       <View style={styles.messageInputActionsContainer}>
