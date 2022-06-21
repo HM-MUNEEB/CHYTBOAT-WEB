@@ -60,7 +60,7 @@ export default function ContactList(props) {
       </div>
       <div className={styles.contactCardsStack}>
         <div>{}</div>
-        {/* {userData != "" ? (
+        {!props.executed ? (
           <div className={styles.noContactStack}>
             <h5 className={styles.noContactList}>
               You do not have any contacts, add contact from search bar and
@@ -69,22 +69,21 @@ export default function ContactList(props) {
           </div>
         ) : (
           <div className={styles.contactCards}>
-            {userData.map((item) => {
+            {props.showContactList.map((item) => {
               <div
                 className={styles.contactCardItem}
                 onClick={() => props.setChatActive(true)}
               >
                 <ContactCard
                   imageadd={Avatar}
-                  userName="username"
+                  userName={props.showContactList.name}
                   lastMsg="Hello world!"
                   msgDate="11:46"
                 />
-                <div>{item}</div>
               </div>;
             })}
           </div>
-        )} */}
+        )}
       </div>
     </div>
   );
