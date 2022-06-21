@@ -23,12 +23,9 @@ export default function ContactCard(props) {
             </div>
             <div className={styles.userNameLastMessage}>
               <h3>{userName}</h3>
-              <p>{lastMessage}</p>
             </div>
           </div>
-          <div className={styles.msgDateTime}>
-            <h3>{msgDate}</h3>
-          </div>
+          <div className={styles.msgDateTime}></div>
         </div>
       </div>
     </div>

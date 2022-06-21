@@ -44,6 +44,7 @@ export default function MainApp() {
     console.log("contact list: " + userData);
   }, [userData]);
   function handleSetContactList() {
+    setShowContactList([]);
     console.log("Contact List : " + contactList1);
     if (userData && !executed) {
       setContactList1(Object.entries(userData).map((e) => ({ [e[0]]: e[1] })));

@@ -9,6 +9,7 @@ import { BiRefresh } from "react-icons/bi";
 export default function ContactList(props) {
   const [searchContactList, setSearchContactList] = useState(false);
   const [contactList, setContactList] = useState(null);
+  console.log(props.showContactList);
   return (
     <div className={styles.contactListContainer}>
       <div className={styles.contactListContainerUpparArea}>
@@ -67,28 +68,25 @@ export default function ContactList(props) {
       </div>
       <div className={styles.contactCardsStack}>
         <div>{}</div>
-        {!props.executed ? (
-          <div className={styles.noContactStack}>
-            <h5 className={styles.noContactList}>
-              You do not have any contacts, add contact from search bar and
-              start chatting !!!
-            </h5>
-          </div>
-        ) : (
-          <div className={styles.contactCards}>
-            {props.showContactList.map((item) => {
+        {props.executed ? (
+          props.showContactList.map((item) => {
+            return (
               <div
                 className={styles.contactCardItem}
                 onClick={() => props.setChatActive(true)}
               >
-                <ContactCard
-                  imageadd={Avatar}
-                  userName={props.showContactList.name}
-                  lastMsg="Hello world!"
-                  msgDate="11:46"
-                />
-              </div>;
-            })}
+                <ContactCard imageadd={Avatar} userName={item.name} />
+              </div>
+            );
+          })
+        ) : (
+          <div className={styles.contactCards}>
+            <div className={styles.noContactStack}>
+              <h5 className={styles.noContactList}>
+                You do not have any contacts, add contact from search bar and
+                start chatting !!!
+              </h5>
+            </div>
           </div>
         )}
       </div>
