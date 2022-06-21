@@ -70,9 +70,7 @@ export default function Chat({ navigation }) {
     return true;
   }
   function renderMessage(m) {
-    console.log("USER: " + user.displayName);
-    console.log("USER 2: " + m.Sender);
-    const Sender = String(msg.Sender);
+    const Sender = String(m.Sender);
     const Res = user.displayName;
     if (Sender == Res) {
       return (
