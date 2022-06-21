@@ -4,6 +4,7 @@ import styles from "./ContactList.module.css";
 import Avatar from "./assets/avatar.png";
 import ContactCard from "./contactCard/ContactCard";
 import ThemeToggle from "../themeToggle/themeToggle";
+import { BiRefresh } from "react-icons/bi";
 
 export default function ContactList(props) {
   const [searchContactList, setSearchContactList] = useState(false);
@@ -20,6 +21,12 @@ export default function ContactList(props) {
             <h3>{props.userName}</h3>
           </div>
           <div className={styles.themeToggle}>
+            <div
+              className={styles.refeshIcon}
+              onClick={props.handleSetContactList}
+            >
+              <BiRefresh size={40} />
+            </div>
             <ThemeToggle size={40} />
           </div>
         </div>

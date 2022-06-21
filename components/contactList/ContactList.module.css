@@ -128,3 +128,10 @@
   font-size: 1rem;
   color: var(--FontColorMain);
 }
+.themeToggle {
+  display: flex;
+  flex-direction: row;
+}
+.refeshIcon {
+  cursor: pointer;
+}

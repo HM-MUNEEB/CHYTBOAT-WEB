@@ -89,6 +89,7 @@ export default function MainApp() {
             />
             {contactListActive ? (
               <ContactList
+                handleSetContactList={handleSetContactList}
                 executed={executed}
                 userName={userInfo.userName}
                 setChatActive={setChatActive}
