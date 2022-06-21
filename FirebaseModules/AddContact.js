@@ -13,7 +13,13 @@ export function AddContact(currentUserName, targetUserName, setLoading) {
     set(locUserRef, {
       name: currentUserName,
       UUID,
-    });
+    }).then(
+      console.log(
+        "USER ADDED AT: " + "users/" + targetUserName + "/data/friends"
+      )
+    );
+
+    console.log(currentUserName + " : " + UUID);
     taskCompleted++;
     if (taskCompleted == 2) {
       setLoading(false);
@@ -27,7 +33,13 @@ export function AddContact(currentUserName, targetUserName, setLoading) {
     set(locUserRef1, {
       name: targetUserName,
       UUID,
-    });
+    }).then(
+      console.log(
+        "USER ADDED AT: " + "users/" + targetUserName + "/data/friends"
+      )
+    );
+
+    console.log(currentUserName + " : " + UUID);
     taskCompleted++;
     if (taskCompleted == 2) {
       setLoading(false);
@@ -43,6 +55,7 @@ function chatStack(UUID) {
     set(ref(dbRT, "chatStack/" + UUID), {
       channelCreatedOn: Timestamp.fromDate(new Date()),
     });
+    console.log("CHANNEL CREATED AT: " + UUID);
   } catch (e) {
     console.log("Error Adding ChatStack to realtime DB:  ", e);
   }
