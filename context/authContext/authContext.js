@@ -104,7 +104,6 @@ export const AuthContextProvider = ({ children }) => {
         // Sign-out successful.
         setUser(null);
         //console.log(user);
-        router.push("/");
       })
       .catch((error) => {
         // An error happened.
