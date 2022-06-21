@@ -94,6 +94,16 @@ export default StyleSheet.create({
     flexDirection: "row",
     alignItems: "center",
   },
+  pressStyleSignFalse: {
+    width: 280,
+    height: 45,
+    borderRadius: 3,
+    backgroundColor: "rgba(196, 196, 196, 0.2)",
+    justifyContent: "center",
+    display: "flex",
+    flexDirection: "row",
+    alignItems: "center",
+  },
   pressStyleReg: {
     width: 280,
     height: 45,

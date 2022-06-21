@@ -10,7 +10,7 @@ export const useLoading = () => useContext(LoadingContext);
 
 export const LoadingContextProvider = ({ children }) => {
   const [loading, setLoading] = useState(false);
-  const [btnClickProcessing, setBtnClickProcessing] = useState();
+  const [btnClickProcessing, setBtnClickProcessing] = useState(false);
 
   return (
     <LoadingContext.Provider

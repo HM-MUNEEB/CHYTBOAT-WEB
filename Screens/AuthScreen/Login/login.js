@@ -11,9 +11,11 @@ import {
 import React, { useState, useEffect } from "react";
 import styles from "./login.style";
 import { useAuth } from "../../../context/authContext/authContext";
+import { useLoading } from "../../../context/loadingContext/loadingContext";
 
 const LoginModule = ({ navigation }) => {
   const { login, user } = useAuth();
+  const { btnClickProcessing } = useLoading();
   const [email, setEmail] = useState();
   const [password, setPassword] = useState();
   useEffect(() => {
@@ -79,7 +81,14 @@ const LoginModule = ({ navigation }) => {
               onChangeText={(e) => setPassword(e)}
             />
           </View>
-          <Pressable style={styles.pressStyleSign} onPress={handleLogin}>
+          <Pressable
+            style={
+              !btnClickProcessing
+                ? styles.pressStyleSign
+                : styles.pressStyleSignFalse
+            }
+            onPress={handleLogin}
+          >
             <Text style={styles.pressStyleText}>Sign In</Text>
           </Pressable>
         </View>
