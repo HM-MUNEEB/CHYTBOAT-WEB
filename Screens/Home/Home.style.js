@@ -64,6 +64,6 @@ export default StyleSheet.create({
     height: "100%",
     paddingHorizontal: "5%",
     paddingTop: 20,
-    marginBottom: 70,
+    marginBottom: 20,
   },
 });

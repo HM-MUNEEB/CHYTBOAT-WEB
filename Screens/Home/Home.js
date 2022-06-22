@@ -8,7 +8,7 @@ import {
   StyleSheet,
 } from "react-native";
 import react, { useState, useEffect } from "react";
-import Icon from "react-native-vector-icons/Ionicons";
+import Icon from "react-native-vector-icons/FontAwesome";
 import IconE from "react-native-vector-icons/AntDesign";
 import { StatusBar } from "expo-status-bar";
 import styles from "./Home.style";
@@ -16,6 +16,7 @@ import Contact from "../../Components/Contact/Contact";
 import { useAuth } from "../../context/authContext/authContext";
 import { ReadContactList } from "../../FirebaseModules/ReadContactList";
 import { useLoading } from "../../context/loadingContext/loadingContext";
+import { uid } from "uid";
 export default function Home({ navigation }) {
   const { user, logout } = useAuth();
   const { setLoading } = useLoading();
@@ -46,6 +47,7 @@ export default function Home({ navigation }) {
     logout();
   }
   function handleSetContactList() {
+    setShowContactList([]);
     console.log("Contact List : " + contactList1);
     if (userData && !executed) {
       setContactList1(Object.entries(userData).map((e) => ({ [e[0]]: e[1] })));
@@ -61,6 +63,9 @@ export default function Home({ navigation }) {
     }
     console.log(showContactList);
   }
+  function handleKey() {
+    return uid(16);
+  }
 
   return (
     <View style={styles.home}>
@@ -70,8 +75,8 @@ export default function Home({ navigation }) {
         </View>
         <View style={styles.headerContentContainer}>
           <Pressable onPress={handleSetContactList}>
-            <View style={styles.userAvatar}>
-              <Image source={require("./assets/avatar.png")} />
+            <View style={styles.searchIcon}>
+              <Icon name="refresh" size={25} color="white" />
             </View>
           </Pressable>
           <Pressable onPress={handleLogout}>
@@ -101,7 +106,7 @@ export default function Home({ navigation }) {
           {executed ? (
             showContactList.map((item) => {
               return (
-                <Pressable key={item.UUID} onPress={handleContactPress}>
+                <Pressable key={handleKey()} onPress={handleContactPress}>
                   <Contact userName={item.name} />
                 </Pressable>
               );
