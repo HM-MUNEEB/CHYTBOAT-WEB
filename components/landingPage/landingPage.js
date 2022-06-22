@@ -512,23 +512,18 @@ export default function LandingPage() {
                     : styles.AboutUnderlineDark
                 }
               >
-                About App
+                About ChytBoat
               </span>
             </h2>
           </div>
           <div className={styles.AboutText}>
             <p>
-              Lorem, ipsum dolor sit amet consectetur adipisicing elit. Nulla,
-              error, aperiam accusamus perferendis harum iste perspiciatis
-              officiis hic inventore enim rerum ratione quod, pariatur nostrum.
-              Minima nam quam sint nobis. Lorem ipsum dolor, sit amet
-              consectetur adipisicing elit. Nam voluptas accusantium velit
-              dolorem dignissimos necessitatibus? Quam facere incidunt sequi
-              exercitationem enim, doloremque sapiente provident aperiam atque
-              reprehenderit, in unde repellendus! Lorem ipsum, dolor sit amet
-              consectetur adipisicing elit. Saepe, quam? Voluptatum magni odit
-              pariatur ad explicabo nostrum dolor porro a dolore! Debitis,
-              quidem repellendus odio possimus eius nesciunt esse tenetur.
+              Welcome to the ChytBoat, a system where you can interact with your
+              friends and family, securely. At ChytBoat we care about your
+              privacy and your useability. It matters to us that, no matter then
+              extra on second, the interaction should be secure. It is our
+              pleasure that you have choosen chytboat for your daily messaging
+              tools. We hope to bring you the best services possible!
             </p>
           </div>
         </div>

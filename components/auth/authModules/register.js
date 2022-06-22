@@ -10,7 +10,12 @@ import { useLoading } from "../../../context/loadingContext/loadingContext";
 export default function Register(props) {
   const { user, signup } = useAuth();
   const { btnClickProcessing } = useLoading();
-  c;
+  const [registrationUserData, setRegistrationUserData] = useState({
+    name: "",
+    userName: "",
+    email: "",
+    password: "",
+  });
   const handleRegistration = (e) => {
     e.preventDefault();
     //console.log(registrationUserData);
