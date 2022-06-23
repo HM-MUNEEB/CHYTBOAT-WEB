@@ -1,27 +1,64 @@
-import React from "react";
+import React, { useState } from "react";
 import styles from "../authentication.module.css";
 import Head from "next/head";
-import Link from "next/link";
-import { useState } from "react";
 import { useAuth } from "../../../context/authContext/authContext";
-import { async } from "@firebase/util";
 import { useLoading } from "../../../context/loadingContext/loadingContext";
+import { RegistrationValidation } from "../../../Validations/FormValidations";
+import ErrorValidator from "../../ErrorValidator/ErrorValidator";
 
 export default function Register(props) {
   const { user, signup } = useAuth();
+  const [error, setError] = useState(null);
   const { btnClickProcessing } = useLoading();
   const [registrationUserData, setRegistrationUserData] = useState({
     name: "",
     userName: "",
     email: "",
     password: "",
+    address: "",
+    dob: "",
+    phone: "",
+    confirm: "",
   });
   const handleRegistration = (e) => {
     e.preventDefault();
-    //console.log(registrationUserData);
-    const signupReturn = signup(registrationUserData);
-    if (signupReturn) {
-      props.signIn(true);
+    const check = RegistrationValidation(
+      registrationUserData.email,
+      registrationUserData.password,
+      registrationUserData.userName,
+      registrationUserData.phone
+    );
+    if (registrationUserData.password != registrationUserData.confirm) {
+      setError("Please confirm the same password!");
+      setRegistrationUserData({ ...registrationUserData, confirm: "" });
+    } else if (!check.pass) {
+      setRegistrationUserData({
+        ...registrationUserData,
+        password: "",
+        confirm: "",
+      });
+      setError(
+        "Password is not Valid! Please use combination of atleast 8 characters, one UpperCase & one symbol"
+      );
+    }
+    if (check.email && check.pass && check.userName && check.phone) {
+      setError(null);
+      console.log(registrationUserData);
+      const signupReturn = signup(registrationUserData);
+      if (signupReturn) {
+        props.signIn(true);
+      }
+    } else {
+      if (!check.email) {
+        setRegistrationUserData({ ...registrationUserData, email: "" });
+        setError("Email is not Valid! Please use Correct structure of Email.");
+      } else if (!check.userName) {
+        setRegistrationUserData({ ...registrationUserData, userName: "" });
+        setError("UserName must be unique and atleast 6 characters long!");
+      } else if (!check.phone) {
+        setRegistrationUserData({ ...registrationUserData, phone: "" });
+        setError("Invalid Phone Number");
+      }
     }
   };
   function handleRegistrationName(e) {
@@ -36,10 +73,34 @@ export default function Register(props) {
       userName: e.target.value,
     });
   }
+  function handleRegistrationPhone(e) {
+    setRegistrationUserData({
+      ...registrationUserData,
+      phone: e.target.value,
+    });
+  }
+  function handleRegistrationDOB(e) {
+    setRegistrationUserData({
+      ...registrationUserData,
+      dob: e.target.value,
+    });
+  }
+  function handleRegistrationAddress(e) {
+    setRegistrationUserData({
+      ...registrationUserData,
+      address: e.target.value,
+    });
+  }
   function handleRegistrationPassword(e) {
     setRegistrationUserData({
       ...registrationUserData,
       password: e.target.value,
+    });
+  }
+  function handleRegistrationConfirmPassword(e) {
+    setRegistrationUserData({
+      ...registrationUserData,
+      confirm: e.target.value,
     });
   }
   return (
@@ -67,6 +128,7 @@ export default function Register(props) {
             placeholder="Enter your name"
             autoComplete="off"
             onChange={handleRegistrationName}
+            value={registrationUserData.name}
           />
         </div>
         <div className={styles.Block}>
@@ -81,6 +143,52 @@ export default function Register(props) {
             placeholder="Enter your email address"
             autoComplete="off"
             onChange={handleRegistrationEmail}
+            value={registrationUserData.email}
+          />
+        </div>
+        <div className={styles.Block}>
+          <label className={styles.labelField} htmlFor="Phone Number">
+            Phone Number
+          </label>
+          <br />
+          <input
+            className={styles.inputField}
+            type="phone number"
+            name="phone number"
+            placeholder="Enter your Phone Number"
+            autoComplete="off"
+            onChange={handleRegistrationPhone}
+            value={registrationUserData.phone}
+          />
+        </div>
+        <div className={styles.Block}>
+          <label className={styles.labelField} htmlFor="DOB">
+            DOB
+          </label>
+          <br />
+          <input
+            className={styles.inputField}
+            type="text"
+            name="dob"
+            placeholder="Enter your Date of birth"
+            autoComplete="off"
+            onChange={handleRegistrationDOB}
+            value={registrationUserData.dob}
+          />
+        </div>
+        <div className={styles.Block}>
+          <label className={styles.labelField} htmlFor="address">
+            Address
+          </label>
+          <br />
+          <input
+            className={styles.inputField}
+            type="text"
+            name="address"
+            placeholder="Enter your Address"
+            autoComplete="off"
+            onChange={handleRegistrationAddress}
+            value={registrationUserData.address}
           />
         </div>
         <div className={styles.Block}>
@@ -95,6 +203,7 @@ export default function Register(props) {
             placeholder="only alphanumeric allowed [a-z, A-Z, 0-9]"
             autoComplete="off"
             onChange={handleRegistrationUserName}
+            value={registrationUserData.userName}
           />
           <p className={styles.Description}>
             Once set, username cannot be changed
@@ -111,6 +220,21 @@ export default function Register(props) {
             name="password"
             placeholder="Enter your password"
             onChange={handleRegistrationPassword}
+            value={registrationUserData.password}
+          />
+        </div>
+        <div className={styles.Block}>
+          <label className={styles.labelField} htmlFor="password">
+            Confirm Password
+          </label>
+          <br />
+          <input
+            className={styles.inputField}
+            type="password"
+            name="password"
+            placeholder="Confirm your password"
+            onChange={handleRegistrationConfirmPassword}
+            value={registrationUserData.confirm}
           />
         </div>
         <p className={styles.registerDescription}>
@@ -126,6 +250,9 @@ export default function Register(props) {
           Register
         </button>
       </form>
+      <div className={styles.errorLog}>
+        {error ? <ErrorValidator error={error} setError={setError} /> : ""}
+      </div>
     </div>
   );
 }

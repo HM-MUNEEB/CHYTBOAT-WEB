@@ -20,7 +20,8 @@
     "react-icons": "^4.4.0",
     "react-toggle-dark-mode": "^1.0.4",
     "sharp": "^0.30.3",
-    "uid": "^2.0.0"
+    "uid": "^2.0.0",
+    "validator": "^13.7.0"
   },
   "devDependencies": {
     "eslint": "8.11.0",

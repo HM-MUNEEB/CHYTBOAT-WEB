@@ -12,6 +12,9 @@ export async function userInitialization(data) {
       avatar: "defualt",
       userCreated: Timestamp.fromDate(new Date()),
       friends: [],
+      address: data.address,
+      phone: data.phone,
+      dob: data.dob,
     });
     initialUserData(data);
     console.log("Document written with ID: ", docRef.id);
