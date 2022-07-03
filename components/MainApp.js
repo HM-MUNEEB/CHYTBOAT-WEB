@@ -14,7 +14,7 @@ import { GetCurrentUserInfo } from "../FirebaseModules/GetCurrentUserInfo.js";
 import { ReadContactList } from "../FirebaseModules/ReadContactList.js";
 
 export default function MainApp() {
-  const { user } = useAuth();
+  const { user, logout } = useAuth();
   const { loading, setLoading } = useLoading();
   const [search, setSearch] = useState(false);
   const [contactListActive, setContactListActive] = useState(true);
@@ -60,6 +60,10 @@ export default function MainApp() {
     }
     console.log(showContactList);
   }
+  setTimeout(() => {
+    setLoading(false);
+    logout();
+  }, 15000);
   return (
     <div>
       <Head>
