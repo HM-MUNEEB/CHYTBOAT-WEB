@@ -15,6 +15,8 @@ export async function userInitialization(data) {
       address: data.address,
       phone: data.phone,
       dob: data.dob,
+      cnic: data.cnic,
+      socialMedia: data.socialMedia,
     });
     initialUserData(data);
     console.log("Document written with ID: ", docRef.id);

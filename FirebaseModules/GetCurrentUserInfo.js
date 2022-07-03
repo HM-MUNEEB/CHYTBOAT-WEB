@@ -1,6 +1,8 @@
 import { doc, getDoc } from "firebase/firestore";
 import { db } from "../Config/firebase.js";
 
+//change chytboat_register to users_info
+
 export async function GetCurrentUserInfo(user, setLoading, setUserInfo) {
   const docRef = doc(db, "users_info/" + user);
   const docSnap = await getDoc(docRef);

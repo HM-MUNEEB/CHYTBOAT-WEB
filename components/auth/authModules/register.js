@@ -15,9 +15,6 @@ export default function Register(props) {
     userName: "",
     email: "",
     password: "",
-    address: "",
-    dob: "",
-    phone: "",
     confirm: "",
   });
   const handleRegistration = (e) => {
@@ -25,13 +22,13 @@ export default function Register(props) {
     const check = RegistrationValidation(
       registrationUserData.email,
       registrationUserData.password,
-      registrationUserData.userName,
-      registrationUserData.phone
+      registrationUserData.userName
     );
     if (registrationUserData.password != registrationUserData.confirm) {
       setError("Please confirm the same password!");
       setRegistrationUserData({ ...registrationUserData, confirm: "" });
-    } else if (!check.pass) {
+    }
+    if (!check.pass) {
       setRegistrationUserData({
         ...registrationUserData,
         password: "",
@@ -41,7 +38,7 @@ export default function Register(props) {
         "Password is not Valid! Please use combination of atleast 8 characters, one UpperCase & one symbol"
       );
     }
-    if (check.email && check.pass && check.userName && check.phone) {
+    if (check.email && check.pass && check.userName) {
       setError(null);
       console.log(registrationUserData);
       const signupReturn = signup(registrationUserData);
@@ -55,9 +52,6 @@ export default function Register(props) {
       } else if (!check.userName) {
         setRegistrationUserData({ ...registrationUserData, userName: "" });
         setError("UserName must be unique and atleast 6 characters long!");
-      } else if (!check.phone) {
-        setRegistrationUserData({ ...registrationUserData, phone: "" });
-        setError("Invalid Phone Number");
       }
     }
   };
@@ -71,24 +65,6 @@ export default function Register(props) {
     setRegistrationUserData({
       ...registrationUserData,
       userName: e.target.value,
-    });
-  }
-  function handleRegistrationPhone(e) {
-    setRegistrationUserData({
-      ...registrationUserData,
-      phone: e.target.value,
-    });
-  }
-  function handleRegistrationDOB(e) {
-    setRegistrationUserData({
-      ...registrationUserData,
-      dob: e.target.value,
-    });
-  }
-  function handleRegistrationAddress(e) {
-    setRegistrationUserData({
-      ...registrationUserData,
-      address: e.target.value,
     });
   }
   function handleRegistrationPassword(e) {
@@ -144,51 +120,6 @@ export default function Register(props) {
             autoComplete="off"
             onChange={handleRegistrationEmail}
             value={registrationUserData.email}
-          />
-        </div>
-        <div className={styles.Block}>
-          <label className={styles.labelField} htmlFor="Phone Number">
-            Phone Number
-          </label>
-          <br />
-          <input
-            className={styles.inputField}
-            type="phone number"
-            name="phone number"
-            placeholder="Enter your Phone Number"
-            autoComplete="off"
-            onChange={handleRegistrationPhone}
-            value={registrationUserData.phone}
-          />
-        </div>
-        <div className={styles.Block}>
-          <label className={styles.labelField} htmlFor="DOB">
-            DOB
-          </label>
-          <br />
-          <input
-            className={styles.inputField}
-            type="text"
-            name="dob"
-            placeholder="Enter your Date of birth"
-            autoComplete="off"
-            onChange={handleRegistrationDOB}
-            value={registrationUserData.dob}
-          />
-        </div>
-        <div className={styles.Block}>
-          <label className={styles.labelField} htmlFor="address">
-            Address
-          </label>
-          <br />
-          <input
-            className={styles.inputField}
-            type="text"
-            name="address"
-            placeholder="Enter your Address"
-            autoComplete="off"
-            onChange={handleRegistrationAddress}
-            value={registrationUserData.address}
           />
         </div>
         <div className={styles.Block}>

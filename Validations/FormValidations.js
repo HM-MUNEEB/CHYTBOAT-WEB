@@ -24,10 +24,9 @@ export function LoginValidation(email, password) {
 
   return valid;
 }
-export function RegistrationValidation(email, password, userName, phone) {
+export function RegistrationValidation(email, password, userName) {
   var emailValid = null;
   var passValid = null;
-  var phoneValid = null;
   var userNameValid = null;
 
   if (validator.isEmail(email)) {
@@ -46,17 +45,10 @@ export function RegistrationValidation(email, password, userName, phone) {
   } else {
     userNameValid = false;
   }
-  if (phone.length == 11) {
-    phoneValid = true;
-  } else {
-    phoneValid = false;
-  }
-
   const valid = {
     email: emailValid,
     pass: passValid,
     userName: userNameValid,
-    phone: phoneValid,
   };
 
   console.log(valid);
