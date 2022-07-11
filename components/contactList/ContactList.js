@@ -26,12 +26,6 @@ export default function ContactList(props) {
             <h3>{props.userName}</h3>
           </div>
           <div className={styles.themeToggle}>
-            <div
-              className={styles.refeshIcon}
-              onClick={props.handleSetContactList}
-            >
-              <BiRefresh size={40} />
-            </div>
             <ThemeToggle size={40} />
           </div>
         </div>
