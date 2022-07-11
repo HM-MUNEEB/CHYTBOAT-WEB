@@ -1,6 +1,6 @@
 import styles from "./ContactCard.module.css";
 import Image from "next/image";
-import { useDebugValue } from "react";
+import { motion } from "framer-motion";
 
 export default function ContactCard(props) {
   let image = props.imageadd;
@@ -17,7 +17,13 @@ export default function ContactCard(props) {
         <div className={styles.contactMessageInfo}>
           <div className={styles.contactContentInfo}>
             {props.chatUser.name == userName ? (
-              <div className={styles.activeContactCard}></div>
+              <motion.div
+                initial={{ opacity: 0 }}
+                whileInView={{ opacity: 1 }}
+                transition={{ duration: 0.5 }}
+                viewport={{ once: true }}
+                className={styles.activeContactCard}
+              ></motion.div>
             ) : (
               ""
             )}
