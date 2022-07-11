@@ -17,12 +17,14 @@ export default function UserChat(props) {
   const [messages, setMessages] = useState(null);
   const [messages1, setMessages1] = useState([]);
   const [executed, setExecuted] = useState(false);
+  const [CHATUID, setCHATUID] = useState(props.chatUser.UUID);
 
   useEffect(() => {
-    ReadMessages(props.chatUser.UUID, setMessages);
+    ReadMessages(CHATUID, setMessages);
   }, []);
   useEffect(() => {
     setMsgContent([]);
+    setCHATUID(props.chatUser.UUID);
     console.log("\n----------------!!! CHANNEL CHANGED !!!----------------\n");
     ReadMessages(props.chatUser.UUID, setMessages);
   }, [props.chatUser.UUID]);
