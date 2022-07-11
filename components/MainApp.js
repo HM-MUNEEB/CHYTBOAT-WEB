@@ -14,7 +14,7 @@ import { GetCurrentUserInfo } from "../FirebaseModules/GetCurrentUserInfo.js";
 import { ReadContactList } from "../FirebaseModules/ReadContactList.js";
 
 export default function MainApp() {
-  const { user, logout } = useAuth();
+  const { user } = useAuth();
   const { loading, setLoading } = useLoading();
   const [search, setSearch] = useState(false);
   const [contactListActive, setContactListActive] = useState(true);
@@ -40,8 +40,10 @@ export default function MainApp() {
     setLoading(true);
   }, []);
   useEffect(() => {
-    handleSetContactList();
-    console.log("contact list: " + userData);
+    if (userData != "") {
+      handleSetContactList();
+      console.log("contact list initial: " + userData);
+    }
   }, [userData]);
   function handleSetContactList() {
     setShowContactList([]);
@@ -60,10 +62,6 @@ export default function MainApp() {
     }
     console.log(showContactList);
   }
-  setTimeout(() => {
-    setLoading(false);
-    logout();
-  }, 15000);
   return (
     <div>
       <Head>

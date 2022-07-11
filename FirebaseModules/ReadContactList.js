@@ -3,10 +3,11 @@ import { dbRT } from "../Config/firebase";
 
 export function ReadContactList(user, setLoading, setUserData) {
   try {
-    const starCountRef = ref(dbRT, "users_info/" + user + "/data/friends");
+    const starCountRef = ref(dbRT, "users/" + user + "/data/friends");
     onValue(starCountRef, (snapshot) => {
       const data = snapshot.val();
-      console.log("Contact List (1): " + snapshot.val());
+      console.log("Contact List FN Module: ");
+      console.log(snapshot.val());
       setUserData(data);
     });
   } catch (e) {
