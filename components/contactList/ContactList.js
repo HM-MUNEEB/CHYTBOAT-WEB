@@ -73,11 +73,14 @@ export default function ContactList(props) {
                 key={handleKey()}
                 className={styles.contactCardItem}
                 onClick={() => {
-                  props.setChatActive(true);
                   props.setChatUser(item);
                 }}
               >
-                <ContactCard imageadd={Avatar} userName={item.name} />
+                <ContactCard
+                  chatUser={props.chatUser}
+                  imageadd={Avatar}
+                  userName={item.name}
+                />
               </div>
             );
           })

@@ -19,7 +19,6 @@ export default function MainApp() {
   const [search, setSearch] = useState(false);
   const [contactListActive, setContactListActive] = useState(true);
   const [archiveActive, setArchiveActive] = useState(false);
-  const [chatActive, setChatActive] = useState(false);
   const [chatDetails, setChatDetails] = useState(false);
   const [userData, setUserData] = useState("");
   const [userInfo, setUserInfo] = useState({
@@ -28,7 +27,7 @@ export default function MainApp() {
   const [contactList1, setContactList1] = useState([]);
   const [showContactList, setShowContactList] = useState([]);
   const [executed, setExecuted] = useState(false);
-  const [chatUser, setChatUser] = useState(null); // Global Chat user
+  const [chatUser, setChatUser] = useState(""); // Global Chat user
 
   //Gets contactlist when user object retrieval becomes sucessfull
   useEffect(() => {
@@ -109,7 +108,6 @@ export default function MainApp() {
                 handleSetContactList={handleSetContactList}
                 executed={executed}
                 userName={userInfo.userName}
-                setChatActive={setChatActive}
                 showContactList={showContactList}
               />
             ) : (
@@ -119,7 +117,6 @@ export default function MainApp() {
           <div className={styles.appConsoleFlexChatStack}>
             <Chat
               chatUser={chatUser}
-              chatActive={chatActive}
               chatDetails={chatDetails}
               setChatDetails={setChatDetails}
             />

@@ -6,7 +6,7 @@ import UserChat from "./userChat/userChat";
 export default function Chat(props) {
   return (
     <div className={styles.chatMessagesModuleContainer}>
-      {!props.chatActive ? (
+      {props.chatUser == "" ? (
         <div className={styles.chatUserNotSelected}>
           <div className={styles.chatUserNotSelectedInnerContainer}>
             <Image src={ChatImage} width={350} height={350} />
