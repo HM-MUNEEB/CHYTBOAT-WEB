@@ -9,7 +9,7 @@ import { uid } from "uid";
 
 export default function ContactList(props) {
   const [searchContactList, setSearchContactList] = useState(false);
-  const [contactList, setContactList] = useState(null);
+  console.log("NESTED:");
   console.log(props.showContactList);
   function handleKey() {
     return uid(16);
@@ -72,7 +72,7 @@ export default function ContactList(props) {
       </div>
       <div className={styles.contactCardsStack}>
         <div>{}</div>
-        {props.executed ? (
+        {props.showContactList ? (
           props.showContactList.map((item) => {
             return (
               <div

@@ -40,18 +40,20 @@ export default function MainApp() {
     setLoading(true);
   }, []);
   useEffect(() => {
-    if (userData != "") {
-      handleSetContactList();
-      console.log("contact list initial: " + userData);
-    }
-  }, [userData]);
-  function handleSetContactList() {
-    setShowContactList([]);
-    console.log("Contact List : " + contactList1);
     if (userData && !executed) {
       setContactList1(Object.entries(userData).map((e) => ({ [e[0]]: e[1] })));
+    }
+  }, [userData]);
+  useEffect(() => {
+    console.log("Contact List 1: ");
+    console.log(contactList1);
+    const check = handleSetContactList();
+    if (check) {
       setExecuted(true);
     }
+  }, [contactList1]);
+  function handleSetContactList() {
+    setShowContactList([]);
     var data;
     for (let i = 0; i < contactList1.length; i++) {
       const obj = contactList1[i];
@@ -60,6 +62,7 @@ export default function MainApp() {
       console.log(data);
       setShowContactList((old) => [...old, data]);
     }
+    console.log("FINAL:");
     console.log(showContactList);
   }
   return (
