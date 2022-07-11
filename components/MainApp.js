@@ -16,17 +16,17 @@ import { ReadContactList } from "../FirebaseModules/ReadContactList.js";
 export default function MainApp() {
   const { user } = useAuth();
   const { loading, setLoading } = useLoading();
-  const [search, setSearch] = useState(false);
+  const [search, setSearch] = useState(false); //Check when to show Seach Module
   const [contactListActive, setContactListActive] = useState(true);
-  const [archiveActive, setArchiveActive] = useState(false);
-  const [chatDetails, setChatDetails] = useState(false);
-  const [userData, setUserData] = useState("");
+  const [archiveActive, setArchiveActive] = useState(false); //Check when to show archive Module (no implemented as of right now)
+  const [chatDetails, setChatDetails] = useState(false); //Check when to show chat details in chat Module
+  const [userData, setUserData] = useState(""); //Initial Data Retrieval from ReadContactList FB Module
   const [userInfo, setUserInfo] = useState({
     userName: "",
-  });
-  const [contactList1, setContactList1] = useState([]);
-  const [showContactList, setShowContactList] = useState([]);
-  const [executed, setExecuted] = useState(false);
+  }); //Initial Data Retrieval from GetCurrentUserInfio FB Module
+  const [contactList1, setContactList1] = useState([]); // Initial Formatting of userData
+  const [showContactList, setShowContactList] = useState([]); // Final Formated useable ContactList Data
+  const [executed, setExecuted] = useState(false); // Checks if the formated have been done or not
   const [chatUser, setChatUser] = useState(""); // Global Chat user
 
   //Gets contactlist when user object retrieval becomes sucessfull
