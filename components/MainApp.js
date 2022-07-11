@@ -29,6 +29,8 @@ export default function MainApp() {
   const [showContactList, setShowContactList] = useState([]);
   const [executed, setExecuted] = useState(false);
   const [chatUser, setChatUser] = useState(null);
+
+  //Gets contactlist when user object retrieval becomes sucessfull
   useEffect(() => {
     console.log("Main app user: ", user);
     if (user) {
@@ -36,14 +38,20 @@ export default function MainApp() {
       ReadContactList(user.displayName, setLoading, setUserData);
     }
   }, [user]);
+
+  //Sets Loading to true on Component Mount
   useEffect(() => {
     setLoading(true);
   }, []);
+
+  //When contactlist changes, following formats object of objects to numerable array
   useEffect(() => {
     if (userData && !executed) {
       setContactList1(Object.entries(userData).map((e) => ({ [e[0]]: e[1] })));
     }
   }, [userData]);
+
+  //When contactlist becomes numerable array, following formats nested objects in numerable array of objects form
   useEffect(() => {
     console.log("Contact List 1: ");
     console.log(contactList1);
@@ -52,6 +60,7 @@ export default function MainApp() {
       setExecuted(true);
     }
   }, [contactList1]);
+
   function handleSetContactList() {
     setShowContactList([]);
     var data;
