@@ -28,20 +28,29 @@ export default function MainApp() {
   const [showContactList, setShowContactList] = useState([]); // Final Formated useable ContactList Data
   const [executed, setExecuted] = useState(false); // Checks if the formated have been done or not
   const [chatUser, setChatUser] = useState(""); // Global Chat user
-
-  //Gets contactlist when user object retrieval becomes sucessfull
-  useEffect(() => {
-    console.log("Main app user: ", user);
-    if (user) {
-      GetCurrentUserInfo(user.displayName, setLoading, setUserInfo);
-      ReadContactList(user.displayName, setLoading, setUserData);
-    }
-  }, [user]);
+  const [userInfoCheck, setUserInfoCheck] = useState(false);
+  const [userDataCheck, setUserDataCheck] = useState(false);
 
   //Sets Loading to true on Component Mount
   useEffect(() => {
     setLoading(true);
   }, []);
+
+  //Gets contactlist when user object retrieval becomes sucessfull
+  useEffect(() => {
+    console.log("Main app user: ", user);
+    if (user) {
+      GetCurrentUserInfo(user.displayName, setUserInfoCheck, setUserInfo);
+      ReadContactList(user.displayName, setUserDataCheck, setUserData);
+    }
+  }, [user]);
+
+  //When & if userInfoCheck & userDataCheck becomes trues the loading vanishes
+  useEffect(() => {
+    if (userDataCheck && userInfoCheck) {
+      setLoading(false);
+    }
+  }, [userDataCheck, userInfoCheck]);
 
   //When contactlist changes, following formats object of objects to numerable array
   useEffect(() => {
