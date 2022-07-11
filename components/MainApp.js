@@ -28,7 +28,7 @@ export default function MainApp() {
   const [contactList1, setContactList1] = useState([]);
   const [showContactList, setShowContactList] = useState([]);
   const [executed, setExecuted] = useState(false);
-  const [chatUser, setChatUser] = useState(null);
+  const [chatUser, setChatUser] = useState(null); // Global Chat user
 
   //Gets contactlist when user object retrieval becomes sucessfull
   useEffect(() => {
