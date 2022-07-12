@@ -28,7 +28,7 @@ export default function MainApp() {
   const [showContactList, setShowContactList] = useState([]); // Final Formated useable ContactList Data
   const [executed, setExecuted] = useState(false); // Checks if the formated have been done or not
   const [chatUser, setChatUser] = useState(""); // Global Chat user
-  const [userInfoCheck, setUserInfoCheck] = useState(false);
+  const [userInfoCheck, setUserInfoCheck] = useState(true);
   const [userDataCheck, setUserDataCheck] = useState(false);
 
   //Sets Loading to true on Component Mount
@@ -40,7 +40,7 @@ export default function MainApp() {
   useEffect(() => {
     console.log("Main app user: ", user);
     if (user) {
-      GetCurrentUserInfo(user.displayName, setUserInfoCheck, setUserInfo);
+      //GetCurrentUserInfo(user.displayName, setUserInfoCheck, setUserInfo);
       ReadContactList(user.displayName, setUserDataCheck, setUserData);
     }
   }, [user]);
@@ -116,7 +116,7 @@ export default function MainApp() {
                 chatUser={chatUser}
                 handleSetContactList={handleSetContactList}
                 executed={executed}
-                userName={userInfo.userName}
+                userName={user}
                 showContactList={showContactList}
               />
             ) : (
