@@ -8,7 +8,7 @@ import { LayoutGroupContext } from "framer-motion";
 import { useRouter } from "next/router";
 import { useLoading } from "../../../context/loadingContext/loadingContext";
 import { LoginValidation } from "../../../Validations/FormValidations";
-import ErrorValidator from "../../ErrorValidator/ErrorValidator";
+import ActionValidator from "../../ActionValidator/ActionValidator";
 
 export default function Signin(props) {
   const { user, login } = useAuth();
@@ -102,7 +102,7 @@ export default function Signin(props) {
         </button>
       </form>
       <div className={styles.errorLog}>
-        {error ? <ErrorValidator error={error} setError={setError} /> : ""}
+        {error ? <ActionValidator error={error} setError={setError} /> : ""}
       </div>
     </div>
   );

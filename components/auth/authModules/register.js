@@ -4,7 +4,7 @@ import Head from "next/head";
 import { useAuth } from "../../../context/authContext/authContext";
 import { useLoading } from "../../../context/loadingContext/loadingContext";
 import { RegistrationValidation } from "../../../Validations/FormValidations";
-import ErrorValidator from "../../ErrorValidator/ErrorValidator";
+import ActionValidator from "../../ActionValidator/ActionValidator";
 
 export default function Register(props) {
   const { user, signup } = useAuth();
@@ -182,7 +182,7 @@ export default function Register(props) {
         </button>
       </form>
       <div className={styles.errorLog}>
-        {error ? <ErrorValidator error={error} setError={setError} /> : ""}
+        {error ? <ActionValidator error={error} setError={setError} /> : ""}
       </div>
     </div>
   );
