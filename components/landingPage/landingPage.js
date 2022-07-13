@@ -71,8 +71,8 @@ export default function LandingPage() {
             <span
               className={
                 theme == "light"
-                  ? styles.HeadingUnderlinedLight
-                  : styles.HeadingUnderlinedDark
+                  ? styles.HeadingUnderlinedDark
+                  : styles.HeadingUnderlinedLight
               }
             >
               {" "}
@@ -98,7 +98,7 @@ export default function LandingPage() {
         <div className={styles.MainSection2}>
           <div className={styles.MainSection2Image}>
             <Image
-              src={theme == "light" ? MainImage : MainImageLight}
+              src={theme == "light" ? MainImageLight : MainImage}
               alt="Demo of main panel"
             />
           </div>
@@ -111,8 +111,8 @@ export default function LandingPage() {
               <span
                 className={
                   theme == "light"
-                    ? styles.FeaturesUnderlineLight
-                    : styles.FeaturesUnderlineDark
+                    ? styles.FeaturesUnderlineDark
+                    : styles.FeaturesUnderlineLight
                 }
               >
                 Features
@@ -127,8 +127,8 @@ export default function LandingPage() {
               <div
                 className={
                   theme == "light"
-                    ? styles.FeaturesSubLight
-                    : styles.FeaturesSubDark
+                    ? styles.FeaturesSubDark
+                    : styles.FeaturesSubLight
                 }
               ></div>
             </div>
@@ -240,8 +240,8 @@ export default function LandingPage() {
               <span
                 className={
                   theme == "light"
-                    ? styles.FoundersUnderlineLight
-                    : styles.FoundersUnderlineDark
+                    ? styles.FoundersUnderlineDark
+                    : styles.FoundersUnderlineLight
                 }
               >
                 Our Founders
@@ -257,7 +257,7 @@ export default function LandingPage() {
               className={styles.foundersBox}
             >
               <Image
-                src={theme == "light" ? MuneebImage : MuneebImageDark}
+                src={theme == "light" ? MuneebImageDark : MuneebImage}
                 height={280}
                 width={200}
                 alt="Founders"
@@ -340,7 +340,7 @@ export default function LandingPage() {
               className={styles.foundersBox}
             >
               <Image
-                src={theme == "light" ? SamranImage : SamranImageDark}
+                src={theme == "light" ? SamranImageDark : SamranImage}
                 height={280}
                 width={200}
                 alt="Founders"
@@ -425,7 +425,7 @@ export default function LandingPage() {
             >
               <div className={styles.foundersBox}>
                 <Image
-                  src={theme == "light" ? UmerImage : UmerImageDark}
+                  src={theme == "light" ? UmerImageDark : UmerImage}
                   height={280}
                   width={200}
                   alt="Founders"
@@ -512,8 +512,8 @@ export default function LandingPage() {
               <span
                 className={
                   theme == "light"
-                    ? styles.AboutUnderlineLight
-                    : styles.AboutUnderlineDark
+                    ? styles.AboutUnderlineDark
+                    : styles.AboutUnderlineLight
                 }
               >
                 About ChytBoat
