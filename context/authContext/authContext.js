@@ -26,16 +26,6 @@ export const AuthContextProvider = ({ children }) => {
   const { btnClickProcessing, setBtnClickProcessing } = useLoading();
 
   useEffect(() => {
-    if (user && !btnClickProcessing) {
-      if (user.displayName) {
-        console.log("Before: " + user);
-        router.push("/app-console");
-      }
-    }
-    console.log("ROOT USER: " + user);
-  }, [user]);
-
-  useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (user) => {
       if (user) {
         setUser({

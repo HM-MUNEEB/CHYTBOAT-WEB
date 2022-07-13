@@ -23,7 +23,6 @@ export default function ContactList(props) {
               <div className={styles.activeProfile}></div>
               <Image src={Avatar} />
             </div>
-
             <h3>{props.userName ? props.userName.displayName : ""}</h3>
           </div>
           <div className={styles.themeToggle}>

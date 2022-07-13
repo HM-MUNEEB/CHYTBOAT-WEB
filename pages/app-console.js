@@ -3,15 +3,9 @@ import { LoadingContextProvider } from "../context/loadingContext/loadingContext
 import { useAuth } from "../context/authContext/authContext.js";
 import { useEffect } from "react";
 import { useRouter } from "next/router";
+import { useAuthRoute } from "../context/ProtectedRoutesContext/authRoutesContext.js";
 
 export default function AppConsole() {
-  const router = useRouter();
-  const { user } = useAuth();
-  useEffect(() => {
-    if (!user) {
-      router.push("/");
-    }
-  }, []);
   return (
     <LoadingContextProvider>
       <MainApp />

@@ -2,13 +2,16 @@ import "../styles/Global.css";
 import { AuthContextProvider } from "../context/authContext/authContext";
 import ProtectedRoute from "../components/protectedRoute/protectedRoute";
 import { ErrorContextProvider } from "../context/errorHandlingContext/errorContext";
+import { AuthRouteContextProvider } from "../context/ProtectedRoutesContext/authRoutesContext";
 
 function MyApp({ Component, pageProps }) {
   return (
     <AuthContextProvider>
-      <ErrorContextProvider>
-        <Component {...pageProps} />
-      </ErrorContextProvider>
+      <AuthContextProvider>
+        <ErrorContextProvider>
+          <Component {...pageProps} />
+        </ErrorContextProvider>
+      </AuthContextProvider>
     </AuthContextProvider>
   );
 }
