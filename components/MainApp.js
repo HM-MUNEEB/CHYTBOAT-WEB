@@ -85,11 +85,12 @@ export default function MainApp() {
   return (
     <div>
       <Head>
-        <title>App-Console</title>
+        <title>ChytBoat: App-Console</title>
         <meta
           name="description"
           content="ChytBoat in the most most secure way, possible to chat with ent-to-end encription!"
         />
+        <link rel="icon" href="/favicon.png" />
       </Head>
       <div>{loading ? <Loading /> : ""}</div>
       <motion.div
