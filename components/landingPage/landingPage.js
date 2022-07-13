@@ -14,19 +14,19 @@ import Link from "next/link";
 import { motion } from "framer-motion";
 import ThemeToggle from "../themeToggle/themeToggle";
 import { useAuth } from "../../context/authContext/authContext";
-import { DarkModeSwitch } from "react-toggle-dark-mode";
 import { useTheme } from "next-themes";
 
 export default function LandingPage() {
-  const { theme, setTheme } = useTheme();
   const { user } = useAuth();
+  const { theme, setTheme } = useTheme();
   function handleThemeToggle() {
-    if (theme === "dark") {
+    if (theme == "dark") {
       setTheme("light");
     } else if (theme == "light") {
       setTheme("dark");
     }
   }
+
   useEffect(() => {
     console.log(theme);
   }, []);
@@ -50,11 +50,7 @@ export default function LandingPage() {
           </div>
           <div className={styles.headRightSection}>
             <div className={styles.themeToggle} onClick={handleThemeToggle}>
-              <DarkModeSwitch
-                checked={theme}
-                onChange={handleThemeToggle}
-                size={32}
-              />
+              <ThemeToggle />
             </div>
             {user ? (
               <Link href="../app-console">
