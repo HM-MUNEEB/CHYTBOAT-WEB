@@ -3,16 +3,19 @@ import { AuthContextProvider } from "../context/authContext/authContext";
 import ProtectedRoute from "../components/protectedRoute/protectedRoute";
 import { ErrorContextProvider } from "../context/errorHandlingContext/errorContext";
 import { AuthRouteContextProvider } from "../context/ProtectedRoutesContext/authRoutesContext";
+import { ThemeProvider } from "next-themes";
 
 function MyApp({ Component, pageProps }) {
   return (
-    <AuthContextProvider>
-      <AuthRouteContextProvider>
-        <ErrorContextProvider>
-          <Component {...pageProps} />
-        </ErrorContextProvider>
-      </AuthRouteContextProvider>
-    </AuthContextProvider>
+    <ThemeProvider>
+      <AuthContextProvider>
+        <AuthRouteContextProvider>
+          <ErrorContextProvider>
+            <Component {...pageProps} />
+          </ErrorContextProvider>
+        </AuthRouteContextProvider>
+      </AuthContextProvider>
+    </ThemeProvider>
   );
 }
 

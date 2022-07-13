@@ -7,6 +7,7 @@ export default function ThemeToggle(props) {
   useEffect(() => {
     var check = document.documentElement.getAttribute("data-theme");
     setDarkTheme(check != "light");
+    checkForTheme();
   }, []);
 
   const handleToggle = (event) => {
@@ -14,6 +15,19 @@ export default function ThemeToggle(props) {
   };
 
   useEffect(() => {
+    checkForTheme();
+  }, [darkTheme]);
+
+  useEffect(() => {
+    const root = window.document.documentElement;
+    const initialColorValue = root.style.getPropertyValue(
+      "--initial-color-mode"
+    );
+    // Set initial darkmode to light
+    setDarkTheme(initialColorValue);
+  }, []);
+
+  function checkForTheme() {
     if (darkTheme !== undefined) {
       if (darkTheme) {
         // Set value of  darkmode to dark
@@ -25,16 +39,7 @@ export default function ThemeToggle(props) {
         window.localStorage.setItem("theme", "light");
       }
     }
-  }, [darkTheme]);
-
-  useEffect(() => {
-    const root = window.document.documentElement;
-    const initialColorValue = root.style.getPropertyValue(
-      "--initial-color-mode"
-    );
-    // Set initial darkmode to light
-    setDarkTheme(initialColorValue === "dark");
-  }, []);
+  }
 
   return (
     <DarkModeSwitch

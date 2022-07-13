@@ -14,18 +14,22 @@ import Link from "next/link";
 import { motion } from "framer-motion";
 import ThemeToggle from "../themeToggle/themeToggle";
 import { useAuth } from "../../context/authContext/authContext";
+import { DarkModeSwitch } from "react-toggle-dark-mode";
+import { useTheme } from "next-themes";
 
 export default function LandingPage() {
-  const [darkThemeCheck, setDarkThemeCheck] = useState("");
+  const { theme, setTheme } = useTheme();
   const { user } = useAuth();
-  useEffect(() => {
-    setDarkThemeCheck(document.documentElement.getAttribute("data-theme"));
-    console.log(darkThemeCheck);
-  }, []);
-
-  function themeToggleCheck() {
-    setDarkThemeCheck(document.documentElement.getAttribute("data-theme"));
+  function handleThemeToggle() {
+    if (theme === "dark") {
+      setTheme("light");
+    } else if (theme == "light") {
+      setTheme("dark");
+    }
   }
+  useEffect(() => {
+    console.log(theme);
+  }, []);
 
   return (
     <div className={styles.landingPageContainer}>
@@ -45,8 +49,12 @@ export default function LandingPage() {
             <a href="#About">About</a>
           </div>
           <div className={styles.headRightSection}>
-            <div className={styles.themeToggle} onClick={themeToggleCheck}>
-              <ThemeToggle size={50} />
+            <div className={styles.themeToggle} onClick={handleThemeToggle}>
+              <DarkModeSwitch
+                checked={theme}
+                onChange={handleThemeToggle}
+                size={32}
+              />
             </div>
             {user ? (
               <Link href="../app-console">
@@ -66,7 +74,7 @@ export default function LandingPage() {
             Connect to anyone with Strongest
             <span
               className={
-                darkThemeCheck == "light"
+                theme == "light"
                   ? styles.HeadingUnderlinedLight
                   : styles.HeadingUnderlinedDark
               }
@@ -94,7 +102,7 @@ export default function LandingPage() {
         <div className={styles.MainSection2}>
           <div className={styles.MainSection2Image}>
             <Image
-              src={darkThemeCheck == "light" ? MainImage : MainImageLight}
+              src={theme == "light" ? MainImage : MainImageLight}
               alt="Demo of main panel"
             />
           </div>
@@ -106,7 +114,7 @@ export default function LandingPage() {
             <h2>
               <span
                 className={
-                  darkThemeCheck == "light"
+                  theme == "light"
                     ? styles.FeaturesUnderlineLight
                     : styles.FeaturesUnderlineDark
                 }
@@ -122,7 +130,7 @@ export default function LandingPage() {
               </p>
               <div
                 className={
-                  darkThemeCheck == "light"
+                  theme == "light"
                     ? styles.FeaturesSubLight
                     : styles.FeaturesSubDark
                 }
@@ -235,7 +243,7 @@ export default function LandingPage() {
             <h2>
               <span
                 className={
-                  darkThemeCheck == "light"
+                  theme == "light"
                     ? styles.FoundersUnderlineLight
                     : styles.FoundersUnderlineDark
                 }
@@ -253,7 +261,7 @@ export default function LandingPage() {
               className={styles.foundersBox}
             >
               <Image
-                src={darkThemeCheck == "light" ? MuneebImage : MuneebImageDark}
+                src={theme == "light" ? MuneebImage : MuneebImageDark}
                 height={280}
                 width={200}
                 alt="Founders"
@@ -336,7 +344,7 @@ export default function LandingPage() {
               className={styles.foundersBox}
             >
               <Image
-                src={darkThemeCheck == "light" ? SamranImage : SamranImageDark}
+                src={theme == "light" ? SamranImage : SamranImageDark}
                 height={280}
                 width={200}
                 alt="Founders"
@@ -421,7 +429,7 @@ export default function LandingPage() {
             >
               <div className={styles.foundersBox}>
                 <Image
-                  src={darkThemeCheck == "light" ? UmerImage : UmerImageDark}
+                  src={theme == "light" ? UmerImage : UmerImageDark}
                   height={280}
                   width={200}
                   alt="Founders"
@@ -507,7 +515,7 @@ export default function LandingPage() {
             <h2>
               <span
                 className={
-                  darkThemeCheck == "light"
+                  theme == "light"
                     ? styles.AboutUnderlineLight
                     : styles.AboutUnderlineDark
                 }
