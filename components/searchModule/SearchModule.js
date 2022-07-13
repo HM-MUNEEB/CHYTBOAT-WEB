@@ -12,6 +12,8 @@ export default function SearchModule(props) {
   const { setLoading } = useLoading();
   const [searchInputField, setSearchInputField] = useState();
   const [searchResult, setSearchResult] = useState(null);
+  let userAddCheck = null;
+
   async function handleSearch(e) {
     setSearchResult(null);
     e.preventDefault();
@@ -25,6 +27,13 @@ export default function SearchModule(props) {
     }
   }
   function handleUserAddition() {
+    props.contactList.forEach((element) => {
+      if (searchResult.userName == element.userName) {
+        userAddCheck = false;
+        return false;
+      }
+      userAddCheck = true;
+    });
     AddContact(user.displayName, searchResult.userName, setLoading);
   }
 
@@ -84,7 +93,7 @@ export default function SearchModule(props) {
                       <h5>@{searchResult.userName}</h5>
                     </div>
                   </div>
-                  {user.displayName != searchResult.userName ? (
+                  {user.displayName != searchResult.userName && userAddCheck ? (
                     <div
                       className={styles.addUserIcon}
                       onClick={handleUserAddition}

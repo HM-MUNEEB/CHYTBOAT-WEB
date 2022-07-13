@@ -101,7 +101,11 @@ export default function MainApp() {
         className={styles.appConsoleContainer}
       >
         <div className={styles.appConsoleStack}>
-          {search ? <SearchModule setSearch={setSearch} /> : ""}
+          {search ? (
+            <SearchModule setSearch={setSearch} contactList={showContactList} />
+          ) : (
+            ""
+          )}
           <div className={styles.appConsoleNavContactListStack}>
             <Navbar
               setSearch={setSearch}
