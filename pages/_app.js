@@ -7,11 +7,11 @@ import { AuthRouteContextProvider } from "../context/ProtectedRoutesContext/auth
 function MyApp({ Component, pageProps }) {
   return (
     <AuthContextProvider>
-      <AuthContextProvider>
+      <AuthRouteContextProvider>
         <ErrorContextProvider>
           <Component {...pageProps} />
         </ErrorContextProvider>
-      </AuthContextProvider>
+      </AuthRouteContextProvider>
     </AuthContextProvider>
   );
 }

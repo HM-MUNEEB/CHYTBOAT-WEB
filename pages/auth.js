@@ -1,15 +1,9 @@
 import Auth from "../components/auth/authentication.js";
-import { useAuth } from "../context/authContext/authContext.js";
-import { useRouter } from "next/router";
-import { useEffect } from "react";
+import { useAuthRoute } from "../context/ProtectedRoutesContext/authRoutesContext.js";
 
 export default function AuthConsole() {
-  const router = useRouter();
-  const { user } = useAuth();
-  useEffect(() => {
-    if (user) {
-      router.push("/app-console");
-    }
-  }, []);
-  return <Auth />;
+  const { routeCheck } = useAuthRoute();
+  console.log("Auth: " + routeCheck);
+
+  return <div>{routeCheck == "auth" ? <Auth /> : ""}</div>;
 }
