@@ -102,7 +102,15 @@ export default function Signin(props) {
         </button>
       </form>
       <div className={styles.errorLog}>
-        {error ? <ActionValidator error={error} setError={setError} /> : ""}
+        {error ? (
+          <ActionValidator
+            status="error"
+            validationMsg={error}
+            setError={setError}
+          />
+        ) : (
+          ""
+        )}
       </div>
     </div>
   );

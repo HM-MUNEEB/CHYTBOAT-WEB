@@ -182,7 +182,15 @@ export default function Register(props) {
         </button>
       </form>
       <div className={styles.errorLog}>
-        {error ? <ActionValidator error={error} setError={setError} /> : ""}
+        {error ? (
+          <ActionValidator
+            status="error"
+            validationMsg={error}
+            setError={setError}
+          />
+        ) : (
+          ""
+        )}
       </div>
     </div>
   );
