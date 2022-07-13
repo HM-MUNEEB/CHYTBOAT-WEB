@@ -4,6 +4,8 @@ import { useAuthRoute } from "../context/ProtectedRoutesContext/authRoutesContex
 
 export default function AppConsole() {
   const { routeCheck } = useAuthRoute();
+  console.log("app-console: " + routeCheck);
+
   return (
     <div>
       {routeCheck == "app-console" ? (
