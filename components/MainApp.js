@@ -102,6 +102,17 @@ export default function MainApp() {
         viewport={{ once: true }}
         className={styles.appConsoleContainer}
       >
+        {searchValidation ? (
+          <div className={styles.validationMessage}>
+            <ActionValidator
+              status={searchValidation.status}
+              validationMsg={searchValidation.msg}
+              setValidationMsg={setSearchValidation}
+            />
+          </div>
+        ) : (
+          ""
+        )}
         <div className={styles.appConsoleStack}>
           {search ? (
             <SearchModule
@@ -144,18 +155,6 @@ export default function MainApp() {
           {chatDetails ? (
             <div className={styles.appConsoleFlexChatDetailsStack}>
               <ChatDetails setChatDetails={setChatDetails} />
-            </div>
-          ) : (
-            ""
-          )}
-
-          {searchValidation ? (
-            <div className={styles.validationMessage}>
-              <ActionValidator
-                status={searchValidation.status}
-                validationMsg={searchValidation.msg}
-                setValidationMsg={setSearchValidation}
-              />
             </div>
           ) : (
             ""
