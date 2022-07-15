@@ -12,6 +12,7 @@ import Loading from "./loading/loading.js";
 import { useAuth } from "../context/authContext/authContext.js";
 import { GetCurrentUserInfo } from "../FirebaseModules/GetCurrentUserInfo.js";
 import { ReadContactList } from "../FirebaseModules/ReadContactList.js";
+import ActionValidator from "./ActionValidator/ActionValidator";
 
 export default function MainApp() {
   const { user } = useAuth();
@@ -30,6 +31,7 @@ export default function MainApp() {
   const [chatUser, setChatUser] = useState(""); // Global Chat user
   const [userInfoCheck, setUserInfoCheck] = useState(true);
   const [userDataCheck, setUserDataCheck] = useState(false);
+  const [searchValidation, setSearchValidation] = useState(null);
 
   //Sets Loading to true on Component Mount
   useEffect(() => {
@@ -102,7 +104,11 @@ export default function MainApp() {
       >
         <div className={styles.appConsoleStack}>
           {search ? (
-            <SearchModule setSearch={setSearch} contactList={showContactList} />
+            <SearchModule
+              setSearch={setSearch}
+              contactList={showContactList}
+              setSearchValidation={setSearchValidation}
+            />
           ) : (
             ""
           )}
@@ -139,6 +145,17 @@ export default function MainApp() {
             <div className={styles.appConsoleFlexChatDetailsStack}>
               <ChatDetails setChatDetails={setChatDetails} />
             </div>
+          ) : (
+            ""
+          )}
+        </div>
+        <div className={styles.validationMessage}>
+          {searchValidation ? (
+            <ActionValidator
+              status={searchValidation.status}
+              validationMsg={searchValidation.msg}
+              setValidationMsg={setSearchValidation}
+            />
           ) : (
             ""
           )}

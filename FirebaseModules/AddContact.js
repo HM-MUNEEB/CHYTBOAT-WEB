@@ -3,7 +3,12 @@ import { ref, set, update, push } from "firebase/database";
 import { Timestamp } from "firebase/firestore";
 import { uid } from "uid";
 
-export function AddContact(currentUserName, targetUserName, setLoading) {
+export function AddContact(
+  currentUserName,
+  targetUserName,
+  setLoading,
+  setSearchValidation
+) {
   //add reference to the current user
   var taskCompleted = 0;
   const UUID = uid(32);

@@ -34,7 +34,12 @@ export default function SearchModule(props) {
       }
       userAddCheck = true;
     });
-    AddContact(user.displayName, searchResult.userName, setLoading);
+    AddContact(
+      user.displayName,
+      searchResult.userName,
+      setLoading,
+      props.setSearchValidation
+    );
   }
 
   return (
