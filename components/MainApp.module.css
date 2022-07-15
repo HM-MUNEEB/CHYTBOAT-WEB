@@ -21,3 +21,6 @@
 .appConsoleFlexChatDetailsStack {
   height: 100%;
 }
+.validationMessage {
+  z-index: 1000;
+}

@@ -148,14 +148,15 @@ export default function MainApp() {
           ) : (
             ""
           )}
-        </div>
-        <div className={styles.validationMessage}>
+
           {searchValidation ? (
-            <ActionValidator
-              status={searchValidation.status}
-              validationMsg={searchValidation.msg}
-              setValidationMsg={setSearchValidation}
-            />
+            <div className={styles.validationMessage}>
+              <ActionValidator
+                status={searchValidation.status}
+                validationMsg={searchValidation.msg}
+                setValidationMsg={setSearchValidation}
+              />
+            </div>
           ) : (
             ""
           )}

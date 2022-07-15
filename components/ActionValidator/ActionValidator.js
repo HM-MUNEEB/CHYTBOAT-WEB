@@ -9,7 +9,6 @@ export default function ActionValidator(props) {
   useEffect(() => {
     setTimeout(() => {
       setVisible(false);
-      props.setValidationMsg(null);
     }, 3000);
   }, []);
 

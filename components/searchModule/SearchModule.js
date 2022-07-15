@@ -24,11 +24,18 @@ export default function SearchModule(props) {
           check = true;
         }
       });
+      if (!check) {
+        props.setSearchValidation({
+          status: "error",
+          msg: "User Already Exists in your contact list!",
+        });
+      }
       setUserAddCheck(check);
     }
   }, [searchResult]);
 
   async function handleSearch(e) {
+    props.setSearchValidation(null); //error validation msg root component MainApp
     setSearchResult(null);
     e.preventDefault();
     setLoading(true);
