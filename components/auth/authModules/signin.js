@@ -106,7 +106,7 @@ export default function Signin(props) {
           <ActionValidator
             status="error"
             validationMsg={error}
-            setError={setError}
+            setValidationMsg={setError}
           />
         ) : (
           ""
