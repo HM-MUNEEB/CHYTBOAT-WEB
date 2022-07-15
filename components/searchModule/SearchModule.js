@@ -20,6 +20,7 @@ export default function SearchModule(props) {
       props.contactList.forEach((element) => {
         if (searchResult.userName == element.name) {
           check = false;
+          return false;
         } else {
           check = true;
         }
@@ -41,7 +42,6 @@ export default function SearchModule(props) {
     setLoading(true);
     setSearchResult(await SearchContact(searchInputField, setLoading));
     console.log(searchResult);
-    console.log(userAddCheck);
   }
   async function handleSearchByKeyPress(e) {
     if (event.keyCode == 13) {
@@ -49,12 +49,17 @@ export default function SearchModule(props) {
     }
   }
   function handleUserAddition() {
+    props.setSearchValidation(null);
     AddContact(
       user.displayName,
       searchResult.userName,
       setLoading,
       props.setSearchValidation
     );
+    props.setSearchValidation({
+      status: "sucess",
+      msg: "Succesfully added user to your contact list! Now you can chat with them securely.",
+    });
   }
 
   return (

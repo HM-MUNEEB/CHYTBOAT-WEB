@@ -3,14 +3,8 @@ import { ref, set, update, push } from "firebase/database";
 import { Timestamp } from "firebase/firestore";
 import { uid } from "uid";
 
-export function AddContact(
-  currentUserName,
-  targetUserName,
-  setLoading,
-  setSearchValidation
-) {
+export function AddContact(currentUserName, targetUserName, setLoading) {
   //add reference to the current user
-  var taskCompleted = 0;
   const UUID = uid(32);
   try {
     const userRef = ref(dbRT, "users/" + targetUserName + "/data/friends");
@@ -19,10 +13,6 @@ export function AddContact(
       name: currentUserName,
       UUID,
     });
-    taskCompleted++;
-    if (taskCompleted == 2) {
-      setLoading(false);
-    }
   } catch (e) {
     console.log("Error Adding to realtime DB:  ", e);
   }
@@ -33,10 +23,6 @@ export function AddContact(
       name: targetUserName,
       UUID,
     });
-    taskCompleted++;
-    if (taskCompleted == 2) {
-      setLoading(false);
-    }
   } catch (e) {
     console.log("Error Adding to realtime DB:  ", e);
   }
