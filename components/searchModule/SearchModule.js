@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import styles from "./searchModule.module.css";
 import { SearchContact } from "../../FirebaseModules/SearchContact";
 import { AddContact } from "../../FirebaseModules/AddContact";
@@ -12,7 +12,21 @@ export default function SearchModule(props) {
   const { setLoading } = useLoading();
   const [searchInputField, setSearchInputField] = useState();
   const [searchResult, setSearchResult] = useState(null);
-  let userAddCheck = null;
+  const [userAddCheck, setUserAddCheck] = useState(null);
+
+  useEffect(() => {
+    let check = null;
+    if (searchResult) {
+      props.contactList.forEach((element) => {
+        if (searchResult.userName == element.name) {
+          check = false;
+        } else {
+          check = true;
+        }
+      });
+      setUserAddCheck(check);
+    }
+  }, [searchResult]);
 
   async function handleSearch(e) {
     setSearchResult(null);
@@ -20,6 +34,7 @@ export default function SearchModule(props) {
     setLoading(true);
     setSearchResult(await SearchContact(searchInputField, setLoading));
     console.log(searchResult);
+    console.log(userAddCheck);
   }
   async function handleSearchByKeyPress(e) {
     if (event.keyCode == 13) {
@@ -27,13 +42,6 @@ export default function SearchModule(props) {
     }
   }
   function handleUserAddition() {
-    props.contactList.forEach((element) => {
-      if (searchResult.userName == element.userName) {
-        userAddCheck = false;
-        return false;
-      }
-      userAddCheck = true;
-    });
     AddContact(
       user.displayName,
       searchResult.userName,
@@ -98,7 +106,9 @@ export default function SearchModule(props) {
                       <h5>@{searchResult.userName}</h5>
                     </div>
                   </div>
-                  {user.displayName != searchResult.userName && userAddCheck ? (
+                  {user.displayName != searchResult.userName &&
+                  userAddCheck &&
+                  userAddCheck != null ? (
                     <div
                       className={styles.addUserIcon}
                       onClick={handleUserAddition}
