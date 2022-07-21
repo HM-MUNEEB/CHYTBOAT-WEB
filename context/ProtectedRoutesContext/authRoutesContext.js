@@ -13,25 +13,32 @@ export function AuthRouteContextProvider({ children }) {
   const router = useRouter();
   const [routeCheck, setRouteCheck] = useState(null);
 
-  useEffect(
-    function protectedRoute() {
-      if (user) {
-        if (user.displayName) {
-          setRouteCheck("app-console");
-          router.push("/app-console");
-          console.log("Redirected to App-console");
-        }
-      } else if (user === false) {
-        setRouteCheck("/");
-        router.push("/");
-        console.log("Redirected to /");
+  useEffect(() => {
+    if (user) {
+      if (user.displayName) {
+        setRouteCheck("app-console");
+        router.push("/app-console");
+        console.log("Redirected to App-console");
       }
-    },
-    [user]
-  );
+    }
+  }, [user]);
+
+  function protectedRoute() {
+    if (user) {
+      if (user.displayName) {
+        setRouteCheck("app-console");
+        router.push("/app-console");
+        console.log("Redirected to App-console");
+      }
+    } else if (user === false) {
+      setRouteCheck("auth");
+      router.push("/auth");
+      console.log("Redirected to /auth");
+    }
+  }
 
   return (
-    <AuthRouteContext.Provider value={{ routeCheck }}>
+    <AuthRouteContext.Provider value={{ routeCheck, protectedRoute }}>
       {children}
     </AuthRouteContext.Provider>
   );
