@@ -21,12 +21,11 @@ export function AuthRouteContextProvider({ children }) {
           router.push("/app-console");
           console.log("Redirected to App-console");
         }
-      } else {
+      } else if (user === false) {
         setRouteCheck("/");
         router.push("/");
         console.log("Redirected to /");
       }
-      console.log("ROOT USER: " + user);
     },
     [user]
   );
